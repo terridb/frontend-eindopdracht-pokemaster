@@ -1,0 +1,47 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+.general-button {
+    width: fit-content;
+    margin: 40px 0 0 0;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 34px;
+    color: var(--light-text);
+    background-color: var(--header-background);
+    font-weight: 500;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 100%;
+    cursor: pointer;
+    transition: all .15s ease-in-out ;
+}
+
+.general-button:hover {
+    transform: scale(1.03);
+}
+
+.general-button.charizard {
+    background-color: var(--main-color-homepage);
+}
+
+/* ------------------------------- 5. Media Queries -------------------------------- */

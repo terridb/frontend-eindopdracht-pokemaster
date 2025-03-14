@@ -1,0 +1,86 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Color block
+        etc.
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+/* --------------- 4.1 Header ------------------- */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text);
+    background-color: var(--header-background);
+    height: 600px;
+    position: relative;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.small-inner-container.header {
+    padding: 0 50px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 450px;
+    gap: 10px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.header-text {
+    font-size: 1.375rem;
+}
+
+.header-image-wrapper {
+    max-width: 600px;
+    width: auto;
+    max-height: 485px;
+    height: auto;
+}
+
+.header-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* --------------- 4.2 Color block ------------------- */
+.header-color-block {
+    width: 1040px;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 58% 100%);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.header-color-block.charizard {
+    background: linear-gradient(-45deg, var(--main-color-homepage) 0%, var(--light-color-homepage) 100%);
+}
+/* ------------------------------- 5. Media Queries -------------------------------- */
