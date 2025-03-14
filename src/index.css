@@ -34,7 +34,7 @@
 html {
   font-family: "Roboto", Arial, serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 body {
@@ -92,9 +92,26 @@ h5, nav {
 
 /* --------------- 3.1 Reusables ----------------------- */
 .outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   padding: 0 var(--general-side-margin);
   border: 2px dashed blue;
 }
+
+.small-inner-container {
+  display: flex;
+  margin: 0 var(--general-side-margin);
+  max-width: 1300px;
+  width: calc(100% - 2 * var(--general-side-margin));
+  z-index: 1;
+  flex-grow: 0;
+  flex-shrink: 1;
+  border: 2px dashed red;
+}
+
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */

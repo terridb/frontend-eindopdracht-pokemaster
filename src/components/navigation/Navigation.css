@@ -30,6 +30,7 @@ nav {
     padding: 5px 0;
     font-weight: 700;
     border: 2px dashed #7f7fd5;
+    z-index: 1;
 }
 
 .white-logo {

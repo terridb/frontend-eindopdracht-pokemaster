@@ -1,0 +1,41 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+:root {
+    --main-color-homepage: #F45F0E;
+    --light-color-homepage: #FFAB4A;
+}
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+.outer-container.home {
+    padding: 50px 0;
+}
+
+.small-inner-container.home {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    position: relative;
+}
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
