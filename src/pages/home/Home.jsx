@@ -4,6 +4,7 @@ import charizard from "../../assets/images/charizard.png"
 import pikachu from "../../assets/images/detective-pikachu.png";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 
 function Home() {
     return (
@@ -37,6 +38,7 @@ function Home() {
                     </div>
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

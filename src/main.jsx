@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
                 value={{
                     color: "#CCCCCC",
                     size: 32,
-                    weight: "bold",
+                    weight: "regular",
                     mirrored: false,
                 }}
             >

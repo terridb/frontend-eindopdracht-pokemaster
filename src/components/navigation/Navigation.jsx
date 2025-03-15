@@ -1,7 +1,7 @@
 import "./Navigation.css"
 import {Link, NavLink} from "react-router-dom";
 import whiteLogo from "../../assets/logo/logo-white.png"
-import favoriteHeart from "../../assets/icons/Heart.svg"
+import {HeartStraight} from "@phosphor-icons/react";
 
 function Navigation() {
     return (
@@ -27,7 +27,10 @@ function Navigation() {
                     </ul>
                 </div>
                 <div className="nav-profile-buttons">
-                    <img className="nav-heart" src={favoriteHeart} alt="Favorite icon"/>
+                    <HeartStraight
+                        color="white"
+                        aria-label="Go to favorites"
+                    />
                     <Link to={"/"}>Sign in</Link>
                 </div>
             </nav>
