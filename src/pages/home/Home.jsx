@@ -1,7 +1,9 @@
 import "./Home.css"
 import Header from "../../components/header/Header.jsx";
 import charizard from "../../assets/images/charizard.png"
+import pikachu from "../../assets/images/detective-pikachu.png";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
+import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 
 function Home() {
     return (
@@ -21,6 +23,12 @@ function Home() {
                         <div className="home-buttons-container">
                             <IllustratedButton
                                 title="Pokédex"
+                            />
+                            <IllustratedSearchbar
+                                image={pikachu}
+                                imageDescription="Detective Pikachu"
+                                title="Quick search"
+                                subtitle="By name or number"
                             />
                             <IllustratedButton
                                 title="Battlemaster"
