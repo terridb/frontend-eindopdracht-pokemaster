@@ -5,8 +5,11 @@ import pikachu from "../../assets/images/detective-pikachu.png";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
+import {useNavigate} from "react-router-dom";
 
 function Home() {
+    const navigate = useNavigate();
+
     return (
         <>
             <Header
@@ -16,6 +19,7 @@ function Home() {
                 headerImage={charizard}
                 pokemonName="charizard"
                 buttonType="button"
+                onClick={() => navigate("/login")}
             />
             <main>
                 <section className="outer-container home">
