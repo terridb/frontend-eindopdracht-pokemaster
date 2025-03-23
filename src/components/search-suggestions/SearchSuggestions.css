@@ -6,55 +6,20 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
-:root {
-    --main-color-homepage: #F45F0E;
-    --light-color-homepage: #FFAB4A;
-}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
-.outer-container.home {
-    padding: 50px 0;
-}
 
-.small-inner-container.home {
-    flex-direction: column;
-    gap: 50px;
-    text-align: center;
-    position: relative;
-}
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.home-buttons-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
-.suggestions-container {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--light-text);
-    width: 400px;
-    align-items: flex-start;
-    border: 2px dashed blue;
-    padding: 10px;
-    border-radius: 10px;
-    gap: 15px;
-}
-
-.suggestion-item {
-
-}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

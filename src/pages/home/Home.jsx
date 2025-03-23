@@ -6,9 +6,49 @@ import IllustratedButton from "../../components/illustrated-button/IllustratedBu
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import SearchSuggestions from "../../components/search-suggestions/SearchSuggestions.jsx";
 
 function Home() {
     const navigate = useNavigate();
+    const [query, setQuery] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [pokemon, setPokemon] = useState([]);
+    const [pokemonList, setPokemonList] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
+
+    useEffect(() => {
+        const fetchPokemonList = async () => {
+            try {
+                const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302");
+                setPokemonList(response.data.results);
+            } catch (err) {
+                setError(err.message);
+                console.error(err);
+            }
+        };
+        fetchPokemonList();
+    }, []);
+
+    const handleSearch = () => {
+        const filteredSuggestions = pokemonList
+            .filter((pokemon) =>
+                pokemon.name.toLowerCase().includes(query.toLowerCase())
+            )
+            .slice(0, 3);
+        setSuggestions(filteredSuggestions);
+    };
+
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+    };
+
+    useEffect(() => {
+        handleSearch();
+    }, [query]);
+
 
     return (
         <>
@@ -29,12 +69,21 @@ function Home() {
                             <IllustratedButton
                                 title="Pokédex"
                             />
-                            <IllustratedSearchbar
-                                image={pikachu}
-                                imageDescription="Detective Pikachu"
-                                title="Quick search"
-                                subtitle="By name or number"
-                            />
+                            <div className="searchbar-section">
+                                <IllustratedSearchbar
+                                    image={pikachu}
+                                    imageDescription="Detective Pikachu"
+                                    title="Quick search"
+                                    subtitle="By name or number"
+                                    value={query}
+                                    onChange={handleChange}
+                                />
+                                {query && suggestions.length > 0 && (
+                                    <SearchSuggestions
+                                        suggestions={suggestions}
+                                    />
+                                )}
+                            </div>
                             <IllustratedButton
                                 title="Battlemaster"
                             />
