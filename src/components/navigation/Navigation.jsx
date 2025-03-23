@@ -28,7 +28,7 @@ function Navigation() {
                 </div>
                 <div className="nav-profile-buttons">
                     <FavoriteIcon/>
-                    <Link to={"/login"}>Sign in</Link>
+                    <Link to={"/login"} className="nav-link">Sign in</Link>
                 </div>
             </nav>
         </>

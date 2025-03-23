@@ -1,4 +1,3 @@
-import './App.css'
 import {Navigate, Route, Routes} from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Pokedex from "./pages/pokedex/Pokedex.jsx";

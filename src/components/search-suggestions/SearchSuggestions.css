@@ -12,7 +12,9 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-
+.suggestion-item-link {
+    font-size: 0.85rem;
+}
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -20,6 +22,28 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
+.suggestions-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-text);
+    width: 100%;
+    border-radius: 10px;
+    gap: 0;
+}
 
+.suggestion-item-link {
+    color: var(--dark-text);
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px 10px;
+    text-align: start;
+    text-transform: capitalize;
+    border-radius: 10px;
+}
+
+.suggestion-item-link:hover {
+    background-color: var(--small-details)
+}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

@@ -1,9 +1,9 @@
 import './Searchbar.css'
-import SearchButton from "../search-button/SearchButton.jsx";
+import {MagnifyingGlass} from "@phosphor-icons/react";
 
 function SearchBar({placeholder, size, onChange, value}) {
     return (
-        <div className="searchbar-inner-container">
+        <div className="searchbar-container">
             <input
                 className={`searchbar ${size}`}
                 type="search"
@@ -12,9 +12,10 @@ function SearchBar({placeholder, size, onChange, value}) {
                 value={value}
                 onChange={onChange}
             />
-            <SearchButton/>
+            <button className="searchbar-button" type="submit">
+                <MagnifyingGlass/>
+            </button>
         </div>
-
     );
 }
 

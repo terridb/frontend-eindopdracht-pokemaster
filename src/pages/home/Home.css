@@ -41,20 +41,13 @@
     justify-content: space-between;
 }
 
-.suggestions-container {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--light-text);
+.searchbar-section {
     width: 400px;
-    align-items: flex-start;
-    border: 2px dashed blue;
-    padding: 10px;
-    border-radius: 10px;
-    gap: 15px;
+    position: relative;
 }
 
-.suggestion-item {
-
+.suggestions-container {
+    position: absolute;
+    top: 385px;
 }
-
 /* ------------------------------- 5. Media Queries -------------------------------- */

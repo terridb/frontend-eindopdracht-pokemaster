@@ -1,4 +1,5 @@
 import "./SearchSuggestions.css";
+import {Link} from "react-router-dom";
 
 function SearchSuggestions({suggestions}) {
     return (
@@ -7,9 +8,10 @@ function SearchSuggestions({suggestions}) {
                 {suggestions.map((pokemon) => (
                     <li
                         key={pokemon.name}
-                        className="suggestion-item"
                     >
-                        {pokemon.name}
+                        <Link to={"/"} className={"suggestion-item-link"}>
+                            {pokemon.name}
+                        </Link>
                     </li>
                 ))}
             </ul>

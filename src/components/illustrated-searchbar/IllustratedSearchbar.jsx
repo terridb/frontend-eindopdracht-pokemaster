@@ -1,7 +1,7 @@
 import "./IllustratedSearchBar.css"
 import Searchbar from "../searchbar/Searchbar.jsx";
 
-function IllustratedSearchBar({image, imageDescription, title, subtitle, value, onChange}) {
+function IllustratedSearchBar({image, imageDescription, title, subtitle, value, onChange, suggestions}) {
     return (
         <div className="illustrated-searchbar-wrapper">
             <img className="illustration-searchbar" src={image} alt={imageDescription}/>
@@ -11,6 +11,7 @@ function IllustratedSearchBar({image, imageDescription, title, subtitle, value, 
                 size="small"
                 value={value}
                 onChange={onChange}
+                suggestions={suggestions}
             />
             </div>
             <div className="illustrated-searchbar-title">
