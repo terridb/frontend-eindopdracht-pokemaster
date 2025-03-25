@@ -9,7 +9,7 @@ function SearchSuggestions({suggestions}) {
                     <li
                         key={pokemon.id}
                     >
-                        <Link to={"/"} className={"suggestion-item-link"}>
+                        <Link to={`/pokedex/${pokemon.id}`} className={"suggestion-item-link"}>
                             <p>{pokemon.name}</p>
                             <p>#{pokemon.id}</p>
                         </Link>

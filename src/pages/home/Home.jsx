@@ -1,14 +1,14 @@
 import "./Home.css"
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 import Header from "../../components/header/Header.jsx";
-import charizard from "../../assets/images/charizard.png"
-import pikachu from "../../assets/images/detective-pikachu.png";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import axios from "axios";
 import SearchSuggestions from "../../components/search-suggestions/SearchSuggestions.jsx";
+import charizard from "../../assets/images/charizard.png"
+import pikachu from "../../assets/images/detective-pikachu.png";
 
 function Home() {
     const navigate = useNavigate();
@@ -17,10 +17,15 @@ function Home() {
     const [loading, setLoading] = useState(false);
     const [pokemonList, setPokemonList] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
 
     useEffect(() => {
         const fetchPokemonList = async () => {
             try {
+                setLoading(true);
                 const totalCount = await axios.get("https://pokeapi.co/api/v2/pokemon/");
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${totalCount.data.count}`);
 
@@ -39,12 +44,14 @@ function Home() {
             } catch (err) {
                 setError(err.message);
                 console.error(err);
+            } finally {
+                setLoading(false);
             }
         };
         fetchPokemonList();
     }, []);
 
-    const handleSearch = () => {
+    const handleSuggestions = () => {
         const filteredSuggestions = pokemonList
             .filter((pokemon) =>
                 pokemon.name.toLowerCase().includes(query.toLowerCase())
@@ -56,12 +63,29 @@ function Home() {
     };
 
     const handleChange = (e) => {
+        setError("");
         setQuery(e.target.value);
     };
 
     useEffect(() => {
-        handleSearch();
+        handleSuggestions();
     }, [query]);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setError("");
+        const matchedPokemon = pokemonList.find(
+            (pokemon) =>
+                pokemon.name.toLowerCase() === query.toLowerCase() ||
+                pokemon.id === query
+        );
+
+        if (matchedPokemon) {
+            navigate(`/pokedex/${matchedPokemon.id}`);
+        } else {
+            setError("This Pokémon could not be found, try something else.");
+        }
+    }
 
     return (
         <>
@@ -90,8 +114,13 @@ function Home() {
                                     subtitle="By name or number"
                                     value={query}
                                     onChange={handleChange}
+                                    handleSubmit={handleSearch}
+                                    onFocus={handleFocus}
+                                    onBlur={handleBlur}
                                 />
-                                {query && suggestions.length > 0 && (
+                                {loading && isFocused && <p className="loading-message">Loading Pokémon...</p>}
+                                {!loading && error && <p className="error-message">{error}</p>}
+                                {query && suggestions.length > 0 && !error && !loading && (
                                     <SearchSuggestions
                                         suggestions={suggestions}
                                     />

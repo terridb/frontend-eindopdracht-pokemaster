@@ -20,7 +20,7 @@ function App() {
                 <Route path="/battlemaster" element={<Battlemaster/>}/>
                 <Route path="/signup" element={<Registration/>}/>
                 <Route path="/login" element={<LogIn/>}/>
-                <Route path="/pokedex/:id" element={<PokedexDetails/>}/>
+                <Route path="/pokedex/:pokemonId" element={<PokedexDetails/>}/>
                 <Route path="/battlemaster/results" element={<BattlemasterResult/>}/>
                 <Route path="/favorites" element={isLoggedIn === true? <Favorites/> : <Navigate to="/login"/>}/>
                 <Route path="/profile" element={isLoggedIn === true? <Profile/> : <Navigate to="/login"/>}/>
