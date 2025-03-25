@@ -82,7 +82,9 @@ function Home() {
 
         if (matchedPokemon) {
             navigate(`/pokedex/${matchedPokemon.id}`);
-        } else {
+        } else if (!query) {
+            setError("Search field is empty. Enter a Pokémon name or number.");
+        } else if (!matchedPokemon) {
             setError("This Pokémon could not be found, try something else.");
         }
     }
