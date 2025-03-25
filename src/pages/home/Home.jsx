@@ -15,15 +15,27 @@ function Home() {
     const [query, setQuery] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const [pokemon, setPokemon] = useState([]);
     const [pokemonList, setPokemonList] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
         const fetchPokemonList = async () => {
             try {
-                const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302");
-                setPokemonList(response.data.results);
+                const totalCount = await axios.get("https://pokeapi.co/api/v2/pokemon/");
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${totalCount.data.count}`);
+
+                const detailedPokemonList = response.data.results.map((pokemon) => {
+                    const splitUrl = pokemon.url.split("/");
+                    const id = splitUrl[splitUrl.length - 2];
+
+                    return {
+                        name: pokemon.name,
+                        id: id,
+                        url: pokemon.url
+                    };
+                })
+
+                setPokemonList(detailedPokemonList);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -36,6 +48,8 @@ function Home() {
         const filteredSuggestions = pokemonList
             .filter((pokemon) =>
                 pokemon.name.toLowerCase().includes(query.toLowerCase())
+                ||
+                pokemon.id.includes(query)
             )
             .slice(0, 3);
         setSuggestions(filteredSuggestions);
@@ -48,7 +62,6 @@ function Home() {
     useEffect(() => {
         handleSearch();
     }, [query]);
-
 
     return (
         <>

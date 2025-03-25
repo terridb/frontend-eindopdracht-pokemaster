@@ -33,7 +33,8 @@
 
 .suggestion-item-link {
     color: var(--dark-text);
-    display: block;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     padding: 8px 10px;

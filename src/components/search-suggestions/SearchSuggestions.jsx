@@ -7,10 +7,11 @@ function SearchSuggestions({suggestions}) {
             <ul className="suggestions-container">
                 {suggestions.map((pokemon) => (
                     <li
-                        key={pokemon.name}
+                        key={pokemon.id}
                     >
                         <Link to={"/"} className={"suggestion-item-link"}>
-                            {pokemon.name}
+                            <p>{pokemon.name}</p>
+                            <p>#{pokemon.id}</p>
                         </Link>
                     </li>
                 ))}
