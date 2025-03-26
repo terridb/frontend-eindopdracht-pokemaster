@@ -82,7 +82,7 @@ function Pokedex() {
                                             name={pokemon.name}
                                             id={pokemon.id}
                                             sprites={pokemon.sprites}
-
+                                            types={pokemon.types}
                                         />
                                     ))
                                 ) : (

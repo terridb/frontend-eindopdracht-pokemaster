@@ -23,6 +23,26 @@
   --small-details: #CCCCCC;
   --pokedex-number: #B0B0B0;
   --general-side-margin: 2.5rem;
+  --normal: #C6C6C6;
+  --fire:  #FE4646;
+  --fighting: #FE7D46;
+  --water: #2B84D8;
+  --flying: #81C3F2;
+  --grass: #2BAC34;
+  --poison: #893ABE;
+  --electric: #F4C031;
+  --ground: #A55A25;
+  --psychic: #FF5A83;
+  --rock: #B2AA92;
+  --ice: #76CED4;
+  --bug: #97B43A;
+  --dragon: #3C53AD;
+  --ghost: #583663;
+  --dark: #464646;
+  --steel: #6490AF;
+  --fairy: #F897DF;
+  --stellar: #038E6E;
+  --unknown: #42766A;
 }
 
 * {

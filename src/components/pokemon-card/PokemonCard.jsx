@@ -1,7 +1,8 @@
 import "./PokemonCard.css";
 import {capitalizeFirstLetter, writePokedexNumber} from "../../helpers/changeText.js";
+import TypeCard from "../type-card/TypeCard.jsx";
 
-function PokemonCard({name, id, sprites}) {
+function PokemonCard({name, id, sprites, types}) {
     return (
         <div className="pokemon-card">
             <div className="pokemon-card-image-wrapper">
@@ -13,12 +14,14 @@ function PokemonCard({name, id, sprites}) {
             <div className="pokemon-card-details">
                 <p className="pokemon-card-number">{writePokedexNumber(id)}</p>
                 <h5>{capitalizeFirstLetter(name)}</h5>
-                <div className="pokemon-card-type-wrapper">
-                    <ul>
-                        <li>Grass</li>
-                        <li>Poison</li>
-                    </ul>
-                </div>
+                <ul className="pokemon-card-type-wrapper">
+                    {types?.map((type, index) => (
+                        <TypeCard
+                            type={type}
+                            key={index}
+                        />
+                    ))}
+                </ul>
             </div>
         </div>
     );
