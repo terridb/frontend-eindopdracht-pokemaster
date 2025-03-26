@@ -1,0 +1,58 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typographyfgvvvvvvvvvvvvvvvvvvvvvvvvv
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+.searchbar {
+    outline: none;
+    border: solid var(--small-details);
+    border-width: 2px 0 2px 2px;
+    border-radius: 50px 0 0 50px;
+    padding: 20px;
+    background-color: var(--light-text);
+    font-size: 0.85rem;
+    color: var(--dark-text);
+}
+
+.searchbar.small {
+    width: calc(400px - 50px);
+}
+
+.searchbar-button {
+    border: var(--small-details) solid;
+    border-width: 2px 2px 2px 0;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    height: 85px;
+    background-color: var(--light-text);
+    width: 50px;
+    padding: 0 20px 0 5px;
+    transition: all .15s ease-in-out ;
+}
+
+.searchbar-button:hover {
+    background-color: var(--global-background);
+}
+
+.searchbar-container {
+    display: flex;
+}
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
