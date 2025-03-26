@@ -1,7 +1,17 @@
-function Pokedex(props) {
+import mew from "../../assets/images/mew.png";
+import Header from "../../components/header/Header.jsx";
+import "./Pokedex.css";
+
+function Pokedex() {
     return (
         <>
-            <h1>Pokedex</h1>
+            <Header
+                title="Pokédex"
+                text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
+                buttonText="Join now"
+                headerImage={mew}
+                pokemonName="mew"
+            />
         </>
     );
 }

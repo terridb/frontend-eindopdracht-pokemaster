@@ -36,6 +36,10 @@ header {
     flex-grow: 0;
 }
 
+.outer-container.header {
+    gap: 30px;
+}
+
 .small-inner-container.header {
     padding: 0 50px;
     flex-direction: row;
@@ -82,5 +86,9 @@ header {
 
 .header-color-block.charizard {
     background: linear-gradient(-45deg, var(--main-color-homepage) 0%, var(--light-color-homepage) 100%);
+}
+
+.header-color-block.mew {
+    background: linear-gradient(-45deg, var(--main-color-pokedex) 0%, var(--light-color-pokedex) 100%);
 }
 /* ------------------------------- 5. Media Queries -------------------------------- */
