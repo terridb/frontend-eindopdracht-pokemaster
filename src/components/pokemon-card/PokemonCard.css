@@ -12,8 +12,9 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-.suggestion-item-link {
-    font-size: 0.85rem;
+.pokemon-card-number {
+    color: var(--pokedex-number);
+    font-weight: 500;
 }
 /* ------------------------------- 3. Layout --------------------------------------- */
 
@@ -22,28 +23,31 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.suggestions-container {
+.pokemon-card {
     display: flex;
     flex-direction: column;
-    background-color: var(--light-text);
-    width: 100%;
-    border-radius: 10px;
-    gap: 0;
+    height: 375px;
+    width: 270px;
+    background-color: #FFF;
+    border-radius: 30px;
+    border: 1px solid var(--small-details);
 }
 
-.suggestion-item-link {
-    color: var(--dark-text);
+.pokemon-card-image-wrapper {
+    background-color: var(--dark-text);
+    border-radius: 30px 30px 0 0;
+    height: 225px;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: 8px 10px;
-    text-align: start;
-    border-radius: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.suggestion-item-link:hover {
-    background-color: var(--small-details)
+.pokemon-card-details {
+    padding: 10px 16px;
 }
 
+.pokemon-card-image {
+    max-height: 180px;
+}
 /* ------------------------------- 5. Media Queries -------------------------------- */

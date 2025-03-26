@@ -21,6 +21,7 @@
   --dark-text: #5E5E5E;
   --light-text: #ffffff;
   --small-details: #CCCCCC;
+  --pokedex-number: #B0B0B0;
   --general-side-margin: 2.5rem;
 }
 
@@ -44,9 +45,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  text-transform: uppercase;
   font-style: normal;
   line-height: 140%;
+}
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
 }
 
 p {
@@ -109,6 +113,17 @@ h5, nav {
   flex-grow: 0;
   flex-shrink: 1;
   border: 2px dashed red;
+}
+
+.large-inner-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1800px;
+  width: calc(100% - 2 * var(--general-side-margin));
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin: 55px 0;
+  border: 2px dashed orange;
 }
 
 /* --------------- 3.2 Other --------------------------- */

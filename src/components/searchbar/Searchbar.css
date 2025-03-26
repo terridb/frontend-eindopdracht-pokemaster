@@ -35,6 +35,10 @@
     width: calc(400px - 50px);
 }
 
+.searchbar.large {
+    width: 100%;
+}
+
 .searchbar-button {
     border: var(--small-details) solid;
     border-width: 2px 2px 2px 0;
