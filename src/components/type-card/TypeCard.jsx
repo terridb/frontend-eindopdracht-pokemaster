@@ -4,7 +4,7 @@ import {useState} from "react";
 
 function TypeCard({pokemonType, button}) {
     const [buttonStatus, setButtonStatus] = useState("default");
-    console.log(buttonStatus);
+
     return (
         <>
             {button ? (

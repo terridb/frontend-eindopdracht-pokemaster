@@ -8,13 +8,15 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Loader from "../../components/loader/Loader.jsx";
 import TypeCard from "../../components/type-card/TypeCard.jsx";
+import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 
 function Pokedex() {
-    const [pokemon, setPokemon] = useState([]);
+    const [detailedPokemon, setDetailedPokemon] = useState([]);
+    const [basicPokemon, setBasicPokemon] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
     const [query, setQuery] = useState("");
-    const [endpoint, setEndpoint] = useState("https://pokeapi.co/api/v2/pokemon/");
+    const [endpoint, setEndpoint] = useState("https://pokeapi.co/api/v2/pokemon/?limit=12");
     const [results, setResults] = useState([]);
 
     useEffect(() => {
@@ -22,14 +24,15 @@ function Pokedex() {
             try {
                 toggleLoading(true);
                 const response = await axios.get(endpoint);
+                setBasicPokemon(response.data);
                 const detailedData = await Promise.all(
                     response.data.results.map(async (pokemon) => {
                         const pokemonDetails = await axios.get(pokemon.url);
                         return pokemonDetails.data;
                     })
                 );
-                setPokemon(detailedData);
-                setResults(detailedData);
+                setDetailedPokemon((prev) => [...prev, ...detailedData]);
+                setResults((prev) => [...prev, ...detailedData]);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -45,10 +48,10 @@ function Pokedex() {
         setQuery(value);
 
         if (value === "") {
-            setResults(pokemon);
+            setResults(detailedPokemon);
         } else {
             setResults(
-                pokemon.filter((pokemon) =>
+                detailedPokemon.filter((pokemon) =>
                     pokemon.name.toLowerCase().includes(value.toLowerCase())
                     ||
                     pokemon.id.toString().includes(value)
@@ -157,12 +160,8 @@ function Pokedex() {
                                 size="large"
                                 value={query}
                                 onChange={handleChange}
-                                // onFocus={onFocus}
-                                // onBlur={onBlur}
                             />
                             <div className="pokemon-grid">
-                                {loading && <Loader/>}
-
                                 {results && results.length > 0 ? (
                                     results.map(pokemon => (
                                         <PokemonCard
@@ -174,9 +173,20 @@ function Pokedex() {
                                         />
                                     ))
                                 ) : (
-                                    <p>Er zijn geen Pokémon beschikbaar</p>
+                                    <p>There are no Pokémon available</p>
                                 )}
                             </div>
+                            {loading && <Loader/>}
+                            {error && <p>{error.message}</p>}
+                            {basicPokemon.next && !loading ? (
+                                <GeneralButton
+                                    buttonText="load more"
+                                    onClick={() => {
+                                        setEndpoint(basicPokemon.next)
+                                    }}
+                                />
+                            ) : null
+                            }
                         </div>
                     </div>
 
