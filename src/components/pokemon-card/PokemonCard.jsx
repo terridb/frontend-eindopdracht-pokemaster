@@ -17,7 +17,7 @@ function PokemonCard({name, id, sprites, types}) {
                 <ul className="pokemon-card-type-wrapper">
                     {types?.map((type, index) => (
                         <TypeCard
-                            type={type}
+                            pokemonType={type.type.name}
                             key={index}
                         />
                     ))}

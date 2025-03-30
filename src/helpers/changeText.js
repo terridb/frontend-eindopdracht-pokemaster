@@ -5,6 +5,9 @@ export function changeTextToSimple(text) {
 }
 
 export function capitalizeFirstLetter(text) {
+    if (text === undefined) {
+        return "Error"
+    }
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 

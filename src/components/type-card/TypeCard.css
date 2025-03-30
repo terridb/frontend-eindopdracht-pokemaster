@@ -2,24 +2,21 @@
     Table of Contents
     1. Global Styles
     2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-    5. Media Queries
+    3. Ares
+    4. Media Queries
+    5. Colors
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
+.pokemon-card-type {
+    font-family: "Roboto", Arial, serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+/* ------------------------------- 3. Areas  --------------------------------------- */
 .pokemon-card-type {
     display: flex;
     justify-content: center;
@@ -29,83 +26,99 @@
     width: 100px;
     height: 30px;
     flex-shrink: 0;
-    background-color: var(--unknown);
+    background-color: var(--type-color);
+}
+.pokemon-card-type.default {
+    background-color: transparent;
+    color: var(--type-color);
+    border-color: var(--type-color);
+    cursor: pointer;
+    outline: none;
 }
 
+.pokemon-card-type.default.active {
+    background-color: var(--type-color);
+    color: var(--light-text);
+    border-color: var(--type-color);
+    cursor: pointer;
+    outline: none;
+}
+
+/* ------------------------------- 4. Media queries ---------------------------------------- */
+
+
+
+
+
+/* ------------------------------- 5. Colors -------------------------------- */
 .pokemon-card-type.normal {
-    background-color: var(--normal);
+    --type-color: var(--normal);
 }
 
 .pokemon-card-type.fire {
-    background-color: var(--fire);
+    --type-color: var(--fire);
 }
 
 .pokemon-card-type.fighting {
-    background-color: var(--fighting);
+    --type-color: var(--fighting);
 }
 
 .pokemon-card-type.water {
-    background-color: var(--water);
+    --type-color: var(--water);
 }
 
 .pokemon-card-type.flying {
-    background-color: var(--flying);
+    --type-color: var(--flying);
 }
 
 .pokemon-card-type.grass {
-    background-color: var(--grass);
+    --type-color: var(--grass);
 }
 
 .pokemon-card-type.poison {
-    background-color: var(--poison);
+    --type-color: var(--poison);
 }
 
 .pokemon-card-type.electric {
-    background-color: var(--electric);
+    --type-color: var(--electric);
 }
 
 .pokemon-card-type.ground {
-    background-color: var(--ground);
+    --type-color: var(--ground);
 }
 
 .pokemon-card-type.psychic {
-    background-color: var(--psychic);
+    --type-color: var(--psychic);
 }
 
 .pokemon-card-type.rock {
-    background-color: var(--rock);
+    --type-color: var(--rock);
 }
 
 .pokemon-card-type.ice {
-    background-color: var(--ice);
+    --type-color: var(--ice);
 }
 
 .pokemon-card-type.bug {
-    background-color: var(--bug);
+    --type-color: var(--bug);
 }
 
 .pokemon-card-type.dragon {
-    background-color: var(--dragon);
+    --type-color: var(--dragon);
 }
 
 .pokemon-card-type.ghost {
-    background-color: var(--ghost);
+    --type-color: var(--ghost);
 }
 
 .pokemon-card-type.dark {
-    background-color: var(--dark);
+    --type-color: var(--dark);
 }
 
 .pokemon-card-type.steel {
-    background-color: var(--steel);
+    --type-color: var(--steel);
 }
 
 .pokemon-card-type.fairy {
-    background-color: var(--fairy);
+    --type-color: var(--fairy);
 }
-
-.pokemon-card-type.stellar {
-     background-color: var(--stellar);
- }
-
-/* ------------------------------- 5. Media Queries -------------------------------- */

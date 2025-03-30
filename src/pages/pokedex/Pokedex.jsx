@@ -6,41 +6,55 @@ import PokemonCard from "../../components/pokemon-card/PokemonCard.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Loader from "../../components/loader/Loader.jsx";
+import TypeCard from "../../components/type-card/TypeCard.jsx";
 
 function Pokedex() {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [pokemon, setPokemon] = useState([]);
+    const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [offset, setOffset] = useState(0);
-    const [totalPokemon, setTotalPokemon] = useState(0);
+    const [query, setQuery] = useState("");
+    const [endpoint, setEndpoint] = useState("https://pokeapi.co/api/v2/pokemon/");
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
         const handleFetchData = async () => {
             try {
-                setLoading(true);
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=12`);
+                toggleLoading(true);
+                const response = await axios.get(endpoint);
                 const detailedData = await Promise.all(
                     response.data.results.map(async (pokemon) => {
                         const pokemonDetails = await axios.get(pokemon.url);
                         return pokemonDetails.data;
                     })
                 );
-
-                setData(detailedData);
-
-                if (offset === 0) {
-                    setTotalPokemon(response.data.count);
-                }
-
+                setPokemon(detailedData);
+                setResults(detailedData);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
             } finally {
-                setLoading(false);
+                toggleLoading(false);
             }
         }
         handleFetchData();
-    }, [offset])
+    }, [endpoint]);
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setQuery(value);
+
+        if (value === "") {
+            setResults(pokemon);
+        } else {
+            setResults(
+                pokemon.filter((pokemon) =>
+                    pokemon.name.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    pokemon.id.toString().includes(value)
+                ));
+        }
+    };
 
     return (
         <>
@@ -58,6 +72,80 @@ function Pokedex() {
                             <h2>Filters</h2>
                             <div className="filter-section-types">
                                 <h3>Type</h3>
+                                <ul className="filter-section-types-grid">
+                                    <TypeCard
+                                        pokemonType="normal"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="fire"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="fighting"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="water"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="flying"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="grass"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="poison"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="electric"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="ground"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="psychic"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="rock"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="ice"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="bug"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="dragon"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="ghost"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="dark"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="steel"
+                                        button={true}
+                                    />
+                                    <TypeCard
+                                        pokemonType="fairy"
+                                        button={true}
+                                    />
+                                </ul>
                             </div>
                             <div className="filter-section-gen">
                                 <h3>Generation</h3>
@@ -67,16 +155,16 @@ function Pokedex() {
                             <Searchbar
                                 placeholder="Search"
                                 size="large"
-                                // value={value}
-                                // onChange={onChange}
-                                // suggestions={suggestions}
-                                // handleSubmit={handleSubmit}
+                                value={query}
+                                onChange={handleChange}
                                 // onFocus={onFocus}
                                 // onBlur={onBlur}
                             />
                             <div className="pokemon-grid">
-                                {data && data.length > 0 ? (
-                                    data.map(pokemon => (
+                                {loading && <Loader/>}
+
+                                {results && results.length > 0 ? (
+                                    results.map(pokemon => (
                                         <PokemonCard
                                             key={pokemon.id}
                                             name={pokemon.name}
