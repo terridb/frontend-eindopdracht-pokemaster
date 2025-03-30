@@ -22,3 +22,13 @@ export function writePokedexNumber(number) {
         return number;
     }
 }
+
+export function writeCleanText(text) {
+    if (text === undefined) {
+        return "Failed to load description"
+    }
+    return text
+        .split(".")
+        .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
+        .join(". ");
+}

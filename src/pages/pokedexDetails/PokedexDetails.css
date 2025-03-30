@@ -23,9 +23,58 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
+.small-inner-container.pokedex-details {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
 
-/* --------------- 4.1 Header ------------------------- */
 
-/* --------------- 4.2 Introduction ------------------- */
+.pokemon-details {
+    flex-direction: column;
+    width: 30%;
+    border: dashed 2px yellow;
+}
+
+.pokemon-details-name {
+    margin-bottom: 40px;
+}
+
+.pokemon-details-type-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+.pokemon-details-image-wrapper {
+    display: flex;
+    border: dashed 2px yellow;
+    width: 35%;
+}
+
+.pokemon-details-image {
+    width: 100%;
+    z-index: 1;
+}
+
+.pokemon-details-description {
+    width: 30%;
+    padding: 20px;
+    border: dashed 2px yellow;
+}
+
+.pokedex-colorblock {
+    width: 350px;
+    height: 350px;
+    rotate: 45deg;
+    border-radius: 40px;
+    position: absolute;
+    right: calc(50% - (350px / 2));
+    z-index: 0;
+    background-color: var(--small-details);
+}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
