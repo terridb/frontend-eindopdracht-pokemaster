@@ -28,6 +28,7 @@ export function writeCleanText(text) {
         return "Failed to load description"
     }
     return text
+        .replaceAll("\f", "")
         .split(".")
         .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
         .join(". ");

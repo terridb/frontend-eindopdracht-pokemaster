@@ -9,6 +9,7 @@ import axios from "axios";
 import Loader from "../../components/loader/Loader.jsx";
 import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
+import {Link} from "react-router-dom";
 
 function Pokedex() {
     const [detailedPokemon, setDetailedPokemon] = useState([]);
@@ -31,8 +32,13 @@ function Pokedex() {
                         return pokemonDetails.data;
                     })
                 );
-                setDetailedPokemon((prev) => [...prev, ...detailedData]);
-                setResults((prev) => [...prev, ...detailedData]);
+                if (endpoint === "https://pokeapi.co/api/v2/pokemon/?limit=12") {
+                    setDetailedPokemon(detailedData);
+                    setResults(detailedData);
+                } else {
+                    setDetailedPokemon((prev) => [...prev, ...detailedData]);
+                    setResults((prev) => [...prev, ...detailedData]);
+                }
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -87,15 +93,17 @@ function Pokedex() {
                             />
                             <div className="pokemon-grid">
                                 {results && results.length > 0 ? (
-                                    results.map(pokemon => (
-                                        <PokemonCard
-                                            key={pokemon.id}
-                                            name={pokemon.name}
-                                            id={pokemon.id}
-                                            sprites={pokemon.sprites}
-                                            types={pokemon.types}
-                                        />
+                                    results.map((pokemon) => (
+                                        <Link key={pokemon.id} to={`/pokedex/${pokemon.id}`}>
+                                            <PokemonCard
+                                                name={pokemon.name}
+                                                id={pokemon.id}
+                                                sprites={pokemon.sprites}
+                                                types={pokemon.types}
+                                            />
+                                        </Link>
                                     ))
+
                                 ) : (
                                     <p>There are no Pokémon available</p>
                                 )}

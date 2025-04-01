@@ -5,6 +5,7 @@ import axios from "axios";
 import Navigation from "../../components/navigation/Navigation.jsx";
 import {writeCleanText, writePokedexNumber} from "../../helpers/changeText.js";
 import TypeCard from "../../components/type-card/TypeCard.jsx";
+import {makeWeaknessArray} from "../../helpers/decideWeakness.js";
 
 function PokedexDetails() {
     const {pokemonId} = useParams();
@@ -12,6 +13,8 @@ function PokedexDetails() {
     const [pokemonSpecies, setPokemonSpecies] = useState({});
     const [error, setError] = useState("");
     const [loading, toggleLoading] = useState(false);
+    const [typeOne, setTypeOne] = useState({});
+    const [typeTwo, setTypeTwo] = useState({});
 
     useEffect(() => {
         const fetchPokemon = async () => {
@@ -22,6 +25,17 @@ function PokedexDetails() {
 
                 const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
                 setPokemonSpecies(responseSpecies.data);
+
+                if (responsePokemon.data.types.length === 2) {
+                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
+                    setTypeOne(responseTypeOne.data);
+                    const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[1].type.name}`);
+                    setTypeTwo(responseTypeTwo.data);
+                } else {
+                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
+                    setTypeOne(responseTypeOne.data);
+                }
+
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -31,7 +45,6 @@ function PokedexDetails() {
         }
         fetchPokemon();
     }, []);
-
 
     return (
         <>
@@ -60,9 +73,9 @@ function PokedexDetails() {
                             <div className="pokemon-details-weakness">
                                 <h3>Weakness</h3>
                                 <ul className="pokemon-details-type-wrapper">
-                                    {pokemon.types?.map((type, index) => (
+                                    {makeWeaknessArray(typeOne, typeTwo)?.map((type, index) => (
                                         <TypeCard
-                                            pokemonType={type.type.name}
+                                            pokemonType={type}
                                             key={index}
                                         />
                                     ))}
