@@ -8,7 +8,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
+        4.1 HeaderGeneral
         4.2 Introduction
         etc.
     5. Media Queries
@@ -22,7 +22,6 @@
   --light-text: #ffffff;
   --small-details: #CCCCCC;
   --pokedex-number: #B0B0B0;
-  --general-side-margin: 2.5rem;
   --normal: #C6C6C6;
   --fire:  #FE4646;
   --fighting: #FE7D46;
@@ -41,6 +40,7 @@
   --dark: #464646;
   --steel: #6490AF;
   --fairy: #F897DF;
+  --general-side-margin: 2.5rem;
 }
 
 * {
@@ -90,6 +90,14 @@ a {
   color: inherit;
 }
 
+.error-message {
+  background-color: #dc2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--light-text);
+  width: fit-content;
+}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 h1 {
   font-size: 2rem;
@@ -119,7 +127,6 @@ h5, nav {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 0 var(--general-side-margin);
   border: 2px dashed blue;
 }
 
@@ -149,7 +156,7 @@ h5, nav {
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
-/* --------------- 4.1 Header ------------------------- */
+/* --------------- 4.1 HeaderGeneral ------------------------- */
 
 /* --------------- 4.2 Introduction ------------------- */
 

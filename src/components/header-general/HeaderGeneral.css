@@ -6,7 +6,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
+        4.1 HeaderGeneral
         4.2 Color block
         etc.
     5. Media Queries
@@ -23,7 +23,7 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-/* --------------- 4.1 Header ------------------- */
+/* --------------- 4.1 HeaderGeneral ------------------- */
 header {
     display: flex;
     flex-direction: column;
@@ -38,6 +38,7 @@ header {
 
 .outer-container.header {
     gap: 30px;
+    padding: 0 var(--general-side-margin);
 }
 
 .small-inner-container.header {

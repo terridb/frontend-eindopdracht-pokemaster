@@ -6,9 +6,6 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
     5. Media Queries
 ////////////////////////*/
 
@@ -23,12 +20,30 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.social-icon {
-    transition: all .15s ease-in-out ;
+.shiny-container {
+    display: flex;
+    max-width: 200px;
 }
 
-.social-icon:hover {
-    transform: scale(1.1);
+.shiny-pokemon {
+    width: 100%;
+}
+
+.pokemon-attribute {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pokemon-attribute.centered {
+    align-items: center;
+    max-width: 200px;
+}
+
+.abilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

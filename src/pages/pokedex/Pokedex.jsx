@@ -1,5 +1,5 @@
 import mew from "../../assets/images/mew.png";
-import Header from "../../components/header/Header.jsx";
+import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
 import "./Pokedex.css";
 import Searchbar from "../../components/searchbar/Searchbar.jsx";
 import PokemonCard from "../../components/pokemon-card/PokemonCard.jsx";
@@ -67,7 +67,7 @@ function Pokedex() {
 
     return (
         <>
-            <Header
+            <HeaderGeneral
                 title="Pokédex"
                 text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
                 buttonText="Join now"

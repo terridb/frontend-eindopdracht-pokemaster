@@ -6,7 +6,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
+        4.1 HeaderGeneral
         4.2 Introduction
         etc.
     5. Media Queries
@@ -15,7 +15,9 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-
+.pokemon-information-section {
+    font-size: 1.375rem;
+}
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -23,60 +25,25 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.small-inner-container.pokedex-details {
-    flex-direction: row;
+.large-inner-container.pokemon-overview {
     align-items: center;
-    justify-content: space-between;
-    margin-top: 30px;
+    justify-content: center;
+    gap: 40px;
+    flex-direction: row;
 }
 
-.pokemon-details {
+.pokemon-information-section {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    border: dashed 2px lightgreen;
-}
-
-.pokemon-details-name {
-    margin-bottom: 40px;
-}
-
-.pokemon-details-type-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-bottom: 40px;
-    gap: 15px;
     flex-wrap: wrap;
-}
-
-.pokemon-details-image-wrapper {
-    display: flex;
-    border: dashed 2px yellow;
-    width: 410px;
-    margin: 0 40px;
-}
-
-.pokemon-details-image {
-    width: 100%;
-    z-index: 1;
-}
-
-.pokemon-details-description {
-    width: 30%;
-    padding: 30px;
-    border: dashed 2px mediumpurple;
-}
-
-.pokedex-colorblock {
-    width: 350px;
-    height: 350px;
-    rotate: 45deg;
-    border-radius: 40px;
-    position: absolute;
-    right: calc(50% - (350px / 2));
-    z-index: 0;
-    background-color: var(--small-details);
+    height: 410px;
+    background-color: #FFF;
+    border-radius: 50px;
+    width: 55%;
+    padding: 35px;
+    overflow: hidden;
+    flex-shrink: 1;
+    gap: 40px;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

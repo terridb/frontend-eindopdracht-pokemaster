@@ -6,16 +6,17 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
+
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-
+.stat-name {
+    text-transform: uppercase;
+    font-weight: 500;
+}
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -23,12 +24,41 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.social-icon {
-    transition: all .15s ease-in-out ;
+.pokemon-information-section.stats {
+    width: 45%;
 }
 
-.social-icon:hover {
-    transform: scale(1.1);
+.pokemon-stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.stat-name {
+    width: 35%;
+}
+
+.stat-value {
+    width: 20%;
+}
+
+.stat-bar {
+    background-color: var(--small-details);
+    flex-grow: 1;
+    height: 40px;
+}
+
+.stat-fill {
+    height: 100%;
+    background-color: var(--dark-text);
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

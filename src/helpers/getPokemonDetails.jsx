@@ -1,3 +1,5 @@
+import {GenderFemale, GenderMale} from "@phosphor-icons/react";
+
 export function makeWeaknessArray(typeOne, typeTwo) {
     const typeOneWeaknesses = typeOne?.damage_relations?.double_damage_from.map(type => type.name) || [];
     const typeTwoWeaknesses = typeTwo?.damage_relations?.double_damage_from.map(type => type.name) || [];
@@ -15,4 +17,22 @@ export function makeWeaknessArray(typeOne, typeTwo) {
         !typeOneImmunities.includes(type) &&
         !typeTwoImmunities.includes(type)
     );
+}
+
+export function getGenderIcons(genderValue) {
+    if (genderValue === 0) return <GenderMale size={30} color={"#5E5E5E"}/>;
+    if (genderValue === 8) return <GenderFemale size={30} color={"#5E5E5E"}/>;
+    if (genderValue === -1) return <p>Genderless</p>;
+    if (genderValue > 0 && genderValue < 8) {
+        return (
+            <>
+                <GenderFemale size={30} color={"#5E5E5E"}/>
+                <GenderMale size={30} color={"#5E5E5E"}/>
+            </>
+        );
+    }
+}
+
+export function decreaseUnit(value) {
+    return (value/10).toFixed(1);
 }

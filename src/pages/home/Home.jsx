@@ -2,7 +2,7 @@ import "./Home.css"
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Header from "../../components/header/Header.jsx";
+import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
@@ -91,7 +91,7 @@ function Home() {
 
     return (
         <>
-            <Header
+            <HeaderGeneral
                 title="Become a Pokémaster!"
                 text="Catch, train, battle! Your ultimate Pokémon journey begins here."
                 buttonText="Join now"
@@ -121,7 +121,7 @@ function Home() {
                                     onBlur={handleBlur}
                                 />
                                 {loading && isFocused && <p className="loading-message">Loading Pokémon...</p>}
-                                {!loading && error && <p className="error-message">{error}</p>}
+                                {!loading && error && <p className="error-message home">{error}</p>}
                                 {query && suggestions.length > 0 && !error && !loading && (
                                     <SearchSuggestions
                                         suggestions={suggestions}
