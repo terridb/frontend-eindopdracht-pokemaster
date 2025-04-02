@@ -1,6 +1,6 @@
 import "./PokemonStats.css";
 
-function PokemonStats({stats}) {
+function PokemonStats({stats, type}) {
     return (
         <section className="pokemon-information-section stats">
             <ul className="pokemon-stats-list">
@@ -16,7 +16,7 @@ function PokemonStats({stats}) {
                             <span className="stat-name">{statName}</span>
                             <span className="stat-value">{stat.base_stat}</span>
                             <div className="stat-bar">
-                                <div className="stat-fill" style={{width: `${(stat.base_stat / 255) * 100}%`}}></div>
+                                <div className={`stat-fill pokemon-type-color ${type}`} style={{width: `${(stat.base_stat / 255) * 100}%`}}></div>
                             </div>
                         </li>
                     );

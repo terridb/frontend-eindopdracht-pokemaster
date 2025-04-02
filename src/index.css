@@ -16,31 +16,31 @@
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 :root {
-  --global-background: #EDEDED;
-  --header-background: #3D3D3D;
-  --dark-text: #5E5E5E;
-  --light-text: #ffffff;
-  --small-details: #CCCCCC;
-  --pokedex-number: #B0B0B0;
-  --normal: #C6C6C6;
-  --fire:  #FE4646;
-  --fighting: #FE7D46;
-  --water: #2B84D8;
-  --flying: #81C3F2;
-  --grass: #2BAC34;
-  --poison: #893ABE;
-  --electric: #F4C031;
-  --ground: #A55A25;
-  --psychic: #FF5A83;
-  --rock: #B2AA92;
-  --ice: #76CED4;
-  --bug: #97B43A;
-  --dragon: #3C53AD;
-  --ghost: #583663;
-  --dark: #464646;
-  --steel: #6490AF;
-  --fairy: #F897DF;
-  --general-side-margin: 2.5rem;
+    --global-background: #EDEDED;
+    --header-background: #3D3D3D;
+    --dark-text: #5E5E5E;
+    --light-text: #ffffff;
+    --small-details: #CCCCCC;
+    --pokedex-number: #B0B0B0;
+    --normal: #C6C6C6;
+    --fire: #FE4646;
+    --fighting: #FE7D46;
+    --water: #2B84D8;
+    --flying: #81C3F2;
+    --grass: #2BAC34;
+    --poison: #893ABE;
+    --electric: #F4C031;
+    --ground: #A55A25;
+    --psychic: #FF5A83;
+    --rock: #B2AA92;
+    --ice: #76CED4;
+    --bug: #97B43A;
+    --dragon: #3C53AD;
+    --ghost: #583663;
+    --dark: #464646;
+    --steel: #6490AF;
+    --fairy: #F897DF;
+    --general-side-margin: 2.5rem;
 }
 
 * {
@@ -51,113 +51,183 @@
 
 
 html {
-  font-family: "Roboto", Arial, serif;
-  font-weight: 400;
-  font-size: 16px;
+    font-family: "Roboto", Arial, serif;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 body {
-  background-color: var(--global-background);
-  color: var(--dark-text);
+    background-color: var(--global-background);
+    color: var(--dark-text);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  font-style: normal;
-  line-height: 140%;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 140%;
 }
 
 h1, h2, h3, h4 {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 p {
-  font-style: normal;
-  line-height: 140%;
+    font-style: normal;
+    line-height: 140%;
 }
 
 button {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 button,
 input {
-  font-family: inherit;
+    font-family: inherit;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .error-message {
-  background-color: #dc2c2c;
-  padding: 20px;
-  border-radius: 10px;
-  color: var(--light-text);
-  width: fit-content;
+    background-color: #dc2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--light-text);
+    width: fit-content;
 }
 
 /* ------------------------------- 2. Typography ----------------------------------- */
 h1 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 h2 {
-  font-size: 1.625rem;
+    font-size: 1.625rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 1.375rem;
+    font-size: 1.375rem;
 }
 
 h5, nav {
-  font-size: 1.125rem;
+    font-size: 1.125rem;
 }
+
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
 .outer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  border: 2px dashed blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 2px dashed blue;
 }
 
 .small-inner-container {
-  display: flex;
-  margin: 0 var(--general-side-margin);
-  max-width: 1300px;
-  width: calc(100% - 2 * var(--general-side-margin));
-  z-index: 1;
-  flex-grow: 0;
-  flex-shrink: 1;
-  border: 2px dashed red;
+    display: flex;
+    margin: 0 var(--general-side-margin);
+    max-width: 1300px;
+    width: calc(100% - 2 * var(--general-side-margin));
+    z-index: 1;
+    flex-grow: 0;
+    flex-shrink: 1;
+    border: 2px dashed red;
 }
 
 .large-inner-container {
-  display: flex;
-  flex-direction: row;
-  max-width: 1800px;
-  width: calc(100% - 2 * var(--general-side-margin));
-  flex-grow: 0;
-  flex-shrink: 1;
-  margin: 55px 0;
-  border: 2px dashed orange;
+    display: flex;
+    flex-direction: row;
+    max-width: 1800px;
+    width: calc(100% - 2 * var(--general-side-margin));
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin: 55px 0;
+    border: 2px dashed orange;
 }
 
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
+/* --------------- 4. Type colors ----------------------- */
+.pokemon-type-color.normal {
+    --type-color: var(--normal);
+}
 
-/* --------------- 4.1 HeaderGeneral ------------------------- */
+.pokemon-type-color.fire {
+    --type-color: var(--fire);
+}
 
-/* --------------- 4.2 Introduction ------------------- */
+.pokemon-type-color.fighting {
+    --type-color: var(--fighting);
+}
+
+.pokemon-type-color.water {
+    --type-color: var(--water);
+}
+
+.pokemon-type-color.flying {
+    --type-color: var(--flying);
+}
+
+.pokemon-type-color.grass {
+    --type-color: var(--grass);
+}
+
+.pokemon-type-color.poison {
+    --type-color: var(--poison);
+}
+
+.pokemon-type-color.electric {
+    --type-color: var(--electric);
+}
+
+.pokemon-type-color.ground {
+    --type-color: var(--ground);
+}
+
+.pokemon-type-color.psychic {
+    --type-color: var(--psychic);
+}
+
+.pokemon-type-color.rock {
+    --type-color: var(--rock);
+}
+
+.pokemon-type-color.ice {
+    --type-color: var(--ice);
+}
+
+.pokemon-type-color.bug {
+    --type-color: var(--bug);
+}
+
+.pokemon-type-color.dragon {
+    --type-color: var(--dragon);
+}
+
+.pokemon-type-color.ghost {
+    --type-color: var(--ghost);
+}
+
+.pokemon-type-color.dark {
+    --type-color: var(--dark);
+}
+
+.pokemon-type-color.steel {
+    --type-color: var(--steel);
+}
+
+.pokemon-type-color.fairy {
+    --type-color: var(--fairy);
+}
+
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

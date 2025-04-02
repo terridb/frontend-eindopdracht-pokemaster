@@ -9,7 +9,7 @@ function TypeCard({pokemonType, button}) {
         <>
             {button ? (
                 <button
-                    className={`pokemon-card-type ${pokemonType} ${buttonStatus === "active" ? "active" : "default"}`}
+                    className={`pokemon-type-card pokemon-type-color ${pokemonType} ${buttonStatus === "active" ? "active" : "default"}`}
                     type="button"
                     onClick={() => {
                         buttonStatus === "active" ? setButtonStatus("default") : setButtonStatus("active")
@@ -18,7 +18,7 @@ function TypeCard({pokemonType, button}) {
                     {capitalizeFirstLetter(pokemonType)}
                 </button>
             ) : (
-                <li className={`pokemon-card-type ${pokemonType}`}>
+                <li className={`pokemon-type-card pokemon-type-color ${pokemonType}`}>
                     {capitalizeFirstLetter(pokemonType)}
                 </li>
             )}

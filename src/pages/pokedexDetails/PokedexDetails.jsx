@@ -68,7 +68,10 @@ function PokedexDetails() {
                                     pokemon={pokemon}
                                     pokemonSpecies={pokemonSpecies}
                                 />
-                                <PokemonStats stats={pokemon?.stats || []}/>
+                                <PokemonStats
+                                    stats={pokemon?.stats || []}
+                                    type={typeOne.name}
+                                />
                             </>
                         }
                     </div>

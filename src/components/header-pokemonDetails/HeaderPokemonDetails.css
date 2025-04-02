@@ -74,7 +74,7 @@
     position: absolute;
     right: calc(50% - (350px / 2));
     z-index: 0;
-    background-color: var(--small-details);
+    background-color: var(--type-color);
 }
 
 

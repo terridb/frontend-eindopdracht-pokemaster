@@ -48,7 +48,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                 alt={`Image of ${pokemon.name}`}/>
 
                         </div>
-                        <div className="pokedex-colorblock"/>
+                        <div className={`pokedex-colorblock pokemon-type-color ${typeOne.name}`}/>
                         <p className="pokemon-details-description">
                             {writeCleanText(
                                 pokemonSpecies?.flavor_text_entries?.find(

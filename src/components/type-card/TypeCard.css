@@ -10,14 +10,14 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-.pokemon-card-type {
+.pokemon-type-card {
     font-family: "Roboto", Arial, serif;
     font-weight: 400;
     font-size: 1rem;
     text-transform: capitalize;
 }
 /* ------------------------------- 3. Areas  --------------------------------------- */
-.pokemon-card-type {
+.pokemon-type-card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@
     flex-shrink: 0;
     background-color: var(--type-color);
 }
-.pokemon-card-type.default {
+.pokemon-type-card.default {
     background-color: transparent;
     color: var(--type-color);
     border-color: var(--type-color);
@@ -36,7 +36,7 @@
     outline: none;
 }
 
-.pokemon-card-type.default.active {
+.pokemon-type-card.default.active {
     background-color: var(--type-color);
     color: var(--light-text);
     border-color: var(--type-color);
@@ -51,74 +51,3 @@
 
 
 /* ------------------------------- 5. Colors -------------------------------- */
-.pokemon-card-type.normal {
-    --type-color: var(--normal);
-}
-
-.pokemon-card-type.fire {
-    --type-color: var(--fire);
-}
-
-.pokemon-card-type.fighting {
-    --type-color: var(--fighting);
-}
-
-.pokemon-card-type.water {
-    --type-color: var(--water);
-}
-
-.pokemon-card-type.flying {
-    --type-color: var(--flying);
-}
-
-.pokemon-card-type.grass {
-    --type-color: var(--grass);
-}
-
-.pokemon-card-type.poison {
-    --type-color: var(--poison);
-}
-
-.pokemon-card-type.electric {
-    --type-color: var(--electric);
-}
-
-.pokemon-card-type.ground {
-    --type-color: var(--ground);
-}
-
-.pokemon-card-type.psychic {
-    --type-color: var(--psychic);
-}
-
-.pokemon-card-type.rock {
-    --type-color: var(--rock);
-}
-
-.pokemon-card-type.ice {
-    --type-color: var(--ice);
-}
-
-.pokemon-card-type.bug {
-    --type-color: var(--bug);
-}
-
-.pokemon-card-type.dragon {
-    --type-color: var(--dragon);
-}
-
-.pokemon-card-type.ghost {
-    --type-color: var(--ghost);
-}
-
-.pokemon-card-type.dark {
-    --type-color: var(--dark);
-}
-
-.pokemon-card-type.steel {
-    --type-color: var(--steel);
-}
-
-.pokemon-card-type.fairy {
-    --type-color: var(--fairy);
-}

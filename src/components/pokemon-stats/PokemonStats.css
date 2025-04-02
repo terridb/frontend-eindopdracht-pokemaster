@@ -51,14 +51,14 @@
 }
 
 .stat-bar {
-    background-color: var(--small-details);
+    background-color: var(--dark-text);
     flex-grow: 1;
     height: 40px;
 }
 
 .stat-fill {
     height: 100%;
-    background-color: var(--dark-text);
+    background-color: var(--type-color);
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
