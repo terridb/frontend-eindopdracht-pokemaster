@@ -13,12 +13,15 @@ import {Link} from "react-router-dom";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 
 function Pokedex() {
+    const [pokemon, setPokemon] = useState([]);
+    const [allPokemon, setAllPokemon] = useState([]);
+    const [query, setQuery] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [moreAvailable, toggleMoreAvailable] = useState(true);
+    const [offset, setOffset] = useState(0);
+    const [searchOffset, setSearchOffset] = useState(12);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [query, setQuery] = useState("");
-    const [pokemon, setPokemon] = useState([]);
-    const [offset, setOffset] = useState(0);
-    const [moreAvailable, toggleMoreAvailable] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,15 +43,51 @@ function Pokedex() {
 
     }, [offset]);
 
-    // stap 0: gebruiker drukt op de load more knop
-// stap 1: haal nog 12 pokemon op
-// stap 2: voeg deze toe aan de bestaande lijst met pokemon
-// stap 3: als er geen pokemon meer zijn, moet de load more knop verdwijnen.
-// stap 4: als er pokemon laden, moet de load more knop verdwijnen.
+    useEffect(() => {
+        const fetchAllPokemon = async () => {
+            toggleLoading(true);
+            setError(null);
+            try {
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
+                setAllPokemon(response.data.results);
+            } catch (err) {
+                setError(err.message);
+                console.error(err);
+            } finally {
+                toggleLoading(false);
+            }
+        };
+        fetchAllPokemon();
+
+    }, []);
 
     const handleLoadMore = () => {
-        setOffset(prevOffset => prevOffset + 12);
+        if (query === "") {
+            setOffset(prevOffset => prevOffset + 12);
+        } else {
+            setSearchOffset(prevSearchOffset => prevSearchOffset + 12);
+            setPokemon(searchResults.slice(0, searchOffset + 12));
+        }
     };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setOffset(0);
+        setSearchOffset(12);
+
+        const matchingPokemon = allPokemon.filter(
+            (pokemon) => pokemon.name.toLowerCase().includes(query.toLowerCase()) || pokemon.url.includes(query)
+        );
+        setSearchResults(matchingPokemon);
+
+        if (matchingPokemon.length > 0) {
+            setPokemon(matchingPokemon.slice(0, 12));
+            toggleMoreAvailable(matchingPokemon.length > 12);
+        } else {
+            toggleMoreAvailable(false);
+        }
+        setQuery("");
+    }
 
     return (
         <>
@@ -75,7 +114,7 @@ function Pokedex() {
                                 size="large"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
-                                // handleSubmit={handleSearch}
+                                handleSubmit={handleSearch}
                             />
                             <section className="pokemon-grid">
                                 {loading && <Loader/>}
