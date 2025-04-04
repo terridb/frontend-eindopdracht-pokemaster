@@ -60,6 +60,7 @@ header {
 
 .header-text {
     font-size: 1.375rem;
+    margin: 0 0 40px 0;
 }
 
 .header-image-wrapper {

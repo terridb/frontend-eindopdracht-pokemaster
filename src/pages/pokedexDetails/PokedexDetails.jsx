@@ -79,8 +79,7 @@ function PokedexDetails() {
             </main>
             <Footer/>
         </>
-    )
-        ;
+    );
 }
 
 export default PokedexDetails;

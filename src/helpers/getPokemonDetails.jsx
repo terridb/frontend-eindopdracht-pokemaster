@@ -1,5 +1,10 @@
 import {GenderFemale, GenderMale} from "@phosphor-icons/react";
 
+export function getIdFromUrl(url) {
+    const sentences = url.split("/");
+    return sentences[sentences.length - 2];
+}
+
 export function makeWeaknessArray(typeOne, typeTwo) {
     const typeOneWeaknesses = typeOne?.damage_relations?.double_damage_from.map(type => type.name) || [];
     const typeTwoWeaknesses = typeTwo?.damage_relations?.double_damage_from.map(type => type.name) || [];
