@@ -16,8 +16,9 @@ function Pokedex() {
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
     const [query, setQuery] = useState("");
-    const [endpoint, setEndpoint] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12");
     const [pokemon, setPokemon] = useState([]);
+    const [offset, setOffset] = useState(0);
+    const [moreAvailable, toggleMoreAvailable] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,8 +26,9 @@ function Pokedex() {
             setError(null);
 
             try {
-                const response = await axios.get(endpoint);
-                setPokemon(response.data);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`);
+                setPokemon(prev => offset === 0 ? response.data.results : [...prev, ...response.data.results]);
+                toggleMoreAvailable(response.data.results.length > 0);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -36,10 +38,16 @@ function Pokedex() {
         };
         fetchData();
 
-    }, [endpoint]);
+    }, [offset]);
+
+    // stap 0: gebruiker drukt op de load more knop
+// stap 1: haal nog 12 pokemon op
+// stap 2: voeg deze toe aan de bestaande lijst met pokemon
+// stap 3: als er geen pokemon meer zijn, moet de load more knop verdwijnen.
+// stap 4: als er pokemon laden, moet de load more knop verdwijnen.
 
     const handleLoadMore = () => {
-        setEndpoint(pokemon.next);
+        setOffset(prevOffset => prevOffset + 12);
     };
 
     return (
@@ -72,19 +80,19 @@ function Pokedex() {
                             <section className="pokemon-grid">
                                 {loading && <Loader/>}
                                 {error && <p>{error.message}</p>}
-                                {pokemon.results && pokemon.results.map((pokemon) => (
+                                {pokemon && pokemon.map((pokemon) => (
                                     <Link key={getIdFromUrl(pokemon.url)} to={`/pokedex/${getIdFromUrl(pokemon.url)}`}>
                                         <PokemonCard endpoint={pokemon.url}/>
                                     </Link>
                                 ))}
                             </section>
                             <section className="load-more-section">
-                                {!loading ? (
+                                {!loading && moreAvailable && (
                                     <GeneralButton
                                         buttonText="Load more"
                                         onClick={handleLoadMore}
                                     />
-                                ) : null
+                                )
                                 }
                             </section>
 
