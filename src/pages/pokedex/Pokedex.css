@@ -60,4 +60,19 @@
     border: dashed 2px red;
 }
 
+.pokemon-search {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+.search-results-text {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */

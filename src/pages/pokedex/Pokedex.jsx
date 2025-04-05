@@ -16,12 +16,13 @@ function Pokedex() {
     const [pokemon, setPokemon] = useState([]);
     const [allPokemon, setAllPokemon] = useState([]);
     const [query, setQuery] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState("");
     const [moreAvailable, toggleMoreAvailable] = useState(true);
     const [offset, setOffset] = useState(0);
     const [searchOffset, setSearchOffset] = useState(12);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [matchingPokemon, setMatchingPokemon] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,28 +67,46 @@ function Pokedex() {
             setOffset(prevOffset => prevOffset + 12);
         } else {
             setSearchOffset(prevSearchOffset => prevSearchOffset + 12);
-            setPokemon(searchResults.slice(0, searchOffset + 12));
+            setPokemon(matchingPokemon.slice(0, searchOffset + 12));
+            toggleMoreAvailable(matchingPokemon.length > pokemon.length + 12);
         }
     };
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
         setOffset(0);
         setSearchOffset(12);
+        setSearchResults(query);
 
-        const matchingPokemon = allPokemon.filter(
-            (pokemon) => pokemon.name.toLowerCase().includes(query.toLowerCase()) || pokemon.url.includes(query)
-        );
-        setSearchResults(matchingPokemon);
+        toggleLoading(true);
+        setError(null);
 
-        if (matchingPokemon.length > 0) {
-            setPokemon(matchingPokemon.slice(0, 12));
-            toggleMoreAvailable(matchingPokemon.length > 12);
-        } else {
-            toggleMoreAvailable(false);
+        try {
+            const filteredPokemon = allPokemon.filter((pokemon) => {
+                const pokemonId = getIdFromUrl(pokemon.url);
+                return (
+                    pokemon.name.toLowerCase().includes(query.toLowerCase()) ||
+                    pokemonId.toString().includes(query)
+                );
+            });
+
+            setMatchingPokemon(filteredPokemon);
+
+            if (filteredPokemon.length > 0) {
+                setPokemon(filteredPokemon.slice(0, 12));
+                toggleMoreAvailable(filteredPokemon.length > 12);
+            } else {
+                setPokemon([]);
+                toggleMoreAvailable(false);
+            }
+
+        } catch (err) {
+            setError(err.message);
+            console.error(err);
+        } finally {
+            toggleLoading(false);
         }
-        setQuery("");
-    }
+    };
 
     return (
         <>
@@ -109,16 +128,27 @@ function Pokedex() {
                             </div>
                         </section>
                         <section className="pokemon-search-section">
-                            <Searchbar
-                                placeholder="Search"
-                                size="large"
-                                value={query}
-                                onChange={(e) => setQuery(e.target.value)}
-                                handleSubmit={handleSearch}
-                            />
+                            <section className="pokemon-search">
+                                <Searchbar
+                                    placeholder="Search"
+                                    size="large"
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    handleSubmit={handleSearch}
+                                />
+                                {searchResults && pokemon.length > 0 && (
+                                    <p className="search-results-text">{matchingPokemon.length} results for
+                                        "{searchResults}"</p>
+                                )}
+                            </section>
                             <section className="pokemon-grid">
                                 {loading && <Loader/>}
                                 {error && <p>{error.message}</p>}
+
+                                {!loading && pokemon.length === 0 && searchResults !== "" && (
+                                    <p className="no-results">No matching Pokémon found, try something else</p>
+                                )}
+
                                 {pokemon && pokemon.map((pokemon) => (
                                     <Link key={getIdFromUrl(pokemon.url)} to={`/pokedex/${getIdFromUrl(pokemon.url)}`}>
                                         <PokemonCard endpoint={pokemon.url}/>
@@ -134,7 +164,6 @@ function Pokedex() {
                                 )
                                 }
                             </section>
-
                         </section>
                     </div>
                 </section>
