@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid var(--type-color);
     border-radius: 15px;
     color: white;
     width: 100px;
@@ -28,11 +29,15 @@
     flex-shrink: 0;
     background-color: var(--type-color);
 }
+
+button.pokemon-type-card {
+    cursor: pointer;
+}
+
 .pokemon-type-card.default {
     background-color: transparent;
     color: var(--type-color);
     border-color: var(--type-color);
-    cursor: pointer;
     outline: none;
 }
 
@@ -40,7 +45,6 @@
     background-color: var(--type-color);
     color: var(--light-text);
     border-color: var(--type-color);
-    cursor: pointer;
     outline: none;
 }
 
