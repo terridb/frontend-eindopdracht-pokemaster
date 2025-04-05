@@ -43,4 +43,9 @@
     background-color: var(--main-color-homepage);
 }
 
+.general-button.lucario,
+.general-button.snorlax{
+    background-color: #057DA3;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */

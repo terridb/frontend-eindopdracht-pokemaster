@@ -8,75 +8,75 @@ function TypeFilters() {
             <ul className="filter-section-types-grid">
                 <TypeCard
                     pokemonType="normal"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="fire"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="fighting"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="water"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="flying"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="grass"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="poison"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="electric"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="ground"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="psychic"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="rock"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="ice"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="bug"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="dragon"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="ghost"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="dark"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="steel"
-                    button={true}
+                    type="type"
                 />
                 <TypeCard
                     pokemonType="fairy"
-                    button={true}
+                    type="type"
                 />
             </ul>
         </div>
