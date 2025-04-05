@@ -2,13 +2,15 @@ import "./Home.css"
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Header from "../../components/header/Header.jsx";
+import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
 import IllustratedButton from "../../components/illustrated-button/IllustratedButton.jsx";
 import IllustratedSearchbar from "../../components/illustrated-searchbar/IllustratedSearchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import SearchSuggestions from "../../components/search-suggestions/SearchSuggestions.jsx";
 import charizard from "../../assets/images/charizard.png"
 import pikachu from "../../assets/images/detective-pikachu.png";
+import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
+import {resetInput} from "../../helpers/resetInput.js";
 
 function Home() {
     const navigate = useNavigate();
@@ -17,28 +19,22 @@ function Home() {
     const [loading, setLoading] = useState(false);
     const [pokemonList, setPokemonList] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
-    const [isFocused, setIsFocused] = useState(false);
-
-    const handleFocus = () => setIsFocused(true);
-    const handleBlur = () => setIsFocused(false);
 
     useEffect(() => {
         const fetchPokemonList = async () => {
             try {
                 setLoading(true);
-                const totalCount = await axios.get("https://pokeapi.co/api/v2/pokemon/");
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${totalCount.data.count}`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
 
                 const detailedPokemonList = response.data.results.map((pokemon) => {
-                    const splitUrl = pokemon.url.split("/");
-                    const id = splitUrl[splitUrl.length - 2];
+                    const id = getIdFromUrl(pokemon.url);
 
                     return {
                         name: pokemon.name,
                         id: id,
                         url: pokemon.url
                     };
-                })
+                }).filter(pokemon => Number(pokemon.id) <= 10000);
 
                 setPokemonList(detailedPokemonList);
             } catch (err) {
@@ -91,7 +87,7 @@ function Home() {
 
     return (
         <>
-            <Header
+            <HeaderGeneral
                 title="Become a Pokémaster!"
                 text="Catch, train, battle! Your ultimate Pokémon journey begins here."
                 buttonText="Join now"
@@ -117,11 +113,10 @@ function Home() {
                                     value={query}
                                     onChange={handleChange}
                                     handleSubmit={handleSearch}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
+                                    handleReset={() => resetInput(setQuery)}
                                 />
-                                {loading && isFocused && <p className="loading-message">Loading Pokémon...</p>}
-                                {!loading && error && <p className="error-message">{error}</p>}
+                                {loading && <p className="loading-message">Loading Pokémon...</p>}
+                                {!loading && error && <p className="error-message home">{error}</p>}
                                 {query && suggestions.length > 0 && !error && !loading && (
                                     <SearchSuggestions
                                         suggestions={suggestions}

@@ -6,7 +6,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
+        4.1 HeaderGeneral
         4.2 Introduction
         etc.
     5. Media Queries
@@ -65,7 +65,7 @@ a {
     background-position: 25%;
 }
 
-/* --------------- 4.1 Header ------------------------- */
+/* --------------- 4.1 HeaderGeneral ------------------------- */
 
 /* --------------- 4.2 Introduction ------------------- */
 

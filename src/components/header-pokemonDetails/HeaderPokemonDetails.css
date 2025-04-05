@@ -6,6 +6,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+
     5. Media Queries
 ////////////////////////*/
 
@@ -20,62 +21,61 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-nav {
+.small-inner-container.pokedex-details {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.pokemon-details {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: dashed 2px lightgreen;
+}
+
+.pokemon-details-name {
+    margin-bottom: 40px;
+}
+
+.pokemon-details-type-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.pokemon-details-image-wrapper {
+    display: flex;
+    border: dashed 2px yellow;
+    width: 410px;
+    margin: 0 40px;
+}
+
+.pokemon-details-image {
     width: 100%;
-    padding: 5px 0;
-    font-weight: 700;
-    border: 2px dashed #7f7fd5;
     z-index: 1;
 }
 
-.white-logo {
-    height: 45px;
+.pokemon-details-description {
+    width: 30%;
+    padding: 30px;
+    border: dashed 2px mediumpurple;
 }
 
-ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 100px;
+.pokedex-colorblock {
+    width: 350px;
+    height: 350px;
+    rotate: 45deg;
+    border-radius: 40px;
+    position: absolute;
+    right: calc(50% - (350px / 2));
+    z-index: 0;
+    background-color: var(--type-color);
 }
 
-.nav-pages {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 100px;
-}
 
-.nav-profile-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 38px;
-}
-
-.profile-picture {
-    width: 32px;
-    border-radius: 50%;
-}
-
-.active-menu-link {
-    color: var(--light-text);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 10px;
-}
-
-.default-menu-link {
-    color: var(--light-text);
-    text-decoration: none;
-}
-
-.nav-link{
-    color: var(--light-text);
-}
 /* ------------------------------- 5. Media Queries -------------------------------- */

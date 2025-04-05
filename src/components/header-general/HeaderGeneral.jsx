@@ -1,8 +1,8 @@
-import "./Header.css"
+import "./HeaderGeneral.css"
 import Navigation from "../navigation/Navigation.jsx";
 import GeneralButton from "../general-button/GeneralButton.jsx";
 
-function Header({title, text, buttonText, headerImage, pokemonName, buttonType, onClick}) {
+function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, buttonType, onClick}) {
 
     return (
         <header>
@@ -30,4 +30,4 @@ function Header({title, text, buttonText, headerImage, pokemonName, buttonType, 
     );
 }
 
-export default Header;
+export default HeaderGeneral;

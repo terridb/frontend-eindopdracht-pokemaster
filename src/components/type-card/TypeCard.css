@@ -1,0 +1,57 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Ares
+    4. Media Queries
+    5. Colors
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+.pokemon-type-card {
+    font-family: "Roboto", Arial, serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+/* ------------------------------- 3. Areas  --------------------------------------- */
+.pokemon-type-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--type-color);
+    border-radius: 15px;
+    color: white;
+    width: 100px;
+    height: 30px;
+    flex-shrink: 0;
+    background-color: var(--type-color);
+}
+
+button.pokemon-type-card {
+    cursor: pointer;
+}
+
+.pokemon-type-card.default {
+    background-color: transparent;
+    color: var(--type-color);
+    border-color: var(--type-color);
+    outline: none;
+}
+
+.pokemon-type-card.default.active {
+    background-color: var(--type-color);
+    color: var(--light-text);
+    border-color: var(--type-color);
+    outline: none;
+}
+
+/* ------------------------------- 4. Media queries ---------------------------------------- */
+
+
+
+
+
+/* ------------------------------- 5. Colors -------------------------------- */

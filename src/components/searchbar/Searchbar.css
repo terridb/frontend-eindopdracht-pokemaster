@@ -35,6 +35,10 @@
     width: calc(400px - 50px);
 }
 
+.searchbar.large {
+    width: 100%;
+}
+
 .searchbar-button {
     border: var(--small-details) solid;
     border-width: 2px 2px 2px 0;
@@ -51,8 +55,26 @@
     background-color: var(--global-background);
 }
 
+.searchbar-button:disabled {
+    cursor: not-allowed;
+}
+
 .searchbar-container {
     display: flex;
+}
+
+.searchbar-reset-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 60px;
+    top: calc(50% - 16px);
+    transition: all .15s ease-in-out ;
+}
+
+.searchbar-reset-button:hover {
+    transform: scale(1.1);
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

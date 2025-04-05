@@ -6,14 +6,14 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
-
+:root {
+    --main-color-pokedex: #4346CF;
+    --light-color-pokedex: #FFC3EB;
+}
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -23,29 +23,56 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.illustration-searchbar {
-    width: 330px;
+.large-inner-container.pokedex {
+    justify-content: space-between;
 }
 
-.illustrated-searchbar-wrapper {
+.filter-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 450px;
-    border: 2px dashed red;
+    gap: 40px;
+    width: 24%;
+    margin: 165px 0 0 0;
+    border: 2px dashed deeppink;
+}
+
+.pokemon-search-section {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 80px;
+    border: 2px dashed rebeccapurple;
+}
+
+.pokemon-grid {
+    border: 2px dashed dodgerblue;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-evenly;
+}
+
+.load-more-section {
+    display: flex;
+    justify-content: center;
+    border: dashed 2px red;
+}
+
+.pokemon-search {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     position: relative;
 }
 
-.illustrated-searchbar-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.searchbar-outer-container {
+.search-results-text {
     position: absolute;
-    bottom: 65px;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

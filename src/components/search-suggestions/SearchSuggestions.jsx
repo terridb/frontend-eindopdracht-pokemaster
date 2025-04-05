@@ -1,5 +1,6 @@
 import "./SearchSuggestions.css";
 import {Link} from "react-router-dom";
+import {capitalizeFirstLetter} from "../../helpers/changeText.js";
 
 function SearchSuggestions({suggestions}) {
     return (
@@ -10,7 +11,7 @@ function SearchSuggestions({suggestions}) {
                         key={pokemon.id}
                     >
                         <Link to={`/pokedex/${pokemon.id}`} className={"suggestion-item-link"}>
-                            <p>{pokemon.name}</p>
+                            <p>{capitalizeFirstLetter(pokemon.name)}</p>
                             <p>#{pokemon.id}</p>
                         </Link>
                     </li>

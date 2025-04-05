@@ -6,7 +6,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 Header
+        4.1 HeaderGeneral
         4.2 Introduction
         etc.
     5. Media Queries
@@ -15,7 +15,9 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-
+.pokemon-information-section {
+    font-size: 1.375rem;
+}
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -23,9 +25,27 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
+.large-inner-container.pokemon-overview {
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-direction: row;
+}
 
-/* --------------- 4.1 Header ------------------------- */
-
-/* --------------- 4.2 Introduction ------------------- */
+.pokemon-information-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 410px;
+    background-color: #FFF;
+    border-radius: 50px;
+    min-width: 650px;
+    max-width: 770px;
+    padding: 35px;
+    overflow: hidden;
+    gap: 40px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

@@ -6,14 +6,16 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-.suggestion-item-link {
-    font-size: 0.85rem;
+.stat-name {
+    text-transform: uppercase;
+    font-weight: 500;
 }
 /* ------------------------------- 3. Layout --------------------------------------- */
 
@@ -22,28 +24,42 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.suggestions-container {
+.pokemon-information-section.stats {
+    min-width: 390px;
+    max-width: 700px;
+}
+
+.pokemon-stats-list {
     display: flex;
     flex-direction: column;
-    background-color: var(--light-text);
-    width: 100%;
-    border-radius: 10px;
-    gap: 0;
+    gap: 10px;
 }
 
-.suggestion-item-link {
-    color: var(--dark-text);
+.stat-item {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: 8px 10px;
-    text-align: start;
-    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
-.suggestion-item-link:hover {
-    background-color: var(--small-details)
+.stat-name {
+    width: 40%;
+}
+
+.stat-value {
+    width: 10%;
+}
+
+.stat-bar {
+    background-color: var(--dark-text);
+    flex-grow: 1;
+    height: 40px;
+}
+
+.stat-fill {
+    height: 100%;
+    background-color: var(--type-color);
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
