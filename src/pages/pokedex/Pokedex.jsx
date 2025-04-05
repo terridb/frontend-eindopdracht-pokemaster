@@ -11,6 +11,7 @@ import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
 import {Link} from "react-router-dom";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
+import {resetInput} from "../../helpers/resetInput.js";
 
 function Pokedex() {
     const [pokemon, setPokemon] = useState([]);
@@ -143,6 +144,7 @@ function Pokedex() {
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                     handleSubmit={handleSearch}
+                                    handleReset={() => resetInput(setQuery)}
                                 />
                                 {searchResults && pokemon.length > 0 && (
                                     <p className="search-results-text">{matchingPokemon.length} results for

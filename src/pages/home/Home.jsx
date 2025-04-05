@@ -10,6 +10,7 @@ import SearchSuggestions from "../../components/search-suggestions/SearchSuggest
 import charizard from "../../assets/images/charizard.png"
 import pikachu from "../../assets/images/detective-pikachu.png";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
+import {resetInput} from "../../helpers/resetInput.js";
 
 function Home() {
     const navigate = useNavigate();
@@ -18,10 +19,6 @@ function Home() {
     const [loading, setLoading] = useState(false);
     const [pokemonList, setPokemonList] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
-    const [isFocused, setIsFocused] = useState(false);
-
-    const handleFocus = () => setIsFocused(true);
-    const handleBlur = () => setIsFocused(false);
 
     useEffect(() => {
         const fetchPokemonList = async () => {
@@ -116,10 +113,9 @@ function Home() {
                                     value={query}
                                     onChange={handleChange}
                                     handleSubmit={handleSearch}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
+                                    handleReset={() => resetInput(setQuery)}
                                 />
-                                {loading && isFocused && <p className="loading-message">Loading Pokémon...</p>}
+                                {loading && <p className="loading-message">Loading Pokémon...</p>}
                                 {!loading && error && <p className="error-message home">{error}</p>}
                                 {query && suggestions.length > 0 && !error && !loading && (
                                     <SearchSuggestions
