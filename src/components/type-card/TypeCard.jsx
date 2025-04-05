@@ -2,14 +2,14 @@ import "./TypeCard.css";
 import {capitalizeFirstLetter} from "../../helpers/changeText.js";
 import {useState} from "react";
 
-function TypeCard({pokemonType, button}) {
+function TypeCard({pokemonType, type, genName}) {
     const [buttonStatus, setButtonStatus] = useState("default");
 
     return (
         <>
-            {button ? (
+            {type === "type" ? (
                 <button
-                    className={`pokemon-type-card pokemon-type-color ${pokemonType} ${buttonStatus === "active" ? "active" : "default"}`}
+                    className={`pokemon-label pokemon-type-color ${pokemonType} ${buttonStatus === "active" ? "active" : "default"}`}
                     type="button"
                     onClick={() => {
                         buttonStatus === "active" ? setButtonStatus("default") : setButtonStatus("active")
@@ -17,8 +17,18 @@ function TypeCard({pokemonType, button}) {
                 >
                     {capitalizeFirstLetter(pokemonType)}
                 </button>
-            ) : (
-                <li className={`pokemon-type-card pokemon-type-color ${pokemonType}`}>
+            ) : type === "gen" ? (
+                <button
+                    className={`pokemon-label gen ${buttonStatus === "active" ? "active" : "default"}`}
+                    type="button"
+                    onClick={() => {
+                        buttonStatus === "active" ? setButtonStatus("default") : setButtonStatus("active")
+                    }}
+                >
+                    {capitalizeFirstLetter(genName)}
+                </button>
+                ) : (
+                <li className={`pokemon-label pokemon-type-color ${pokemonType}`}>
                     {capitalizeFirstLetter(pokemonType)}
                 </li>
             )}

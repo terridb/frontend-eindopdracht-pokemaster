@@ -122,7 +122,6 @@ function Pokedex() {
             <HeaderGeneral
                 title="Pokédex"
                 text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
-                buttonText="Join now"
                 headerImage={mew}
                 pokemonName="mew"
             />

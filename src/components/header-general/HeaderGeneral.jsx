@@ -21,8 +21,8 @@ function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, butto
                             />}
                     </div>
                     <span className="header-image-wrapper">
-                    <img className="header-image" src={headerImage} alt={pokemonName}/>
-                </span>
+                        <img className="header-image" src={headerImage} alt={pokemonName}/>
+                    </span>
                 </div>
                 <div className={`header-color-block ${pokemonName}`}/>
             </div>
