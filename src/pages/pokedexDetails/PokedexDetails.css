@@ -39,11 +39,13 @@
     height: 410px;
     background-color: #FFF;
     border-radius: 50px;
-    width: 55%;
+    min-width: 650px;
+    max-width: 770px;
     padding: 35px;
     overflow: hidden;
-    flex-shrink: 1;
     gap: 40px;
+    flex-shrink: 1;
+    flex-grow: 1;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

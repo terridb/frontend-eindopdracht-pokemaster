@@ -9,6 +9,7 @@ import Footer from "../../components/footer/Footer.jsx";
 import SearchSuggestions from "../../components/search-suggestions/SearchSuggestions.jsx";
 import charizard from "../../assets/images/charizard.png"
 import pikachu from "../../assets/images/detective-pikachu.png";
+import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 
 function Home() {
     const navigate = useNavigate();
@@ -26,19 +27,17 @@ function Home() {
         const fetchPokemonList = async () => {
             try {
                 setLoading(true);
-                const totalCount = await axios.get("https://pokeapi.co/api/v2/pokemon/");
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${totalCount.data.count}`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
 
                 const detailedPokemonList = response.data.results.map((pokemon) => {
-                    const splitUrl = pokemon.url.split("/");
-                    const id = splitUrl[splitUrl.length - 2];
+                    const id = getIdFromUrl(pokemon.url);
 
                     return {
                         name: pokemon.name,
                         id: id,
                         url: pokemon.url
                     };
-                })
+                }).filter(pokemon => Number(pokemon.id) <= 10000);
 
                 setPokemonList(detailedPokemonList);
             } catch (err) {

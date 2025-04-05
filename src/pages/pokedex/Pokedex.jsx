@@ -31,8 +31,12 @@ function Pokedex() {
 
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`);
-                setPokemon(prev => offset === 0 ? response.data.results : [...prev, ...response.data.results]);
-                toggleMoreAvailable(response.data.results.length > 0);
+                const filteredPokemon = response.data.results.filter(pokemon =>
+                    getIdFromUrl(pokemon.url) <= 10000
+                );
+
+                setPokemon(prev => offset === 0 ? filteredPokemon : [...prev, ...filteredPokemon]);
+                toggleMoreAvailable(filteredPokemon.length > 0);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
@@ -50,7 +54,11 @@ function Pokedex() {
             setError(null);
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
-                setAllPokemon(response.data.results);
+                const filteredPokemon = response.data.results.filter(pokemon =>
+                    getIdFromUrl(pokemon.url) <= 10000
+                );
+
+                setAllPokemon(filteredPokemon);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
