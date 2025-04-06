@@ -58,7 +58,6 @@ export function makeResistancesArray(typeOne, typeTwo) {
     const typeTwoImmunities = typeTwo?.damage_relations?.no_damage_from.map(type => type.name) || [];
 
     const allResistances = [...new Set([...typeOneResistances, ...typeTwoResistances])];
-    console.log(allResistances);
     if (allResistances.length !== 0) {
         return allResistances.filter(type =>
             !typeOneImmunities.includes(type) &&

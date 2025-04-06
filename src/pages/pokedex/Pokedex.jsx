@@ -12,6 +12,7 @@ import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
 import {Link} from "react-router-dom";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 import {resetInput} from "../../helpers/resetInput.js";
+import PokemonGrid from "../../components/pokemon-grid/PokemonGrid.jsx";
 
 function Pokedex() {
     const [pokemon, setPokemon] = useState([]);
@@ -150,29 +151,13 @@ function Pokedex() {
                                         "{searchResults}"</p>
                                 )}
                             </section>
-                            <section className="pokemon-grid">
-                                {loading && <Loader/>}
-                                {error && <p>{error.message}</p>}
-
-                                {!loading && pokemon.length === 0 && searchResults !== "" && (
-                                    <p className="no-results">No matching Pokémon found, try something else</p>
-                                )}
-
-                                {pokemon && pokemon.map((pokemon) => (
-                                    <Link key={getIdFromUrl(pokemon.url)} to={`/pokedex/${getIdFromUrl(pokemon.url)}`}>
-                                        <PokemonCard endpoint={pokemon.url}/>
-                                    </Link>
-                                ))}
-                            </section>
-                            <section className="load-more-section">
-                                {!loading && moreAvailable && (
-                                    <GeneralButton
-                                        buttonText="Load more"
-                                        onClick={handleLoadMore}
-                                    />
-                                )
-                                }
-                            </section>
+                            <PokemonGrid
+                                pokemon={pokemon}
+                                loading={loading}
+                                error={error}
+                                moreAvailable={moreAvailable}
+                                handleLoadMore={handleLoadMore}
+                            />
                         </section>
                     </div>
                 </section>

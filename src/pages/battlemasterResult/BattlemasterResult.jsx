@@ -1,8 +1,14 @@
 import "./BattlemasterResult.css";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import HeaderPokemonDetails from "../../components/header-pokemonDetails/HeaderPokemonDetails.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Loader from "../../components/loader/Loader.jsx";
+import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
+import PokemonCard from "../../components/pokemon-card/PokemonCard.jsx";
+import Footer from "../../components/footer/Footer.jsx";
+import TypeCard from "../../components/type-card/TypeCard.jsx";
+import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 
 function BattlemasterResult() {
     const {pokemonId} = useParams();
@@ -43,7 +49,6 @@ function BattlemasterResult() {
         fetchPokemon();
     }, []);
 
-
     return (
         <>
             <HeaderPokemonDetails
@@ -55,6 +60,60 @@ function BattlemasterResult() {
                 error={error}
                 header="battlemaster"
             />
+            <main>
+                <section className="result-section">
+                    <div className="pokemon-grid-title">
+                        <h2>Suitable pokémon options - </h2>
+                        <p>Gen 1, Gen 3</p>
+                    </div>
+                    <div className="pokemon-grid">
+                        {loading && <Loader/>}
+                        {error && <p>{error.message}</p>}
+                        <PokemonCard/>
+                        <PokemonCard/>
+                        <PokemonCard/>
+                        <PokemonCard/>
+                    </div>
+                </section>
+                <section className="result-section">
+                    <div className="pokemon-grid-title">
+                        <h2>Strong moves</h2>
+                    </div>
+                    <div className="type-list">
+                        {loading && <Loader/>}
+                        {error && <p>{error.message}</p>}
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Power</th>
+                                <th>Acc</th>
+                                <th>PP</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Water Gun</td>
+                                <td>
+                                    <TypeCard
+                                        pokemonType="water"
+                                    />
+                                </td>
+                                <td>40</td>
+                                <td>100</td>
+                                <td>25</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <section className="load-more-section">
+                            <GeneralButton buttonText="Load more"/>
+                        </section>
+                    </div>
+                </section>
+
+            </main>
+            <Footer/>
         </>
     );
 }
