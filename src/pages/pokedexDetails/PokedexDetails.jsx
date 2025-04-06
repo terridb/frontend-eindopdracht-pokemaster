@@ -56,6 +56,7 @@ function PokedexDetails() {
                 pokemonSpecies={pokemonSpecies}
                 loading={loading}
                 error={error}
+                header="pokedex"
             />
             <main>
                 <section className="outer-container">
