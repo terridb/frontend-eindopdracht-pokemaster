@@ -39,6 +39,12 @@
     transform: scale(1.03);
 }
 
+.general-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+}
+
 .general-button.charizard {
     background-color: var(--main-color-homepage);
 }

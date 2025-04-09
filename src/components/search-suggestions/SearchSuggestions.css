@@ -12,9 +12,7 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-.suggestion-item-link {
-    font-size: 0.85rem;
-}
+
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -27,12 +25,21 @@
     flex-direction: column;
     background-color: var(--light-text);
     width: 100%;
-    border-radius: 10px;
+    border-radius: 16px;
     gap: 0;
 }
 
-.suggestion-item-link {
-    color: var(--dark-text);
+.suggestions-container.layered {
+    position: absolute;
+    top: 385px;
+}
+
+.suggestions-container.standalone {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+}
+
+.suggestion-item {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -40,9 +47,10 @@
     padding: 8px 10px;
     text-align: start;
     border-radius: 10px;
+    cursor: pointer;
 }
 
-.suggestion-item-link:hover {
+.suggestion-item:hover {
     background-color: var(--small-details)
 }
 

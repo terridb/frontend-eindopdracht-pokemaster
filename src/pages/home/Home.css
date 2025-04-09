@@ -41,14 +41,9 @@
     justify-content: space-between;
 }
 
-.searchbar-section {
+.searchbar-section.home {
     width: 400px;
     position: relative;
-}
-
-.suggestions-container {
-    position: absolute;
-    top: 385px;
 }
 
 .error-message.home {

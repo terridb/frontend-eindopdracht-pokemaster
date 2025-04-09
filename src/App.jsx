@@ -21,7 +21,7 @@ function App() {
                 <Route path="/signup" element={<Registration/>}/>
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/pokedex/:pokemonId" element={<PokedexDetails/>}/>
-                <Route path="/battlemaster/:pokemonId" element={<BattlemasterResult/>}/>
+                <Route path="/battlemaster/:pokemonId/:generation" element={<BattlemasterResult/>}/>
                 <Route path="/favorites" element={isLoggedIn === true? <Favorites/> : <Navigate to="/login"/>}/>
                 <Route path="/profile" element={isLoggedIn === true? <Profile/> : <Navigate to="/login"/>}/>
             </Routes>

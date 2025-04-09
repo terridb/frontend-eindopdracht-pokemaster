@@ -1,17 +1,17 @@
 import "./BattlemasterResult.css";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import HeaderPokemonDetails from "../../components/header-pokemonDetails/HeaderPokemonDetails.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Loader from "../../components/loader/Loader.jsx";
-import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
+import {makeWeaknessArray} from "../../helpers/getPokemonDetails.jsx";
 import PokemonCard from "../../components/pokemon-card/PokemonCard.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import TypeCard from "../../components/type-card/TypeCard.jsx";
 import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 
 function BattlemasterResult() {
-    const {pokemonId} = useParams();
+    const {pokemonId, generation} = useParams();
     const [pokemon, setPokemon] = useState({});
     const [pokemonSpecies, setPokemonSpecies] = useState({});
     const [error, setError] = useState("");
@@ -48,6 +48,22 @@ function BattlemasterResult() {
         }
         fetchPokemon();
     }, []);
+
+    const generateSuitablePokemon = async () => {
+        const pokemonWeakness = makeWeaknessArray(typeOne, typeTwo);
+        console.log (pokemonWeakness);
+        toggleLoading(true);
+
+    }
+
+    // de gebruiker klikt 1 of GEEN generatie aan.
+    // indien 1 generatie, haal alle pokemon van deze generatie op
+    // indien geen generatie, ga door naar volgende stap
+    // haal pokemon op die weakness type 1 hebben
+    // haal pokemon op die weakness type 2 hebben, indien type 2 er is
+    // verwijder duplicaten
+    // indien 1 generatie, filter de pokemon eruit die aan alle de gen eis voldoen
+    // pas toe dat alle pokemon met id boven de 10000 eruit worden gehaald
 
     return (
         <>

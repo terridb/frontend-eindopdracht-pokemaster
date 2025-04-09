@@ -70,5 +70,11 @@ button.pokemon-label {
     outline: none;
 }
 
+.pokemon-label.gen:disabled {
+    cursor: auto;
+    color: var(--small-details);
+    border: 2px solid var(--small-details);
+}
+
 /* ------------------------------- 4. Media queries ---------------------------------------- */
 

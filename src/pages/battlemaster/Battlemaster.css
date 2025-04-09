@@ -79,4 +79,11 @@
     min-width: 225px;
 }
 
+.searchbar-section.battlemaster {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 400px;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */

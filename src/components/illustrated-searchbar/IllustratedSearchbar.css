@@ -46,6 +46,7 @@
 .searchbar-outer-container {
     position: absolute;
     bottom: 65px;
+    width: 100%;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

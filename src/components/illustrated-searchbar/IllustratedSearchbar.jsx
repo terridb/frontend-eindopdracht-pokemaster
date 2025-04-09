@@ -18,7 +18,6 @@ function IllustratedSearchBar({
             <div className="searchbar-outer-container">
                 <Searchbar
                     placeholder="Search"
-                    size="small"
                     value={value}
                     onChange={onChange}
                     suggestions={suggestions}
