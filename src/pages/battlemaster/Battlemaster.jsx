@@ -53,7 +53,7 @@ function Battlemaster() {
                 if (quizPage === 1) {
                     const response = await axios.get(selectedGen.url);
 
-                    if (selectedGen === "use-all") {
+                    if (selectedGen.name === "use-all") {
                         const pokemonList = response.data.results.map((pokemon) => {
                             const id = getIdFromUrl(pokemon.url);
 
@@ -88,8 +88,6 @@ function Battlemaster() {
         fetchPokemon();
     }, [quizPage, selectedGen]);
 
-    console.log(pokemonList);
-
     const generationArray = (gen) => {
         return [{
             title: "Use all",
@@ -108,7 +106,6 @@ function Battlemaster() {
 
     const handleSelectGen = (genName) => {
         setSelectedGen(prevGen => (prevGen?.name === genName.name ? null : genName));
-        console.log("Selected Generation:", genName);
     };
 
     const handleChange = (e) => {

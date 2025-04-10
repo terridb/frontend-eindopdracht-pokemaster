@@ -44,22 +44,6 @@
     border: 2px dashed rebeccapurple;
 }
 
-.pokemon-grid {
-    border: 2px dashed dodgerblue;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-evenly;
-}
-
-.load-more-section {
-    display: flex;
-    justify-content: center;
-    border: dashed 2px red;
-}
-
 .pokemon-search {
     display: flex;
     flex-direction: column;

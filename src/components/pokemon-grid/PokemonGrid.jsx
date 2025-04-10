@@ -27,7 +27,6 @@ function PokemonGrid({ pokemon, loading, error, moreAvailable, handleLoadMore })
                     <GeneralButton buttonText="Load more" onClick={handleLoadMore}/>
                 )}
             </section>
-            );
         </>
     )
 }
