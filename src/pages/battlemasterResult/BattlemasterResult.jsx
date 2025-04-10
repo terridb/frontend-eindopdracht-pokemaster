@@ -98,7 +98,16 @@ function BattlemasterResult() {
                         url: pokemonData.pokemon.url
                     }))
                 ).flat();
-                const uniquePokemonList = [...new Set(pokemonList)];
+
+                const seenNames = new Set();
+                const uniquePokemonList = pokemonList.filter(pokemon => {
+                    if (seenNames.has(pokemon.name)) {
+                        return false;
+                    }
+                    seenNames.add(pokemon.name);
+                    return true;
+                });
+
                 setPokemonListTypes(uniquePokemonList);
             } catch (err) {
                 console.error(err);
