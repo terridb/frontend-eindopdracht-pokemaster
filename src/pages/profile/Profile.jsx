@@ -1,7 +1,15 @@
-function Profile(props) {
+import {useContext} from "react";
+import {AuthContext} from "../../context/AuthContext.jsx";
+import {useNavigate} from "react-router-dom";
+
+function Profile() {
+    const {logout} = useContext(AuthContext);
+    const navigate = useNavigate();
+
     return (
         <>
-            <h1>Profiel</h1>
+            <button type="button" onClick={logout}> sign out </button>
+            <button type="button" onClick={() => navigate("/")}> home </button>
         </>
     );
 }

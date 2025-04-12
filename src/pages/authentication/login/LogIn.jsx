@@ -3,8 +3,40 @@ import {Link} from "react-router-dom";
 import greyLogo from "../../../assets/logo/logo-grey.png";
 import GeneralButton from "../../../components/general-button/GeneralButton.jsx";
 import snorlax from "../../../assets/images/snorlax.png";
+import {useContext, useState} from "react";
+import {useForm} from "react-hook-form";
+import {AuthContext} from "../../../context/AuthContext.jsx";
+import axios from "axios";
+import InputField from "../../../components/input-field/InputField.jsx";
 
 function LogIn() {
+    const {login} = useContext(AuthContext);
+    const {register, handleSubmit} = useForm();
+
+    const [error, setError] = useState(null);
+    const [loading, toggleLoading] = useState(false);
+
+    const handleLogin = async (data) => {
+        toggleLoading(true);
+
+        try{
+            const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
+                "username": data.username,
+                "password" : data.password,
+            });
+            if (response.status === 200) {
+                login(response.data.accessToken);
+                navigate("/profile")
+            }
+            console.log(response)
+        } catch (err) {
+            console.error(err);
+            setError(err);
+        } finally {
+            toggleLoading(false);
+        }
+    }
+
     return (
         <main>
             <section className="outer-container">
@@ -17,23 +49,21 @@ function LogIn() {
                         />
                     </Link>
                     <h1>Log in to Pokémaster</h1>
-                    <form className="auth-form">
-                        <label htmlFor="email-field">E-mailaddress
-                            <input
-                                type="email"
-                                id="email-field"
-                                name="email"
-                                placeholder="E-mailaddress"
-                            />
-                        </label>
-                        <label htmlFor="password-field">Password
-                            <input
-                                type="password"
-                                id="password-field"
-                                name="password"
-                                placeholder="Password"
-                            />
-                        </label>
+                    <form className="auth-form" onSubmit={handleSubmit(handleLogin)}>
+                        <InputField
+                            type="text"
+                            id="username-field"
+                            name="username"
+                            title="Username"
+                            register={register}
+                        />
+                        <InputField
+                            type="password"
+                            id="password-field"
+                            name="password"
+                            title="Password"
+                            register={register}
+                        />
                         <GeneralButton
                             pokemonName="snorlax"
                             buttonType="submit"

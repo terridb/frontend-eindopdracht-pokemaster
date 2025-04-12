@@ -8,9 +8,11 @@ import PokedexDetails from "./pages/pokedexDetails/PokedexDetails.jsx";
 import Favorites from "./pages/favorites/Favorites.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import BattlemasterResult from "./pages/battlemasterResult/BattlemasterResult.jsx";
+import {useContext} from "react";
+import {AuthContext} from "./context/AuthContext.jsx";
 
 function App() {
-    const isLoggedIn = false;
+    const {isAuth} = useContext(AuthContext);
 
     return (
         <>
@@ -18,12 +20,12 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/pokedex" element={<Pokedex/>}/>
                 <Route path="/battlemaster" element={<Battlemaster/>}/>
-                <Route path="/signup" element={<Registration/>}/>
-                <Route path="/login" element={<LogIn/>}/>
+                <Route path="/signup" element={!isAuth ? <Registration/> : <Navigate to ="/profile"/>}/>
+                <Route path="/login" element={!isAuth ? <LogIn/> : <Navigate to ="/profile"/>}/>
                 <Route path="/pokedex/:pokemonId" element={<PokedexDetails/>}/>
                 <Route path="/battlemaster/:pokemonId/:generation" element={<BattlemasterResult/>}/>
-                <Route path="/favorites" element={isLoggedIn === true? <Favorites/> : <Navigate to="/login"/>}/>
-                <Route path="/profile" element={isLoggedIn === true? <Profile/> : <Navigate to="/login"/>}/>
+                <Route path="/favorites" element={isAuth ? <Favorites/> : <Navigate to="/login"/>}/>
+                <Route path="/profile" element={isAuth ? <Profile/> : <Navigate to="/login"/>}/>
             </Routes>
         </>
     )
