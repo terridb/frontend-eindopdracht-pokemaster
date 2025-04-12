@@ -2,16 +2,13 @@ import "./Pokedex.css";
 import mew from "../../assets/images/mew.png";
 import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
 import Searchbar from "../../components/searchbar/Searchbar.jsx";
-import PokemonCard from "../../components/pokemon-card/PokemonCard.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Loader from "../../components/loader/Loader.jsx";
-import GeneralButton from "../../components/general-button/GeneralButton.jsx";
 import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
-import {Link} from "react-router-dom";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 import {resetInput} from "../../helpers/resetInput.js";
+import PokemonGrid from "../../components/pokemon-grid/PokemonGrid.jsx";
 
 function Pokedex() {
     const [pokemon, setPokemon] = useState([]);
@@ -122,7 +119,6 @@ function Pokedex() {
             <HeaderGeneral
                 title="Pokédex"
                 text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
-                buttonText="Join now"
                 headerImage={mew}
                 pokemonName="mew"
             />
@@ -151,29 +147,13 @@ function Pokedex() {
                                         "{searchResults}"</p>
                                 )}
                             </section>
-                            <section className="pokemon-grid">
-                                {loading && <Loader/>}
-                                {error && <p>{error.message}</p>}
-
-                                {!loading && pokemon.length === 0 && searchResults !== "" && (
-                                    <p className="no-results">No matching Pokémon found, try something else</p>
-                                )}
-
-                                {pokemon && pokemon.map((pokemon) => (
-                                    <Link key={getIdFromUrl(pokemon.url)} to={`/pokedex/${getIdFromUrl(pokemon.url)}`}>
-                                        <PokemonCard endpoint={pokemon.url}/>
-                                    </Link>
-                                ))}
-                            </section>
-                            <section className="load-more-section">
-                                {!loading && moreAvailable && (
-                                    <GeneralButton
-                                        buttonText="Load more"
-                                        onClick={handleLoadMore}
-                                    />
-                                )
-                                }
-                            </section>
+                            <PokemonGrid
+                                pokemon={pokemon}
+                                loading={loading}
+                                error={error}
+                                moreAvailable={moreAvailable}
+                                handleLoadMore={handleLoadMore}
+                            />
                         </section>
                     </div>
                 </section>

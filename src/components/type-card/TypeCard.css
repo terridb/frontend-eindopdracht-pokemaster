@@ -10,48 +10,71 @@
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 /* ------------------------------- 2. Typography ----------------------------------- */
-.pokemon-type-card {
+.pokemon-label {
     font-family: "Roboto", Arial, serif;
     font-weight: 400;
     font-size: 1rem;
     text-transform: capitalize;
 }
 /* ------------------------------- 3. Areas  --------------------------------------- */
-.pokemon-type-card {
+.pokemon-label {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--type-color);
     border-radius: 15px;
-    color: white;
     width: 100px;
     height: 30px;
     flex-shrink: 0;
-    background-color: var(--type-color);
 }
 
-button.pokemon-type-card {
+.pokemon-label.gen {
+    color: var(--dark-text);
+    border: 2px solid var(--dark-text);
+    background-color: transparent;
+}
+
+.pokemon-label.gen.active {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    border-color: var(--dark-text);
+    outline: none;
+}
+
+.pokemon-label.default {
+    color: var(--dark-text);
+    border: 2px solid var(--dark-text);
+    background-color: transparent;
+}
+
+button.pokemon-label {
     cursor: pointer;
 }
 
-.pokemon-type-card.default {
+.pokemon-label.pokemon-type-color {
+    color: var(--light-text);
+    border: 2px solid var(--type-color);
+    background-color: var(--type-color);
+}
+
+.pokemon-label.pokemon-type-color.default {
     background-color: transparent;
     color: var(--type-color);
     border-color: var(--type-color);
     outline: none;
 }
 
-.pokemon-type-card.default.active {
+.pokemon-label.pokemon-type-color.active {
     background-color: var(--type-color);
     color: var(--light-text);
     border-color: var(--type-color);
     outline: none;
 }
 
+.pokemon-label.gen:disabled {
+    cursor: auto;
+    color: var(--small-details);
+    border: 2px solid var(--small-details);
+}
+
 /* ------------------------------- 4. Media queries ---------------------------------------- */
 
-
-
-
-
-/* ------------------------------- 5. Colors -------------------------------- */

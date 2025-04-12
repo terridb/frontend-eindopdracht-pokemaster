@@ -29,13 +29,6 @@
     background-color: var(--light-text);
     font-size: 0.85rem;
     color: var(--dark-text);
-}
-
-.searchbar.small {
-    width: calc(400px - 50px);
-}
-
-.searchbar.large {
     width: 100%;
 }
 
@@ -64,17 +57,10 @@
 }
 
 .searchbar-reset-button {
-    border: none;
-    background-color: transparent;
+    background-color: var(--light-text);
     cursor: pointer;
-    position: absolute;
-    right: 60px;
-    top: calc(50% - 16px);
-    transition: all .15s ease-in-out ;
-}
-
-.searchbar-reset-button:hover {
-    transform: scale(1.1);
+    border: var(--small-details) solid;
+    border-width: 2px 0;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

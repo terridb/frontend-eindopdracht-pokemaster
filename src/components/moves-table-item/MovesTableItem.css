@@ -6,14 +6,14 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
-:root {
-    --main-color-pokedex: #4346CF;
-    --light-color-pokedex: #FFC3EB;
-}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -23,40 +23,16 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.large-inner-container.pokedex {
-    justify-content: space-between;
+.table-item {
+    background-color: #FFF;
+    height: 75px;
 }
 
-.filter-section {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 24%;
-    margin: 165px 0 0 0;
-    border: 2px dashed deeppink;
-}
+tr:first-child td:first-child { border-top-left-radius: 50px; }
+tr:first-child td:last-child { border-top-right-radius: 50px; }
+tr:last-child td:first-child { border-bottom-left-radius: 50px; }
+tr:last-child td:last-child { border-bottom-right-radius: 50px; }
 
-.pokemon-search-section {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    gap: 80px;
-    border: 2px dashed rebeccapurple;
-}
 
-.pokemon-search {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-}
-
-.search-results-text {
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

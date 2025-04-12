@@ -6,14 +6,14 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
-:root {
-    --main-color-pokedex: #4346CF;
-    --light-color-pokedex: #FFC3EB;
-}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -23,40 +23,42 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.large-inner-container.pokedex {
-    justify-content: space-between;
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.filter-section {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 24%;
-    margin: 165px 0 0 0;
-    border: 2px dashed deeppink;
+th:nth-child(1), td:nth-child(1) {
+    width: 20%;
+    text-align: start;
+    padding-left: 40px;
+}
+th:nth-child(2), td:nth-child(2) { width: 30%; }
+th:nth-child(3), td:nth-child(3) { width: 10%; }
+th:nth-child(4), td:nth-child(4) { width: 10%; }
+th:nth-child(5), td:nth-child(5) {
+    width: 10%;
+    padding-right: 40px;
 }
 
-.pokemon-search-section {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    gap: 80px;
-    border: 2px dashed rebeccapurple;
-}
-
-.pokemon-search {
-    display: flex;
-    flex-direction: column;
+.result-table-stats {
     text-align: center;
-    position: relative;
 }
 
-.search-results-text {
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+.cell-type-container {
+    display: flex;
+    justify-content: center;
+}
+
+.result-table tbody {
+    background-color: #FFF;
+}
+
+.moves-list {
+    border: 2px dashed dodgerblue;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

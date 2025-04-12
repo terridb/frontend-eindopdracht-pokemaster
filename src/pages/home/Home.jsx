@@ -104,7 +104,7 @@ function Home() {
                             <IllustratedButton
                                 title="Pokédex"
                             />
-                            <div className="searchbar-section">
+                            <div className="searchbar-section home">
                                 <IllustratedSearchbar
                                     image={pikachu}
                                     imageDescription="Detective Pikachu"
@@ -120,6 +120,8 @@ function Home() {
                                 {query && suggestions.length > 0 && !error && !loading && (
                                     <SearchSuggestions
                                         suggestions={suggestions}
+                                        setQuery={setQuery}
+                                        visualType="layered"
                                     />
                                 )}
                             </div>

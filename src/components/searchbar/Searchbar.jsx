@@ -1,21 +1,24 @@
 import './Searchbar.css'
 import {MagnifyingGlass, X} from "@phosphor-icons/react";
 
-function SearchBar({placeholder, size, onChange, value, handleSubmit, handleReset}) {
+function SearchBar({placeholder, onChange, value, handleSubmit, handleReset}) {
     return (
         <form className="searchbar-container" onSubmit={handleSubmit}>
             <input
-                className={`searchbar ${size}`}
+                className="searchbar"
                 type="text"
                 name="search"
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
             />
-            { value &&
-            <button className="searchbar-reset-button" onClick={handleReset}>
-                <X/>
-            </button>
+            {value &&
+                <button
+                    className={"searchbar-reset-button"}
+                    onClick={handleReset}
+                    type="button">
+                    <X/>
+                </button>
             }
             <button className="searchbar-button" type="submit" disabled={value === ""}>
                 <MagnifyingGlass/>

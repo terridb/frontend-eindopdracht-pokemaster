@@ -67,7 +67,9 @@ header {
     max-width: 600px;
     width: auto;
     max-height: 485px;
-    height: auto;
+    height: 100%;
+    border: 2px dashed yellow;
+    object-fit: contain;
 }
 
 .header-image {
@@ -92,5 +94,9 @@ header {
 
 .header-color-block.mew {
     background: linear-gradient(-45deg, var(--main-color-pokedex) 0%, var(--light-color-pokedex) 100%);
+}
+
+.header-color-block.lucario {
+    background: linear-gradient(-45deg, var(--main-color-battlemaster) 0%, var(--light-color-battlemaster) 100%);
 }
 /* ------------------------------- 5. Media Queries -------------------------------- */

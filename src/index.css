@@ -229,5 +229,8 @@ h5, nav {
     --type-color: var(--fairy);
 }
 
+.pokemon-type-color.none {
+    --type-color: #000000;
+}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
