@@ -1,4 +1,4 @@
-import "LogIn.css";
+import "./LogIn.css";
 import {Link} from "react-router-dom";
 import greyLogo from "../../../assets/logo/logo-grey.png";
 import GeneralButton from "../../../components/general-button/GeneralButton.jsx";
