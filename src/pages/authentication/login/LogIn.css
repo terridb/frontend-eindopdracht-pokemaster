@@ -1,0 +1,89 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+.auth-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: calc(100vh - 150px);
+    margin: 150px 0 0 0;
+    gap: 5px;
+    width: 410px;
+}
+
+.auth-logo {
+    width: 220px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.auth-form input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--small-details);
+    border-radius: 8px;
+    padding: 1rem;
+    outline: none;
+    color: var(--dark-text);
+}
+
+.auth-form ::placeholder {
+    color: var(--small-details);
+    opacity: 1;
+}
+
+.auth-form label {
+    width: 100%;
+    font-weight: 500;
+}
+
+.auth-background-container {
+    position: absolute;
+    z-index: -1;
+    height: 325px;
+    right: 45px;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.auth-background {
+    height: 100%;
+}
+
+.auth-link {
+    color: #057DA3;
+    font-weight: 500;
+}
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
