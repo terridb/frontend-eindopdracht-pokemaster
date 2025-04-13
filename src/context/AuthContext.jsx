@@ -32,7 +32,7 @@ function AuthContextProvider({children}) {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${jwtToken}`,
+                        "Authorization": `Bearer ${jwtToken}`,
                     },
                 },
             );
@@ -71,6 +71,7 @@ function AuthContextProvider({children}) {
     const data = {
         isAuth: auth.isAuth,
         user: auth.user,
+        token: localStorage.getItem("token"),
         login,
         logout
     };

@@ -98,6 +98,10 @@ a {
     width: fit-content;
 }
 
+ul{
+    list-style: none;
+}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 h1 {
     font-size: 2rem;

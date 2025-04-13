@@ -5,6 +5,7 @@ import FavoriteIcon from "../favorite-icon/FavoriteIcon.jsx";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import ProfilePopup from "../profile-popup/ProfilePopup.jsx";
+import AlertBox from "../alert-box/AlertBox.jsx";
 
 function Navigation() {
     const {isAuth, user, logout} = useContext(AuthContext);
@@ -63,9 +64,10 @@ function Navigation() {
                     </div>
                 }
                 {logOutMessage &&
-                    <div className="alert-box">
-                        <p>{logOutMessage}</p>
-                    </div>}
+                    <AlertBox
+                        message={logOutMessage}
+                    />
+                }
             </nav>
         </>
     );
