@@ -2,12 +2,27 @@ import "./Navigation.css"
 import {Link, NavLink} from "react-router-dom";
 import whiteLogo from "../../assets/logo/logo-white.png"
 import FavoriteIcon from "../favorite-icon/FavoriteIcon.jsx";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import ProfilePopup from "../profile-popup/ProfilePopup.jsx";
 
 function Navigation() {
-    const {isAuth, user} = useContext(AuthContext);
-    
+    const {isAuth, user, logout} = useContext(AuthContext);
+    const [showPopup, setShowPopup] = useState(false);
+    const [logOutMessage, setLogOutMessage] = useState("");
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
+    const handleLogOut = () => {
+        logout();
+        setLogOutMessage("Signed out successfully!");
+        setShowPopup(false);
+
+        setTimeout(() => setLogOutMessage(""), 3000);
+    }
+
     return (
         <>
             <nav>
@@ -37,15 +52,20 @@ function Navigation() {
                 ) : (
                     <div className="nav-profile-buttons">
                         <FavoriteIcon/>
-                        <NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                 to="/profile">
+                        <button className="profile-button" onClick={togglePopup}>
                             {user.username}
-                        </NavLink>
+                        </button>
                     </div>
-                )
-
+                )}
+                {showPopup && isAuth &&
+                    <div className={"popup-container"}>
+                        <ProfilePopup user={user} handleLogOut={handleLogOut}/>
+                    </div>
                 }
-
+                {logOutMessage &&
+                    <div className="alert-box">
+                        <p>{logOutMessage}</p>
+                    </div>}
             </nav>
         </>
     );

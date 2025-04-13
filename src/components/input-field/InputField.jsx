@@ -1,9 +1,8 @@
 import "./InputField.css";
-import {useForm} from "react-hook-form";
 
 function InputField({type, id, name, title, register, errors, watch}) {
     return (
-        <label htmlFor={id}>
+        <label htmlFor={id} className="form-input">
             {title}
             <input
                 type={type}

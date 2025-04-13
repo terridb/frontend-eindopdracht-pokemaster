@@ -23,6 +23,15 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
+.general-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 15px 0;
+}
+
 .auth-content {
     display: flex;
     flex-direction: column;
@@ -36,36 +45,6 @@
 
 .auth-logo {
     width: 220px;
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    margin: 15px 0;
-}
-
-.auth-form input {
-    display: block;
-    width: 100%;
-    height: 40px;
-    border: 1px solid var(--small-details);
-    border-radius: 8px;
-    padding: 1rem;
-    outline: none;
-    color: var(--dark-text);
-}
-
-.auth-form ::placeholder {
-    color: var(--small-details);
-    opacity: 1;
-}
-
-.auth-form label {
-    width: 100%;
-    font-weight: 500;
 }
 
 .auth-background-container {
@@ -89,6 +68,13 @@
 .error-message-form {
     font-weight: 500;
     color: red;
+}
+
+.auth-bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

@@ -23,67 +23,52 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.auth-content {
+.profile-popup {
+    background-color: var(--global-background);
+    border-radius: 50px;
+    width: 285px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 35px 50px;
     position: relative;
-    min-height: calc(100vh);
-    gap: 5px;
-    width: 410px;
+    color: var(--dark-text);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 95%;
 }
 
-.auth-logo {
-    width: 220px;
-}
-
-.auth-form {
+.profile-popup-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    margin: 15px 0;
+    gap: 45px;
 }
 
-.auth-form input {
+.profile-popup-username::after {
+    content: "";
     display: block;
-    width: 100%;
-    height: 40px;
-    border: 1px solid var(--small-details);
-    border-radius: 8px;
-    padding: 1rem;
-    outline: none;
-    color: var(--dark-text);
-}
-
-.auth-form ::placeholder {
-    color: var(--small-details);
-    opacity: 1;
-}
-
-.auth-form label {
-    width: 100%;
-    font-weight: 500;
-}
-
-.auth-background-container {
+    height: 1px;
+    width: 285px;
+    background-color: var(--small-details);
     position: absolute;
-    z-index: -1;
-    height: 325px;
-    right: 45px;
-    bottom: 0;
-    overflow: hidden;
+    left: 0;
+    top: 80px;
 }
 
-.auth-background {
-    height: 100%;
+.profile-popup-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 25px;
 }
 
-.auth-link {
-    color: #057DA3;
-    font-weight: 500;
+.profile-popup-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
