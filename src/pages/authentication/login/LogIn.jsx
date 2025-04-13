@@ -8,10 +8,11 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import axios from "axios";
 import InputField from "../../../components/input-field/InputField.jsx";
+import Loader from "../../../components/loader/Loader.jsx";
 
 function LogIn() {
     const {login} = useContext(AuthContext);
-    const {register, handleSubmit} = useForm();
+    const {handleSubmit, formState: {errors}, register} = useForm();
 
     const [error, setError] = useState(null);
     const [loading, toggleLoading] = useState(false);
@@ -26,7 +27,6 @@ function LogIn() {
             });
             if (response.status === 200) {
                 login(response.data.accessToken);
-                navigate("/profile")
             }
             console.log(response)
         } catch (err) {
@@ -56,6 +56,7 @@ function LogIn() {
                             name="username"
                             title="Username"
                             register={register}
+                            errors={errors}
                         />
                         <InputField
                             type="password"
@@ -63,13 +64,17 @@ function LogIn() {
                             name="password"
                             title="Password"
                             register={register}
+                            errors={errors}
                         />
                         <GeneralButton
                             pokemonName="snorlax"
                             buttonType="submit"
                             buttonText="sign-in"
+                            disabled={loading}
                         />
                     </form>
+                    {error && <p className="error-message-form">{error}</p>}
+                    {loading && <Loader/>}
                     <p>
                        Need an account?
                         <Link to="/signup" className="auth-link"> Register here</Link>

@@ -1,8 +1,8 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {checkTokenValidity} from "../helpers/checkTokenValidity";
-import {jwtDecode} from "jwt-decode";
 import axios from "axios";
+import Loader from "../components/loader/Loader.jsx";
 
 export const AuthContext = createContext(null);
 
@@ -24,7 +24,6 @@ function AuthContextProvider({children}) {
     }, []);
 
     const login = async (jwtToken) => {
-        const decodedToken = jwtDecode(jwtToken);
         localStorage.setItem("token", jwtToken);
 
         try {
@@ -53,6 +52,12 @@ function AuthContextProvider({children}) {
         }
     };
 
+    useEffect(() => {
+        if (auth.isAuth && auth.status === "pending") {
+            navigate("/profile");
+        }
+    }, [auth.isAuth, auth.status, navigate]);
+
     const logout = () => {
         localStorage.removeItem("token");
         setAuth({
@@ -61,7 +66,6 @@ function AuthContextProvider({children}) {
             status: "done",
         });
         console.log('Gebruiker is uitgelogd!');
-        navigate("/");
     };
 
     const data = {
@@ -73,7 +77,7 @@ function AuthContextProvider({children}) {
 
     return (
         <AuthContext.Provider value={data}>
-            {auth.status === "done" ? children : <p>Loading...</p>}
+            {auth.status === "done" ? children : <Loader/>}
         </AuthContext.Provider>
     )
 }

@@ -86,4 +86,9 @@
     font-weight: 500;
 }
 
+.error-message-form {
+    font-weight: 500;
+    color: red;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */

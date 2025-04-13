@@ -1,18 +1,17 @@
 import "./Registration.css";
 import greyLogo from "../../../assets/logo/logo-grey.png";
 import snorlax from "../../../assets/images/snorlax.png";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import GeneralButton from "../../../components/general-button/GeneralButton.jsx";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import axios from "axios";
 import InputField from "../../../components/input-field/InputField.jsx";
 import {useForm} from "react-hook-form"
+import Loader from "../../../components/loader/Loader.jsx";
 
 function Registration() {
-    const {handleSubmit, register} = useForm();
-
-    const navigate = useNavigate();
+    const {handleSubmit, formState: {errors}, register, watch} = useForm();
 
     const {login} = useContext(AuthContext);
 
@@ -30,17 +29,21 @@ function Registration() {
                 "password": data.password,
                 "role": ["user"]
             });
-            if (response.status === 200) {
-                login(response.data.accessToken);
-                navigate("/profile")
-            }
-            console.log(response.data);
 
+            if (response.status === 200 || response.status === 201) {
+                const loginResponse = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
+                    "username": data.username,
+                    "password": data.password
+                });
+
+                if (loginResponse.status === 200) {
+                    login(loginResponse.data.accessToken);
+                }
+            }
         } catch (err) {
-            console.error(err);
-            setError(err);
+            console.error("Error at registration or login:", err.response || err);
+            setError(err.response.data.message || "Something went wrong");
         } finally {
-            console.log(`${data.username} is succesvol geregistreerd!`)
             toggleLoading(false);
         }
     };
@@ -64,6 +67,7 @@ function Registration() {
                             name="email"
                             title="E-mailaddress"
                             register={register}
+                            errors={errors}
                         />
                         <InputField
                             type="password"
@@ -71,6 +75,7 @@ function Registration() {
                             name="password"
                             title="Password"
                             register={register}
+                            errors={errors}
                         />
                         <InputField
                             type="password"
@@ -78,6 +83,8 @@ function Registration() {
                             name="password-check"
                             title="Confirm password"
                             register={register}
+                            errors={errors}
+                            watch={watch}
                         />
                         <InputField
                             type="text"
@@ -85,13 +92,17 @@ function Registration() {
                             name="username"
                             title="Username"
                             register={register}
+                            errors={errors}
                         />
                         <GeneralButton
                             pokemonName="snorlax"
                             buttonType="submit"
                             buttonText="continue"
+                            disabled={loading}
                         />
                     </form>
+                    {error && <p className="error-message-form">{error}</p>}
+                    {loading && <Loader/>}
                     <p>
                         Already have an account?
                         <Link to="/login" className="auth-link"> Sign in here</Link>
