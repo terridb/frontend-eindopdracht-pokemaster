@@ -1,15 +1,12 @@
 import "./PokemonCard.css";
 import {capitalizeFirstLetter, writePokedexNumber} from "../../helpers/changeText.js";
 import TypeCard from "../type-card/TypeCard.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import {AuthContext} from "../../context/AuthContext.jsx";
 import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 import {Link} from "react-router-dom";
 
 function PokemonCard({endpoint}) {
-    const {isAuth} = useContext(AuthContext);
-
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
     const [pokemon, setPokemon] = useState({});
@@ -40,11 +37,9 @@ function PokemonCard({endpoint}) {
                     className="pokemon-card-image"
                     src={pokemon.sprites?.other?.[`official-artwork`]?.[`front_default`]}
                     alt={`Image of ${pokemon.name}`}/>
-                {isAuth &&
                     <FavoriteButton
                         pokemon={pokemon}
                     />
-                }
             </figure>
             <Link to={`/pokedex/${pokemon.id}`}>
                 <div className="pokemon-card-details">
