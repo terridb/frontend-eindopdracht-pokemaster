@@ -63,6 +63,7 @@
     border: dashed 2px yellow;
     width: 410px;
     margin: 0 40px;
+    position: relative;
 }
 
 .pokemon-details-image {

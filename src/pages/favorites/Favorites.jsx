@@ -19,10 +19,12 @@ function Favorites() {
             />
             <main>
                 <section className="outer-container">
-                    <h2>Favorites</h2>
-                    <PokemonGrid
-                        favorites={favorites}
-                    />
+                    <section className="favorites-section">
+                        <h2>Favorites</h2>
+                        <PokemonGrid
+                            favorites={favorites}
+                        />
+                    </section>
                 </section>
             </main>
             <Footer/>
