@@ -4,13 +4,11 @@ import TypeCard from "../type-card/TypeCard.jsx";
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext.jsx";
-import {FaveContext} from "../../context/FaveContext.jsx";
 import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 import {Link} from "react-router-dom";
 
 function PokemonCard({endpoint}) {
     const {isAuth} = useContext(AuthContext);
-    const {favorites, setFavorites} = useContext(FaveContext);
 
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);

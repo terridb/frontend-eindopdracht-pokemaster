@@ -1,22 +1,30 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
+import {AuthContext} from "./AuthContext.jsx";
 
 export const FaveContext = createContext(null);
 
 function FaveContextProvider({children}) {
+    const {user} = useContext(AuthContext);
     const [favorites, setFavorites] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        const savedFavorites = localStorage.getItem("favorites");
-        if (savedFavorites) {
-            setFavorites(JSON.parse(savedFavorites));
+        if (user) {
+            const savedFavorites = localStorage.getItem("favorites");
+            if (savedFavorites) {
+                setFavorites(JSON.parse(savedFavorites));
+            } else {
+                setFavorites([]);
+            }
+            setLoaded(true);
         }
-    }, []);
+    }, [user]);
 
     useEffect(() => {
-        if (favorites.length > 0) {
+        if (user && loaded) {
             localStorage.setItem("favorites", JSON.stringify(favorites));
         }
-    }, [favorites]);
+    }, [favorites, loaded, user]);
 
     const data = {
         favorites: favorites,
@@ -29,9 +37,5 @@ function FaveContextProvider({children}) {
         </FaveContext.Provider>
     );
 }
-
-// stap 1: de knop houdt bij of deze pokemon al als favoriet is opgeslagen. Indien ja, is het hart gevuld, indien nee is hij leeg
-// stap 2: als de gebruiker op de knop klikt (leeg) dan wordt de pokemon toegevoegd aan favorieten
-// stap 3: als de gebruiker er nog eens op klikt, wordt de pokemon verwijderd uit de favorieten
 
 export default FaveContextProvider;
