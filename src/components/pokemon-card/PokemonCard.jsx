@@ -1,10 +1,17 @@
 import "./PokemonCard.css";
 import {capitalizeFirstLetter, writePokedexNumber} from "../../helpers/changeText.js";
 import TypeCard from "../type-card/TypeCard.jsx";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
+import {AuthContext} from "../../context/AuthContext.jsx";
+import {FaveContext} from "../../context/FaveContext.jsx";
+import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
+import {Link} from "react-router-dom";
 
 function PokemonCard({endpoint}) {
+    const {isAuth} = useContext(AuthContext);
+    const {favorites, setFavorites} = useContext(FaveContext);
+
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
     const [pokemon, setPokemon] = useState({});
@@ -35,19 +42,26 @@ function PokemonCard({endpoint}) {
                     className="pokemon-card-image"
                     src={pokemon.sprites?.other?.[`official-artwork`]?.[`front_default`]}
                     alt={`Image of ${pokemon.name}`}/>
+                {isAuth &&
+                    <FavoriteButton
+                        pokemon={pokemon}
+                    />
+                }
             </figure>
-            <div className="pokemon-card-details">
-                <p className="pokemon-card-number">{writePokedexNumber(pokemon.id)}</p>
-                <h5>{capitalizeFirstLetter(pokemon.name)}</h5>
-                <ul className="pokemon-card-type-wrapper">
-                    {pokemon.types?.map((type, index) => (
-                        <TypeCard
-                            pokemonType={type.type.name}
-                            key={index}
-                        />
-                    ))}
-                </ul>
-            </div>
+            <Link to={`/pokedex/${pokemon.id}`}>
+                <div className="pokemon-card-details">
+                    <p className="pokemon-card-number">{writePokedexNumber(pokemon.id)}</p>
+                    <h5>{capitalizeFirstLetter(pokemon.name)}</h5>
+                    <ul className="pokemon-card-type-wrapper">
+                        {pokemon.types?.map((type, index) => (
+                            <TypeCard
+                                pokemonType={type.type.name}
+                                key={index}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            </Link>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
         </article>

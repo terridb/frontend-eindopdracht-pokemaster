@@ -1,11 +1,9 @@
 import "./PokemonGrid.css";
 import PokemonCard from "../pokemon-card/PokemonCard.jsx";
-import {Link} from "react-router-dom";
 import Loader from "../loader/Loader.jsx";
 import GeneralButton from "../general-button/GeneralButton.jsx";
-import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 
-function PokemonGrid({ pokemon, loading, error, moreAvailable, handleLoadMore }) {
+function PokemonGrid({pokemon, loading, error, moreAvailable, handleLoadMore}) {
     return (
         <>
             <section className="pokemon-grid">
@@ -17,9 +15,10 @@ function PokemonGrid({ pokemon, loading, error, moreAvailable, handleLoadMore })
                 )}
 
                 {pokemon.map((pokemon) => (
-                    <Link key={pokemon.url} to={`/pokedex/${getIdFromUrl(pokemon.url)}`}>
-                        <PokemonCard endpoint={pokemon.url}/>
-                    </Link>
+                    <PokemonCard
+                        endpoint={pokemon.url}
+                        key={pokemon.url}
+                    />
                 ))}
             </section>
             <section className="load-more-section">
