@@ -41,8 +41,8 @@ function Profile() {
                 setTimeout(() => setAlertMessage(""), 5000);
             }
         } catch (err) {
-            console.error("Error at changing the e-mailaddress", err.response || err);
-            setError(err.response.data.message || "Something went wrong");
+            console.error("Error at changing the e-mailaddress", err);
+            setError(err?.response?.data?.message || "Something went wrong");
         } finally {
             toggleLoading(false);
         }
@@ -70,8 +70,8 @@ function Profile() {
                 setTimeout(() => setAlertMessage(""), 5000);
             }
         } catch (err) {
-            console.error("Error at changing the password", err.response || err);
-            setError(err.response.data.message || "Something went wrong");
+            console.error("Error at changing the password", err);
+            setError(err?.response?.data?.message || "Something went wrong");
         } finally {
             toggleLoading(false);
         }
@@ -98,10 +98,14 @@ function Profile() {
                         <section className="profile-block">
                             <h2>Your details</h2>
                             <ul className="profile-details-list">
-                                <li className="profile-details-item"><p
-                                    className="profile-details-title">Username:</p> {user.username}</li>
-                                <li className="profile-details-item"><p
-                                    className="profile-details-title">E-mailaddress:</p> {user.email}</li>
+                                <li className="profile-details-item">
+                                    <p className="profile-details-title">Username:</p>
+                                    {user.username}
+                                </li>
+                                <li className="profile-details-item">
+                                    <p className="profile-details-title">E-mailaddress:</p>
+                                    {user.email}
+                                </li>
                             </ul>
                         </section>
                         <section className="profile-block">
@@ -146,6 +150,8 @@ function Profile() {
                                         errors={errors}
                                         watch={watch}
                                     />
+                                    {error && <p className="error-message-form">{error}</p>}
+                                    {loading && <Loader/>}
                                     <GeneralButton
                                         buttonText="Continue"
                                         buttonType="submit"
@@ -171,7 +177,8 @@ function Profile() {
                             {alertMessage &&
                                 <AlertBox
                                     message={alertMessage}
-                                />}
+                                />
+                            }
                         </section>
                     </section>
                 </section>

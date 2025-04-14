@@ -16,8 +16,13 @@ function AuthContextProvider({children}) {
 
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
+
         if (storedToken && checkTokenValidity(storedToken)) {
-            void login(storedToken);
+            void login(storedToken).catch((err) => {
+                if (err.response && err.response.status === 401) {
+                    logout();
+                }
+            });
         } else {
             void logout();
         }
