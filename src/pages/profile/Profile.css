@@ -6,11 +6,17 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
     5. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
-
+:root {
+    --main-color-profile: #360f5b;
+    --light-color-profile: #954bc7;
+}
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -20,42 +26,46 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.general-button {
-    width: fit-content;
-    padding: 20px 50px;
-    border: none;
-    border-radius: 34px;
-    color: var(--light-text);
-    background-color: var(--header-background);
+.profile-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 0;
+    gap: 50px;
+}
+
+.profile-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-details-title {
     font-weight: 500;
-    font-size: 1rem;
-    font-style: normal;
-    line-height: 100%;
-    cursor: pointer;
-    transition: all .15s ease-in-out ;
 }
 
-.general-button:hover {
-    transform: scale(1.03);
+.profile-details-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
 }
 
-.general-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    transform: none;
+.profile-block {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    padding: 40px;
+    width: 50%;
+    border-radius: 20px;
+    gap: 50px;
+    height: 100%;
 }
 
-.general-button.charizard {
-    background-color: var(--main-color-homepage);
-}
-
-.general-button.lucario,
-.general-button.snorlax{
-    background-color: #057DA3;
-}
-
-.general-button.mimikyu {
-    background-color: var(--light-color-profile);
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

@@ -6,6 +6,9 @@
         3.1 Reusables
         3.2 Other
     4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
     5. Media Queries
 ////////////////////////*/
 
@@ -20,42 +23,18 @@
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-.general-button {
-    width: fit-content;
-    padding: 20px 50px;
-    border: none;
-    border-radius: 34px;
-    color: var(--light-text);
-    background-color: var(--header-background);
-    font-weight: 500;
-    font-size: 1rem;
-    font-style: normal;
-    line-height: 100%;
-    cursor: pointer;
+.alert-box {
+    background-color: var(--global-background);
+    opacity: 90%;
+    border-radius: 30px;
+    color: var(--dark-text);
+    text-transform: none;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: all .15s ease-in-out ;
-}
-
-.general-button:hover {
-    transform: scale(1.03);
-}
-
-.general-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    transform: none;
-}
-
-.general-button.charizard {
-    background-color: var(--main-color-homepage);
-}
-
-.general-button.lucario,
-.general-button.snorlax{
-    background-color: #057DA3;
-}
-
-.general-button.mimikyu {
-    background-color: var(--light-color-profile);
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

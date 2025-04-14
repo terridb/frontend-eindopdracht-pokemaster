@@ -29,15 +29,14 @@ nav {
     width: 100%;
     padding: 5px 0;
     font-weight: 700;
-    border: 2px dashed #7f7fd5;
-    z-index: 1;
+    z-index: 2;
 }
 
 .white-logo {
     height: 45px;
 }
 
-ul {
+nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -75,7 +74,20 @@ ul {
     text-decoration: none;
 }
 
-.nav-link{
-    color: var(--light-text);
+.profile-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
+}
+
+.popup-container {
+    position: absolute;
+    top: 50px;
+    right: 40px;
 }
 /* ------------------------------- 5. Media Queries -------------------------------- */
