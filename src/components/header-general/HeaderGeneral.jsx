@@ -1,17 +1,17 @@
-import "./HeaderGeneral.css"
+import "./HeaderGeneral.css";
 import Navigation from "../navigation/Navigation.jsx";
 import GeneralButton from "../general-button/GeneralButton.jsx";
 
 function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, buttonType, onClick}) {
 
     return (
-        <header>
-            <div className="outer-container header">
+        <header className="general-header">
+            <section className="outer-container">
                 <Navigation/>
-                <div className="small-inner-container header">
-                    <div className="header-text-wrapper">
+                <div className="general-header-content-container">
+                    <div className="general-header-text-container">
                         <h1>{title}</h1>
-                        <p className="header-text">{text}</p>
+                        <p className="general-header-text">{text}</p>
                         {buttonType &&
                             <GeneralButton
                                 buttonText={buttonText}
@@ -20,12 +20,12 @@ function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, butto
                                 onClick={onClick}
                             />}
                     </div>
-                    <span className="header-image-wrapper">
-                        <img className="header-image" src={headerImage} alt={pokemonName}/>
-                    </span>
+                    <figure className="general-header-image-container">
+                        <img className="general-header-image" src={headerImage} alt={pokemonName}/>
+                    </figure>
                 </div>
-                <div className={`header-color-block ${pokemonName}`}/>
-            </div>
+                <div className={`general-header-color-block ${pokemonName}`}/>
+            </section>
         </header>
     );
 }

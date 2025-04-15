@@ -97,14 +97,14 @@ function Home() {
                 onClick={() => navigate("/login")}
             />
             <main>
-                <section className="outer-container home">
-                    <div className="small-inner-container home">
+                <section className="outer-container">
+                    <div className="home-content-container">
                         <h2>What do you want to do?</h2>
-                        <div className="home-buttons-container">
+                        <section className="home-buttons-container">
                             <IllustratedButton
                                 title="Pokédex"
                             />
-                            <div className="searchbar-section home">
+                            <section className="home-searchbar-container">
                                 <IllustratedSearchbar
                                     image={pikachu}
                                     imageDescription="Detective Pikachu"
@@ -124,11 +124,11 @@ function Home() {
                                         visualType="layered"
                                     />
                                 )}
-                            </div>
+                            </section>
                             <IllustratedButton
                                 title="Battlemaster"
                             />
-                        </div>
+                        </section>
                     </div>
                 </section>
             </main>

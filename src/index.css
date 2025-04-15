@@ -8,9 +8,7 @@
         3.1 Reusables
         3.2 Other
     4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
+        4.1 Type colors
     5. Media Queries
 ////////////////////////*/
 
@@ -53,7 +51,7 @@
 html {
     font-family: "Roboto", Arial, serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 body {
@@ -98,7 +96,7 @@ a {
     width: fit-content;
 }
 
-ul{
+ul {
     list-style: none;
 }
 
@@ -132,6 +130,8 @@ h5, nav {
     align-items: center;
     height: 100%;
     width: 100%;
+    padding: 0 var(--general-side-margin);
+    /*border: 2px dashed blue;*/
 }
 
 .small-inner-container {
@@ -159,7 +159,7 @@ h5, nav {
 /* --------------- 3.2 Other --------------------------- */
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
-/* --------------- 4. Type colors ----------------------- */
+/* --------------- 4.1 Type colors ----------------------- */
 .pokemon-type-color.normal {
     --type-color: var(--normal);
 }
@@ -237,3 +237,40 @@ h5, nav {
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+
+    .outer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 0 var(--general-side-margin);
+    }
+
+    .small-inner-container {
+        display: flex;
+        /*margin: 0 var(--general-side-margin);*/
+        max-width: 1300px;
+        /*width: calc(100% - 2 * var(--general-side-margin));*/
+        z-index: 1;
+        flex-grow: 0;
+        flex-shrink: 1;
+        border: 2px dashed red;
+    }
+
+    .large-inner-container {
+        display: flex;
+        flex-direction: row;
+        max-width: 1800px;
+        width: calc(100% - 2 * var(--general-side-margin));
+        flex-grow: 0;
+        flex-shrink: 1;
+        margin: 55px 0;
+        border: 2px dashed orange;
+    }
+
+}

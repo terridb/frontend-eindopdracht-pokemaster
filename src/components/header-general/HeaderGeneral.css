@@ -1,107 +1,121 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 HeaderGeneral
-        4.2 Color block
-        etc.
-    5. Media Queries
+    1. HeaderGeneral Styles
+    2. Color block
+    3. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-/* --------------- 4.1 HeaderGeneral ------------------- */
-header {
+/* ------------------------------- 1. HeaderGeneral Styles -------------------------------- */
+.general-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--light-text);
     background-color: var(--header-background);
-    height: 600px;
+    height: 350px;
     position: relative;
     flex-shrink: 0;
     flex-grow: 0;
 }
 
-.outer-container.header {
-    gap: 30px;
-    padding: 0 var(--general-side-margin);
-}
-
-.small-inner-container.header {
-    padding: 0 50px;
+.general-header-content-container {
+    max-width: 300px;
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    position: relative;
 }
 
-.header-text-wrapper {
+.general-header-text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-basis: 450px;
+    flex-basis: 175px;
     gap: 10px;
-    flex-grow: 0;
-    flex-shrink: 1;
 }
 
-.header-text {
+.general-header-text {
     font-size: 1.375rem;
-    margin: 0 0 40px 0;
+    margin: 0 0 10px 0;
 }
 
-.header-image-wrapper {
-    max-width: 600px;
-    width: auto;
-    max-height: 485px;
-    height: 100%;
-    border: 2px dashed yellow;
-    object-fit: contain;
+.general-header-image-container {
+    height: 170px;
+    overflow: hidden;
+    position: absolute;
+    right: -110px;
+    top: 0;
 }
 
-.header-image {
+.general-header-image {
     max-width: 100%;
     max-height: 100%;
 }
 
-/* --------------- 4.2 Color block ------------------- */
-.header-color-block {
-    width: 1040px;
-    height: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 58% 100%);
+.general-header-color-block {
+    width: 100%;
+    height: 80px;
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: -40px;
     z-index: 0;
+    clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 50%);
 }
 
-.header-color-block.charizard {
+/* ------------------------------- 2. Color block -------------------------------- */
+
+.general-header-color-block.charizard {
     background: linear-gradient(-45deg, var(--main-color-homepage) 0%, var(--light-color-homepage) 100%);
 }
 
-.header-color-block.mew {
+.general-header-color-block.mew {
     background: linear-gradient(-45deg, var(--main-color-pokedex) 0%, var(--light-color-pokedex) 100%);
 }
 
-.header-color-block.lucario {
+.general-header-color-block.lucario {
     background: linear-gradient(-45deg, var(--main-color-battlemaster) 0%, var(--light-color-battlemaster) 100%);
 }
 
-.header-color-block.mimikyu {
+.general-header-color-block.mimikyu {
     background: linear-gradient(-45deg, var(--main-color-profile) 0%, var(--light-color-profile) 100%);
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 3. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .general-header {
+        height: 600px;
+    }
+
+    .general-header-content-container {
+        max-width: 1300px;
+        padding: 0 50px;
+    }
+
+    .general-header-text-container {
+        flex-basis: 450px;
+    }
+
+    .general-header-text {
+        margin: 0 0 40px 0;
+    }
+
+    .general-header-image-container {
+        height: 100%;
+        max-width: 600px;
+        max-height: 485px;
+        position: relative;
+        object-fit: contain;
+        right: 0;
+    }
+
+    .general-header-color-block {
+        width: 1040px;
+        height: 100%;
+        top: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 58% 100%);
+    }
+}

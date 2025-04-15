@@ -1,48 +1,26 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-    5. Media Queries
+    1. GeneralButton Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- 1. GeneralButton Styles -------------------------------- */
 
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
 .general-button {
     width: fit-content;
-    padding: 20px 50px;
+    padding: 15px 35px;
     border: none;
-    border-radius: 34px;
+    border-radius: 35px;
     color: var(--light-text);
     background-color: var(--header-background);
     font-weight: 500;
     font-size: 1rem;
-    font-style: normal;
     line-height: 100%;
-    cursor: pointer;
-    transition: all .15s ease-in-out ;
-}
-
-.general-button:hover {
-    transform: scale(1.03);
 }
 
 .general-button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-    transform: none;
 }
 
 .general-button.charizard {
@@ -58,4 +36,19 @@
     background-color: var(--light-color-profile);
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .general-button {
+        padding: 20px 50px;
+        cursor: pointer;
+        transition: all .15s ease-in-out;
+    }
+
+    .general-button:hover {
+        transform: scale(1.03);
+    }
+
+    .general-button:disabled {
+        transform: none;
+    }
+}

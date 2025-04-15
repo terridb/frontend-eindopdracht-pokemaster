@@ -1,4 +1,4 @@
-import "./SocialIcon.css"
+import "./SocialIcon.css";
 
 function SocialIcon({link, image, title}) {
     return (
