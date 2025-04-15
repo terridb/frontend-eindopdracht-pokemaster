@@ -65,6 +65,7 @@ function AuthContextProvider({children}) {
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("favorites");
         setAuth({
             isAuth: false,
             user: null,

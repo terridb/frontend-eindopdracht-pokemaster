@@ -3,6 +3,8 @@ import {capitalizeFirstLetter, writePokedexNumber} from "../../helpers/changeTex
 import TypeCard from "../type-card/TypeCard.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
+import {Link} from "react-router-dom";
 
 function PokemonCard({endpoint}) {
     const [loading, toggleLoading] = useState(false);
@@ -35,19 +37,24 @@ function PokemonCard({endpoint}) {
                     className="pokemon-card-image"
                     src={pokemon.sprites?.other?.[`official-artwork`]?.[`front_default`]}
                     alt={`Image of ${pokemon.name}`}/>
+                    <FavoriteButton
+                        pokemon={pokemon}
+                    />
             </figure>
-            <div className="pokemon-card-details">
-                <p className="pokemon-card-number">{writePokedexNumber(pokemon.id)}</p>
-                <h5>{capitalizeFirstLetter(pokemon.name)}</h5>
-                <ul className="pokemon-card-type-wrapper">
-                    {pokemon.types?.map((type, index) => (
-                        <TypeCard
-                            pokemonType={type.type.name}
-                            key={index}
-                        />
-                    ))}
-                </ul>
-            </div>
+            <Link to={`/pokedex/${pokemon.id}`}>
+                <div className="pokemon-card-details">
+                    <p className="pokemon-card-number">{writePokedexNumber(pokemon.id)}</p>
+                    <h5>{capitalizeFirstLetter(pokemon.name)}</h5>
+                    <ul className="pokemon-card-type-wrapper">
+                        {pokemon.types?.map((type, index) => (
+                            <TypeCard
+                                pokemonType={type.type.name}
+                                key={index}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            </Link>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
         </article>

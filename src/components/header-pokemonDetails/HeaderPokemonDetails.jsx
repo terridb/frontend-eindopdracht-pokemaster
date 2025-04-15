@@ -3,6 +3,7 @@ import Navigation from "../navigation/Navigation.jsx";
 import {writeCleanText, writePokedexNumber} from "../../helpers/changeText.js";
 import TypeCard from "../type-card/TypeCard.jsx";
 import {makeImmunitiesArray, makeResistancesArray, makeWeaknessArray} from "../../helpers/getPokemonDetails.jsx";
+import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 
 function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loading, error, header}) {
     return (
@@ -53,13 +54,13 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                 </ul>
                             </div>
                         </div>
-                        <div className="pokemon-details-image-wrapper">
+                        <figure className="pokemon-details-image-wrapper">
                             <img
                                 className="pokemon-details-image"
                                 src={pokemon.sprites?.other?.[`official-artwork`]?.[`front_default`]}
                                 alt={`Image of ${pokemon.name}`}/>
-
-                        </div>
+                            <FavoriteButton pokemon={pokemon}/>
+                        </figure>
                         <div className={`pokedex-colorblock pokemon-type-color ${typeOne.name}`}/>
                         {header === "battlemaster" ?
                             <div className="pokemon-details mirrored">
