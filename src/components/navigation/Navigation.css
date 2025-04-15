@@ -1,25 +1,10 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-    5. Media Queries
+    1. Navigation Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
+/* ------------------------------- 1. Navigation Styles -------------------------------- */
 nav {
     display: flex;
     flex-direction: row;
@@ -27,27 +12,21 @@ nav {
     align-items: center;
     text-transform: uppercase;
     width: 100%;
-    padding: 5px 0;
+    padding: 15px 0 0 0;
     font-weight: 700;
     z-index: 2;
+    font-size: 1.25rem;
 }
 
 .white-logo {
-    height: 45px;
-}
-
-nav ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 100px;
+    height: 30px;
 }
 
 .nav-pages {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 100px;
+    gap: 15px;
 }
 
 .nav-profile-buttons {
@@ -57,15 +36,10 @@ nav ul {
     gap: 38px;
 }
 
-.profile-picture {
-    width: 32px;
-    border-radius: 50%;
-}
-
 .active-menu-link {
     color: var(--light-text);
     text-decoration: underline;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 1px;
     text-underline-offset: 10px;
 }
 
@@ -85,9 +59,72 @@ nav ul {
     position: relative;
 }
 
-.popup-container {
+.nav-desktop {
+    display: none;
+}
+
+.nav-dropdown-mobile {
     position: absolute;
     top: 50px;
-    right: 40px;
+    left: 0;
+    width: 100vw;
+    background-color: var(--header-background);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px var(--general-side-margin);
+    z-index: 5;
+    border-bottom: 3px solid var(--small-details);
 }
-/* ------------------------------- 5. Media Queries -------------------------------- */
+
+.nav-hamburger-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-button-dropdown {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    nav {
+        padding: 5px 0;
+        font-size: 1.125rem;
+    }
+
+    .white-logo {
+        height: 45px;
+    }
+
+    .nav-desktop-items {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        gap: 100px;
+    }
+
+    .nav-pages {
+        gap: 100px;
+    }
+
+    .active-menu-link {
+        text-decoration-thickness: 3px;
+    }
+
+    .popup-container {
+        position: absolute;
+        top: 50px;
+        right: 40px;
+    }
+
+    .nav-mobile {
+        display: none;
+    }
+}
