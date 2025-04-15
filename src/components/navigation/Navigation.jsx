@@ -1,5 +1,5 @@
 import "./Navigation.css";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import whiteLogo from "../../assets/logo/logo-white.png";
 import FavoriteIcon from "../favorite-icon/FavoriteIcon.jsx";
 import {useContext, useState} from "react";
@@ -13,6 +13,8 @@ function Navigation() {
     const [showPopup, setShowPopup] = useState(false);
     const [logOutMessage, setLogOutMessage] = useState("");
     const [mobileMenu, toggleMobileMenu] = useState(false);
+
+    const navigate = useNavigate();
 
     const switchMobileMenu = () => {
         toggleMobileMenu(!mobileMenu);
@@ -120,14 +122,19 @@ function Navigation() {
                         <Link to={"/login"} className="nav-link">Sign in</Link>
                     </div>
                 ) : (
-                    <div className="nav-profile-buttons">
-                        <div className="nav-desktop">
+                    <>
+                        <div className="nav-profile-buttons nav-desktop">
                             <FavoriteIcon/>
+                            <button className="profile-button" onClick={togglePopup}>
+                                {user.username}
+                            </button>
                         </div>
-                        <button className="profile-button" onClick={togglePopup}>
-                            {user.username}
-                        </button>
-                    </div>
+                        <div className="nav-profile-buttons nav-mobile">
+                            <button className="profile-button" onClick={() => navigate("/profile")}>
+                                {user.username}
+                            </button>
+                        </div>
+                    </>
                 )}
                 {showPopup && isAuth &&
                     <div className={"popup-container nav-desktop"}>
