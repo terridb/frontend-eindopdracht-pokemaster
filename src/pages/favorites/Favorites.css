@@ -1,36 +1,15 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. Favorites Styles
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-
+/* ------------------------------- 1. Favorites Styles -------------------------------- */
 .favorites-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    border: dashed red 2px;
-    margin: var(--general-side-margin);
     gap: 20px;
+    min-height: 400px;
+    margin: 50px 0;
 }
-
-/* ------------------------------- 5. Media Queries -------------------------------- */
