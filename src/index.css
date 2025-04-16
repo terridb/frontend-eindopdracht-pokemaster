@@ -132,6 +132,7 @@ h5 {
     width: 100%;
     padding: 0 var(--general-side-margin);
     /*border: 2px dashed blue;*/
+    overflow: hidden;
 }
 
 .small-inner-container {

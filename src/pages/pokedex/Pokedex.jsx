@@ -124,14 +124,14 @@ function Pokedex() {
             />
             <main>
                 <section className="outer-container">
-                    <div className="large-inner-container pokedex">
-                        <section className="filter-section">
-                            <h2>Filters</h2>
-                            <TypeFilters/>
-                            <div className="filter-section-gen">
-                                <h3>Generation</h3>
-                            </div>
-                        </section>
+                    {/*<div className="large-inner-container pokedex">*/}
+                        {/*<section className="filter-section">*/}
+                        {/*    <h2>Filters</h2>*/}
+                        {/*    <TypeFilters/>*/}
+                        {/*    <div className="filter-section-gen">*/}
+                        {/*        <h3>Generation</h3>*/}
+                        {/*    </div>*/}
+                        {/*</section>*/}
                         <section className="pokemon-search-section">
                             <section className="pokemon-search">
                                 <Searchbar
@@ -155,7 +155,7 @@ function Pokedex() {
                                 handleLoadMore={handleLoadMore}
                             />
                         </section>
-                    </div>
+                    {/*</div>*/}
                 </section>
             </main>
             <Footer/>
