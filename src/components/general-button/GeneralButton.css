@@ -37,7 +37,7 @@
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 992px) {
     .general-button {
         padding: 20px 50px;
         cursor: pointer;

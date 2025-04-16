@@ -39,6 +39,32 @@
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 992px) {
+    .searchbar {
+        height: auto;
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .searchbar-button {
+        cursor: pointer;
+        height: 85px;
+        transition: all .15s ease-in-out;
+    }
+
+    .searchbar-button:hover {
+        background-color: var(--global-background);
+    }
+
+    .searchbar-button:disabled {
+        cursor: not-allowed;
+    }
+
+    .searchbar-reset-button {
+        cursor: pointer;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .searchbar {
         height: auto;

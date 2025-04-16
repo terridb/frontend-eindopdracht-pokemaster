@@ -50,7 +50,7 @@ th:nth-child(5), td:nth-child(5) {
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
     th:nth-child(1), td:nth-child(1) {
         padding-left: 40px;
     }

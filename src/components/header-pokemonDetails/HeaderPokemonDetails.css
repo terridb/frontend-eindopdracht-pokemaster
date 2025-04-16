@@ -34,7 +34,6 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    border: dashed 2px lightgreen;
 }
 
 .pokemon-details-name {
@@ -70,6 +69,7 @@
 .pokemon-details-description {
     width: 100%;
     padding: 30px;
+    text-align: center;
 }
 
 .pokedex-colorblock {
@@ -84,11 +84,27 @@
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
+    .pokemon-details-section {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .pokemon-details-image {
+        width: 60%;
+    }
+
+    .pokedex-colorblock {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media screen and (min-width: 992px) {
     .pokemon-details-section {
         flex-direction: row;
         justify-content: space-between;
-        max-width: 1300px;
+        max-width: 820px;
     }
 
     .pokemon-details-container {
@@ -97,7 +113,6 @@
         align-items: flex-start;
         text-align: start;
         width: 30%;
-        border: dashed 2px lightgreen;
     }
 
     .pokemon-details-container.mirrored {
@@ -120,7 +135,7 @@
     }
 
     .pokemon-details-image-wrapper {
-        width: 410px;
+        width: 350px;
         margin: 0 40px;
         order: 0;
     }
@@ -131,6 +146,30 @@
 
     .pokemon-details-description {
         width: 30%;
+        text-align: left;
+    }
+
+    .pokedex-colorblock {
+        width: 280px;
+        height: 280px;
+        right: calc(50% - (280px / 2));
+        top: calc(50% - (280px / 2));
+    }
+
+    .pokemon-details-type.mirrored {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pokemon-details-section {
+        max-width: 1300px;
+    }
+
+    .pokemon-details-image-wrapper {
+        width: 410px;
     }
 
     .pokedex-colorblock {
@@ -138,11 +177,5 @@
         height: 350px;
         right: calc(50% - (350px / 2));
         top: calc(50% - (350px / 2));
-    }
-
-    .pokemon-details-type.mirrored {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
     }
 }

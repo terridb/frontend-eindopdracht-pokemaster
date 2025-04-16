@@ -1,7 +1,6 @@
 /*////////////////////////
     Table of Contents
     1. PokemonInformation Styles
-    2. Media Queries
 ////////////////////////*/
 
 /* ------------------------------- 1. PokemonInformation Styles -------------------------------- */
@@ -41,5 +40,3 @@
     flex-direction: column;
     gap: 10px;
 }
-
-/* ------------------------------- 2. Media Queries -------------------------------- */

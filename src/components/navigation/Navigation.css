@@ -93,7 +93,7 @@ nav {
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 992px) {
     nav {
         padding: 5px 0;
         font-size: 1.125rem;

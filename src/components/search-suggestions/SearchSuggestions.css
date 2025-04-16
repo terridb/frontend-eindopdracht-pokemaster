@@ -1,25 +1,11 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-    5. Media Queries
+    1. SearchSuggestions Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- 1. SearchSuggestions Styles -------------------------------- */
 
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
 .suggestions-container {
     display: flex;
     flex-direction: column;
@@ -31,7 +17,7 @@
 
 .suggestions-container.layered {
     position: absolute;
-    top: 385px;
+    top: 240px;
 }
 
 .suggestions-container.standalone {
@@ -54,4 +40,16 @@
     background-color: var(--small-details)
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 768px) {
+    .suggestions-container.layered {
+        position: absolute;
+        top: 235px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .suggestions-container.layered {
+        top: 385px;
+    }
+}

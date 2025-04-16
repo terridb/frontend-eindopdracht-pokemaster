@@ -7,7 +7,11 @@
 /* ------------------------------- 1. MovesTableItem Styles -------------------------------- */
 .table-item {
     background-color: #FFF;
-    height: 60px;
+    height: 75px;
+}
+
+.result-table-stats {
+    text-align: center;
 }
 
 tr:first-child td:first-child {
@@ -27,15 +31,7 @@ tr:last-child td:last-child {
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
-    .table-item {
-        height: 75px;
-    }
-
-    .result-table-stats {
-        text-align: center;
-    }
-
+@media screen and (min-width: 768px) {
     tr:first-child td:first-child {
         border-top-left-radius: 50px;
     }
@@ -51,5 +47,4 @@ tr:last-child td:last-child {
     tr:last-child td:last-child {
         border-bottom-right-radius: 50px;
     }
-
 }

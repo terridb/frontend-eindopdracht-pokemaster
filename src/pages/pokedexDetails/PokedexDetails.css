@@ -34,10 +34,16 @@
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
+    .pokemon-information-container {
+        gap: 60px;
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (min-width: 992px) {
     .pokemon-information-section {
-        flex-direction: row;
-        max-width: 1800px;
+        max-width: 800px;
     }
 
     .pokemon-information-container {
@@ -46,5 +52,12 @@
         min-width: 650px;
         max-width: 770px;
         gap: 40px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pokemon-information-section {
+        flex-direction: row;
+        max-width: 1800px;
     }
 }

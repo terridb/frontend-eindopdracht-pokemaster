@@ -1,4 +1,3 @@
-import "./FavoriteIcon.css";
 import {Link} from "react-router-dom";
 import {HeartStraight} from "@phosphor-icons/react";
 

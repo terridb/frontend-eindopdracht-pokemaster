@@ -47,11 +47,10 @@
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
-
+@media screen and (min-width: 768px) {
     .home-content-container {
         margin: 50px 0 100px 0;
-        max-width: 1300px;
+        max-width: 500px;
         gap: 50px;
         position: relative;
     }
@@ -60,10 +59,20 @@
         content: "";
         display: block;
         height: 4px;
-        width: 400px;
+        width: 350px;
         background-color: var(--dark-text);
         position: absolute;
         top: 40px;
+    }
+
+    .home-searchbar-container {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .home-content-container {
+        max-width: 1300px;
     }
 
     .home-buttons-container {
@@ -74,5 +83,10 @@
         width: 400px;
         order: 0;
     }
+}
 
+@media screen and (min-width: 1200px) {
+    .home-content-container:after {
+        width: 400px;
+    }
 }

@@ -84,9 +84,9 @@
 }
 
 /* ------------------------------- 3. Media Queries -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
     .general-header {
-        height: 600px;
+        height: 400px;
         padding: 0;
     }
 
@@ -105,17 +105,47 @@
 
     .general-header-image-container {
         height: 100%;
-        max-width: 600px;
-        max-height: 485px;
+        max-width: 450px;
+        max-height: 350px;
         position: relative;
         object-fit: contain;
         right: 0;
     }
 
     .general-header-color-block {
-        width: 1040px;
+        width: 400px;
         height: 100%;
         top: 0;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 58% 100%);
     }
 }
+
+@media screen and (min-width: 992px) {
+    .general-header {
+        height: 500px;
+    }
+
+    .general-header-color-block {
+        width: 600px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .general-header {
+        height: 600px;
+    }
+
+    .general-header-color-block {
+        width: 1040px;
+    }
+
+    .general-header-image-container {
+        height: 100%;
+        max-width: 600px;
+        max-height: 500px;
+        position: relative;
+        object-fit: contain;
+        right: 0;
+    }
+}
+
