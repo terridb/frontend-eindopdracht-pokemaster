@@ -1,55 +1,92 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. Home styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- 1. Home Styles -------------------------------- */
 :root {
     --main-color-homepage: #F45F0E;
     --light-color-homepage: #FFAB4A;
 }
-/* ------------------------------- 2. Typography ----------------------------------- */
 
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-.outer-container.home {
-    padding: 50px 0;
-}
-
-.small-inner-container.home {
+.home-content-container {
+    margin: 100px 0 50px 0;
+    max-width: 300px;
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    gap: 50px;
-    text-align: center;
-    position: relative;
+    align-items: center;
+    gap: 30px;
 }
-/* --------------- 3.2 Other --------------------------- */
 
-/* ------------------------------- 4. Areas ---------------------------------------- */
 .home-buttons-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
 }
 
-.searchbar-section.home {
-    width: 400px;
+.home-searchbar-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
+    order: -1;
 }
 
 .error-message.home {
-    position: absolute;
-    top: 385px;
     width: 100%;
     padding: 20px 0;
+    position: absolute;
+    top: 385px;
+    text-align: center;
 }
-/* ------------------------------- 5. Media Queries -------------------------------- */
+
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 768px) {
+    .home-content-container {
+        margin: 50px 0 100px 0;
+        max-width: 500px;
+        gap: 50px;
+        position: relative;
+    }
+
+    .home-content-container:after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 350px;
+        background-color: var(--dark-text);
+        position: absolute;
+        top: 40px;
+    }
+
+    .home-searchbar-container {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .home-content-container {
+        max-width: 1300px;
+    }
+
+    .home-buttons-container {
+        flex-direction: row;
+    }
+
+    .home-searchbar-container {
+        width: 400px;
+        order: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .home-content-container:after {
+        width: 400px;
+    }
+}

@@ -2,7 +2,7 @@ import "./Profile.css";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
-import mimikyu from "../../assets/images/mimikyu.png"
+import mimikyu from "../../assets/images/mimikyu.png";
 import Footer from "../../components/footer/Footer.jsx";
 import {useNavigate} from "react-router-dom";
 import InputField from "../../components/input-field/InputField.jsx";
@@ -79,7 +79,7 @@ function Profile() {
 
     const handleChangeTab = () => {
         changeTab === "email" ? setChangeTab("password") : setChangeTab("email");
-    }
+    };
 
     return (
         <>
@@ -94,7 +94,7 @@ function Profile() {
             />
             <main>
                 <section className="outer-container">
-                    <section className="small-inner-container profile-section">
+                    <section className="profile-block-container">
                         <section className="profile-block">
                             <h2>Your details</h2>
                             <ul className="profile-details-list">
@@ -160,7 +160,7 @@ function Profile() {
                                     />
                                 </form>
                             }
-                            <div className="profile-section">
+                            <div className="profile-tabs">
                                 <GeneralButton
                                     buttonText="Change email"
                                     buttonType="submit"

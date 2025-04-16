@@ -1,72 +1,74 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. IllustratedButton Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
+/* ------------------------------- 1. IllustratedButton Styles ---------------------------------------- */
 .illustrated-button {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 350px;
-    height: 450px;
-    padding-bottom: 50px;
-    border-radius: 50px;
-    border: none;
-    background-repeat: no-repeat;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    color: var(--light-text);
     font-weight: 700;
     line-height: 140%;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
+    width: 240px;
+    height: 160px;
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: var(--light-text);
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 1.2);
     outline: none;
-    transition: all .15s ease-in-out ;
-}
-
-a {
-    text-decoration: none;
-}
-
-.illustrated-button:hover {
-    transform: scale(1.01);
 }
 
 .illustrated-button.pokedex {
     background-image: url("../../assets/images/pokedex-background.jpg");
     background-size: 120%;
-    background-position: center;
+    background-position: left -40px top -50px;
 
 }
 
 .illustrated-button.battlemaster {
     background-image: url("../../assets/images/pokemon-battle.png");
-    background-size: 180%;
-    background-position: 25%;
+    background-size: 160%;
+    background-position: left -25px top -45px;
 }
 
-/* --------------- 4.1 HeaderGeneral ------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 992px) {
+    .illustrated-button {
+        width: 280px;
+        height: 380px;
+        padding-bottom: 50px;
+        align-items: flex-end;
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        transition: all .15s ease-in-out;
+    }
 
-/* --------------- 4.2 Introduction ------------------- */
+    .illustrated-button:hover {
+        transform: scale(1.01);
+    }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+    .illustrated-button.pokedex {
+        background-position: center;
+    }
+
+    .illustrated-button.battlemaster {
+        background-size: 200%;
+        background-position: 25%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .illustrated-button {
+        width: 350px;
+        height: 450px;
+    }
+
+    .illustrated-button.battlemaster {
+        background-size: 180%;
+    }
+}

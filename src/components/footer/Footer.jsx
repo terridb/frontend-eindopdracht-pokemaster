@@ -1,4 +1,4 @@
-import "./Footer.css"
+import "./Footer.css";
 import {createCurrentYear} from "../../helpers/createDate.js";
 import SocialIcon from "../social-icon/SocialIcon.jsx";
 import {FacebookLogo, InstagramLogo, TiktokLogo, YoutubeLogo} from "@phosphor-icons/react";

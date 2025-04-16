@@ -1,38 +1,50 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. MovesTableItem Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
+/* ------------------------------- 1. MovesTableItem Styles -------------------------------- */
 .table-item {
     background-color: #FFF;
     height: 75px;
 }
 
-tr:first-child td:first-child { border-top-left-radius: 50px; }
-tr:first-child td:last-child { border-top-right-radius: 50px; }
-tr:last-child td:first-child { border-bottom-left-radius: 50px; }
-tr:last-child td:last-child { border-bottom-right-radius: 50px; }
+.result-table-stats {
+    text-align: center;
+}
 
+tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
 
+tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 768px) {
+    tr:first-child td:first-child {
+        border-top-left-radius: 50px;
+    }
+
+    tr:first-child td:last-child {
+        border-top-right-radius: 50px;
+    }
+
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 50px;
+    }
+
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 50px;
+    }
+}

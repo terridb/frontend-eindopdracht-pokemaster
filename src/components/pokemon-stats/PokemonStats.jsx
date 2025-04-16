@@ -2,7 +2,7 @@ import "./PokemonStats.css";
 
 function PokemonStats({stats, type}) {
     return (
-        <section className="pokemon-information-section stats">
+        <section className="pokemon-information-container stats">
             <ul className="pokemon-stats-list">
                 <h3>Stats</h3>
                 {stats.map((stat) => {

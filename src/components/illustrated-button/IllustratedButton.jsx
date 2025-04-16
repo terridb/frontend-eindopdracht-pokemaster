@@ -1,9 +1,9 @@
-import './IllustratedButton.css'
+import "./IllustratedButton.css";
 import {Link} from "react-router-dom";
 import {changeTextToSimple} from "../../helpers/changeText.js";
 
 function IllustratedButton({title}) {
-const simpleTitle = changeTextToSimple(title);
+    const simpleTitle = changeTextToSimple(title);
 
     return (
         <>

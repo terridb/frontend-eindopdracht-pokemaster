@@ -1,40 +1,29 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. IllustratedSearchbar Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-.illustration-searchbar {
-    width: 330px;
-}
-
-.illustrated-searchbar-wrapper {
+/* ------------------------------- 1. IllustratedSearchbar Styles -------------------------------- */
+.illustrated-searchbar-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 450px;
-    border: 2px dashed red;
+    height: 280px;
+    width: 100%;
+    max-width: 240px;
     position: relative;
+}
+
+.illustration-searchbar {
+    width: 200px;
+}
+
+.searchbar-outer-container {
+    position: absolute;
+    bottom: 45px;
+    width: 100%;
 }
 
 .illustrated-searchbar-title {
@@ -43,10 +32,29 @@
     align-items: center;
 }
 
-.searchbar-outer-container {
-    position: absolute;
-    bottom: 65px;
-    width: 100%;
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 992px) {
+    .illustrated-searchbar-container {
+        height: 370px;
+        max-width: 350px;
+    }
+
+    .illustration-searchbar {
+        width: 250px;
+    }
+
+    .searchbar-outer-container {
+        bottom: 65px;
+    }
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .illustrated-searchbar-container {
+        height: 450px;
+        max-width: 410px;
+    }
+
+    .illustration-searchbar {
+        width: 330px;
+    }
+}

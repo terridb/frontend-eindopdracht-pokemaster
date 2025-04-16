@@ -7,12 +7,12 @@ import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 
 function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loading, error, header}) {
     return (
-        <header>
-            <div className="outer-container header">
+        <header className="detailed-header">
+            <section className="outer-container">
                 <Navigation/>
                 {!loading && !error &&
-                    <div className="small-inner-container pokedex-details">
-                        <div className="pokemon-details">
+                    <section className="pokemon-details-section">
+                        <section className="pokemon-details-container">
 
                             {header === "battlemaster" ?
                                 <div className="pokemon-details-name">
@@ -42,7 +42,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                     ))}
                                 </ul>
                             </div>
-                            <div className="pokemon-details-weakness">
+                            <div className="pokemon-details-type">
                                 <h3>Weakness</h3>
                                 <ul className="pokemon-details-type-wrapper">
                                     {makeWeaknessArray(typeOne, typeTwo)?.map((type, index) => (
@@ -53,7 +53,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                     ))}
                                 </ul>
                             </div>
-                        </div>
+                        </section>
                         <figure className="pokemon-details-image-wrapper">
                             <img
                                 className="pokemon-details-image"
@@ -62,9 +62,10 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                             <FavoriteButton pokemon={pokemon}/>
                         </figure>
                         <div className={`pokedex-colorblock pokemon-type-color ${typeOne.name}`}/>
+
                         {header === "battlemaster" ?
-                            <div className="pokemon-details mirrored">
-                                <div className="pokemon-details-resistances">
+                            <section className="pokemon-details-container mirrored">
+                                <div className="pokemon-details-type mirrored">
                                     <h3>Immune to</h3>
                                     <ul className="pokemon-details-type-wrapper mirrored">
                                         {makeImmunitiesArray(typeOne, typeTwo)?.map((type, index) => (
@@ -86,7 +87,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
+                            </section>
                             :
                             <p className="pokemon-details-description">
                                 {writeCleanText(
@@ -96,9 +97,9 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                 )}
                             </p>
                         }
-                    </div>
+                    </section>
                 }
-            </div>
+            </section>
         </header>
     );
 }

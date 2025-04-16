@@ -1,4 +1,4 @@
-import "./IllustratedSearchBar.css"
+import "./IllustratedSearchBar.css";
 import Searchbar from "../searchbar/Searchbar.jsx";
 
 function IllustratedSearchBar({
@@ -13,7 +13,7 @@ function IllustratedSearchBar({
                                   handleReset
                               }) {
     return (
-        <div className="illustrated-searchbar-wrapper">
+        <section className="illustrated-searchbar-container">
             <img className="illustration-searchbar" src={image} alt={imageDescription}/>
             <div className="searchbar-outer-container">
                 <Searchbar
@@ -29,7 +29,7 @@ function IllustratedSearchBar({
                 <h3>{title}</h3>
                 <p>{subtitle}</p>
             </div>
-        </div>
+        </section>
     );
 }
 

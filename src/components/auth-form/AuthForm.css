@@ -1,57 +1,38 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. AuthForm Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
+/* ------------------------------- 1. AuthForm Styles -------------------------------- */
 .general-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
     width: 100%;
     margin: 15px 0;
+    font-size: 1.2rem;
 }
 
 .auth-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     position: relative;
-    min-height: calc(100vh);
+    min-height: 100vh;
     gap: 5px;
-    width: 410px;
+    width: 100%;
 }
 
 .auth-logo {
-    width: 220px;
+    width: 110px;
 }
 
 .auth-background-container {
     position: absolute;
     z-index: -1;
-    height: 325px;
-    right: 45px;
+    height: 85px;
     bottom: 0;
     overflow: hidden;
 }
@@ -73,8 +54,35 @@
 .auth-bottom-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 30px;
+    font-size: 1.35rem;
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 768px) {
+    .general-form {
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .auth-content {
+        align-items: center;
+        width: 410px;
+    }
+
+    .auth-logo {
+        width: 220px;
+    }
+
+    .auth-background-container {
+        height: 325px;
+        right: 45px;
+    }
+
+    .auth-bottom-section {
+        align-items: center;
+        font-size: 1rem;
+    }
+}

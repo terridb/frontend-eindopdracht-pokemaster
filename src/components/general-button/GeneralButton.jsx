@@ -1,4 +1,4 @@
-import './GeneralButton.css'
+import './GeneralButton.css';
 
 function GeneralButton({pokemonName, buttonText, buttonType, onClick, disabled}) {
     return (

@@ -1,4 +1,4 @@
-import './Searchbar.css'
+import "./Searchbar.css";
 import {MagnifyingGlass, X} from "@phosphor-icons/react";
 
 function SearchBar({placeholder, onChange, value, handleSubmit, handleReset}) {
