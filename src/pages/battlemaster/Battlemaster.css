@@ -1,81 +1,71 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. Battlemaster Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- 1. Battlemaster Styles -------------------------------- */
 :root {
     --main-color-battlemaster: #3C3DAA;
     --light-color-battlemaster: #01C1E5;
 }
-/* ------------------------------- 2. Typography ----------------------------------- */
+
 .quiz-question {
     font-weight: 700;
     font-size: 1.25rem;
 }
-/* ------------------------------- 3. Layout --------------------------------------- */
 
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-.small-inner-container.battlemaster {
+.battlemaster-quiz-container {
     flex-direction: column;
     align-items: center;
+    display: flex;
+    max-width: 300px;
+    width: 100%;
+    z-index: 1;
+    flex-grow: 0;
+    flex-shrink: 1;
 }
 
 .battlemaster-quiz {
     margin: 65px 0;
     display: flex;
-    flex-direction: row;
-    height: 460px;
-    max-width: 1230px;
+    flex-direction: column;
+    height: auto;
     width: 100%;
     background-color: #FFF;
     border-radius: 50px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .quiz-image {
-    height: 100%;
-    width: 350px;
+    height: 150px;
+    width: 100%;
     object-fit: cover;
-    object-position: 40%;
-    border-radius: 50px 0 0 50px;
+    border-radius: 50px 50px 0 0;
 }
 
 .quiz-questions {
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    gap: 20px;
     height: 100%;
-    padding: 75px 0 140px 85px;
+    padding: 20px 10px;
     width: 100%;
-    border: 2px dashed red;
 }
 
 .quiz-gen-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .quiz-button-container {
     display: flex;
     flex-direction: column;
-    padding: 0 55px 40px 0;
-    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 0;
     min-width: 225px;
 }
 
@@ -83,7 +73,44 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 400px;
+    width: 100%;
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .battlemaster-quiz-container {
+        max-width: 1300px;
+    }
+
+    .battlemaster-quiz {
+        flex-direction: row;
+        height: 460px;
+        justify-content: space-between;
+    }
+
+    .quiz-image {
+        height: 100%;
+        width: 350px;
+        object-position: 40%;
+        border-radius: 50px 0 0 50px;
+    }
+
+    .quiz-questions {
+        gap: 45px;
+        padding: 75px 0 140px 85px;
+    }
+
+    .quiz-gen-container {
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .quiz-button-container {
+        padding: 0 55px 40px 0;
+        justify-content: flex-end;
+    }
+
+    .searchbar-section.battlemaster {
+        width: 400px;
+    }
+}

@@ -156,7 +156,7 @@ function Battlemaster() {
             />
             <main>
                 <section className="outer-container">
-                    <div className="small-inner-container battlemaster">
+                    <div className="battlemaster-quiz-container">
                         <section className="battlemaster-quiz">
                             <img
                                 className="quiz-image"
