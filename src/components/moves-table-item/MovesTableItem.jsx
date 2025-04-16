@@ -28,25 +28,45 @@ function MovesTableItem({endpoint}) {
 
     }, [endpoint]);
 
-    return (
-        <tr className="table-item">
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error.message}</p>}
-            {move && !loading && !error &&
-                <>
-                    <td>{capitalizeFirstLetter((move?.name || "").replaceAll("-", " "))}</td>
-                    <td>
-                        <div className="cell-type-container">
-                            <TypeCard pokemonType={move?.type?.name}/>
-                        </div>
-                    </td>
-                    <td className="result-table-stats">{move?.power}</td>
-                    <td className="result-table-stats">{move?.accuracy}</td>
-                    <td className="result-table-stats">{move?.pp}</td>
-                </>
-            }
-        </tr>
-    );
+    if (loading) {
+        return (
+            <tr className="table-item">
+                <td>Loading...</td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+            </tr>
+        )
+    }
+
+    if (error) {
+        return (
+            <tr className="table-item">
+                <td>Error: {error.message}</td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+                <td className="result-table-stats"></td>
+            </tr>
+        )
+    }
+
+    if (move) {
+        return (
+            <tr className="table-item">
+                <td>{capitalizeFirstLetter((move?.name || "").replaceAll("-", " "))}</td>
+                <td>
+                    <div className="cell-type-container">
+                        <TypeCard pokemonType={move?.type?.name}/>
+                    </div>
+                </td>
+                <td className="result-table-stats">{move?.power}</td>
+                <td className="result-table-stats">{move?.accuracy}</td>
+                <td className="result-table-stats">{move?.pp}</td>
+            </tr>
+        )
+    }
 }
 
 export default MovesTableItem;

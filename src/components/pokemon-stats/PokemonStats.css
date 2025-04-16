@@ -1,38 +1,24 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-
-    5. Media Queries
+    1. PokemonStats Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
+/* ------------------------------- 1. PokemonStats Styles -------------------------------- */
 .stat-name {
     text-transform: uppercase;
     font-weight: 500;
 }
-/* ------------------------------- 3. Layout --------------------------------------- */
 
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-.pokemon-information-section.stats {
-    min-width: 390px;
-    max-width: 700px;
+.pokemon-information-container.stats {
+    width: 100%;
 }
 
 .pokemon-stats-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
 }
 
 .stat-item {
@@ -44,7 +30,7 @@
 }
 
 .stat-name {
-    width: 40%;
+    width: 45%;
 }
 
 .stat-value {
@@ -62,4 +48,14 @@
     background-color: var(--type-color);
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .pokemon-information-container.stats {
+        min-width: 390px;
+        max-width: 700px;
+    }
+
+    .stat-name {
+        width: 40%;
+    }
+}

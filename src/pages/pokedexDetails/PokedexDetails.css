@@ -1,51 +1,50 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 HeaderGeneral
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. PokedexDetails Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
+/* ------------------------------- 1. PokedexDetails Styles -------------------------------- */
 .pokemon-information-section {
     font-size: 1.375rem;
-}
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-.large-inner-container.pokemon-overview {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    flex-direction: row;
+    max-width: 1800px;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin: 55px 0;
 }
 
-.pokemon-information-section {
+.pokemon-information-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    height: 410px;
+    justify-content: center;
     background-color: #FFF;
     border-radius: 50px;
-    min-width: 650px;
-    max-width: 770px;
+    width: 100%;
     padding: 35px;
     overflow: hidden;
-    gap: 40px;
     flex-shrink: 1;
     flex-grow: 1;
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .pokemon-information-section {
+        flex-direction: row;
+        max-width: 1800px;
+    }
+
+    .pokemon-information-container {
+        flex-direction: column;
+        height: 410px;
+        min-width: 650px;
+        max-width: 770px;
+        gap: 40px;
+    }
+}

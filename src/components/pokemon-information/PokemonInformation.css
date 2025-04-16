@@ -1,27 +1,22 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-    5. Media Queries
+    1. PokemonInformation Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- 1. PokemonInformation Styles -------------------------------- */
+.pokemon-information-text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 30px;
+    height: 320px;
+}
 
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
 .shiny-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 200px;
 }
 
@@ -38,6 +33,7 @@
 .pokemon-attribute.centered {
     align-items: center;
     max-width: 200px;
+    justify-content: center;
 }
 
 .abilities-list {
@@ -46,4 +42,4 @@
     gap: 10px;
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- 2. Media Queries -------------------------------- */

@@ -60,7 +60,7 @@ function PokedexDetails() {
             />
             <main>
                 <section className="outer-container">
-                    <div className="large-inner-container pokemon-overview">
+                    <div className="pokemon-information-section">
                         {loading && <Loader/>}
                         {error && <p className="error-message">{error}</p>}
                         {!loading && !error &&

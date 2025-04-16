@@ -1,44 +1,36 @@
 /*////////////////////////
     Table of Contents
-    1. Global Styles
-    2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+    1. Result Styles
+    2. Media Queries
 ////////////////////////*/
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-.selected-gen {
-    font-size: 1.375rem;
-}
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-/* --------------- 3.1 Reusables ----------------------- */
-
-/* --------------- 3.2 Other --------------------------- */
-
-/* ------------------------------- 4. Areas ---------------------------------------- */
-.pokemon-grid-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
+/* ------------------------------- 1. Result Styles -------------------------------- */
 .result-section {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     gap: 20px;
     margin: 50px 0 25px 0;
     max-width: 900px;
 }
 
-/* ------------------------------- 5. Media Queries -------------------------------- */
+.pokemon-grid-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.selected-gen {
+    font-size: 1.375rem;
+}
+
+/* ------------------------------- 2. Media Queries -------------------------------- */
+@media screen and (min-width: 1200px) {
+    .pokemon-grid-title {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
