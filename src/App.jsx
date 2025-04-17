@@ -27,10 +27,10 @@ function App() {
                 <Route path="/battlemaster/:pokemonId/:generation" element={<BattlemasterResult/>}/>
                 <Route path="/favorites" element={isAuth ? <Favorites/> : <Navigate to="/login"/>}/>
                 <Route path="/profile" element={isAuth ? <Profile/> : <Navigate to="/login"/>}/>
-                <Route path="*" element={<NotFound/>} />
+                <Route path="*" element={<NotFound/>}/>
             </Routes>
         </>
-    )
+    );
 }
 
 export default App

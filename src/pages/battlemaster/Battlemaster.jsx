@@ -144,7 +144,7 @@ function Battlemaster() {
                 setError("This Pokémon could not be found, try something else.");
             }
         }
-    }
+    };
 
     return (
         <>

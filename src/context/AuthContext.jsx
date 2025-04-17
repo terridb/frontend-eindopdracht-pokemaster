@@ -121,7 +121,7 @@ function AuthContextProvider({children}) {
         <AuthContext.Provider value={data}>
             {auth.status === "done" ? children : <Loader/>}
         </AuthContext.Provider>
-    )
+    );
 }
 
 export default AuthContextProvider;

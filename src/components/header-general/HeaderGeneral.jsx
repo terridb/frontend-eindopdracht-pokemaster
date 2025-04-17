@@ -3,7 +3,6 @@ import Navigation from "../navigation/Navigation.jsx";
 import GeneralButton from "../general-button/GeneralButton.jsx";
 
 function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, buttonType, onClick}) {
-
     return (
         <header className="general-header">
             <section className="outer-container">

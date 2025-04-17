@@ -1,12 +1,12 @@
 import "./Navigation.css";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import whiteLogo from "../../assets/logo/logo-white.png";
-import FavoriteIcon from "../favorite-icon/FavoriteIcon.jsx";
 import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import ProfilePopup from "../profile-popup/ProfilePopup.jsx";
 import AlertBox from "../alert-box/AlertBox.jsx";
 import {List} from "@phosphor-icons/react";
+import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 
 function Navigation() {
     const {isAuth, user, logout} = useContext(AuthContext);
@@ -124,7 +124,7 @@ function Navigation() {
                 ) : (
                     <>
                         <div className="nav-profile-buttons nav-desktop">
-                            <FavoriteIcon/>
+                            <FavoriteButton/>
                             <button className="profile-button" onClick={togglePopup}>
                                 {user.username}
                             </button>

@@ -27,14 +27,14 @@ function LogIn() {
         } catch (err) {
             console.error("Error at login:", err.response || err);
             if (err.response && err.response.status === 401) {
-                setError("Oops! It looks like your username or password is incorrect. Please check your details and try again")
+                setError("Oops! It looks like your username or password is incorrect. Please check your details and try again");
             } else {
                 setError(err.response.data.message || "Something went wrong");
             }
         } finally {
             toggleLoading(false);
         }
-    }
+    };
 
     return (
         <AuthForm

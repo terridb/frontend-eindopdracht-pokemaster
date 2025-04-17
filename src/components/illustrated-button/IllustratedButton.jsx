@@ -6,13 +6,11 @@ function IllustratedButton({title}) {
     const simpleTitle = changeTextToSimple(title);
 
     return (
-        <>
-            <Link to={`/${simpleTitle}`}>
-                <button className={`illustrated-button ${simpleTitle}`} type="button">
-                    {title}
-                </button>
-            </Link>
-        </>
+        <Link to={`/${simpleTitle}`}>
+            <button className={`illustrated-button ${simpleTitle}`} type="button">
+                {title}
+            </button>
+        </Link>
     );
 }
 

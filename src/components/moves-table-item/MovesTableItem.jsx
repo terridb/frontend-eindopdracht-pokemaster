@@ -19,7 +19,7 @@ function MovesTableItem({endpoint}) {
                 setMove(response.data);
             } catch (err) {
                 console.error(err);
-                setError(err);
+                setError(err.message);
             } finally {
                 toggleLoading(false);
             }
@@ -37,7 +37,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats"></td>
                 <td className="result-table-stats"></td>
             </tr>
-        )
+        );
     }
 
     if (error) {
@@ -49,7 +49,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats"></td>
                 <td className="result-table-stats"></td>
             </tr>
-        )
+        );
     }
 
     if (move) {
@@ -65,7 +65,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats">{move?.accuracy}</td>
                 <td className="result-table-stats">{move?.pp}</td>
             </tr>
-        )
+        );
     }
 }
 

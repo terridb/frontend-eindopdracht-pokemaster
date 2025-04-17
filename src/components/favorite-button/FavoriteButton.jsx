@@ -3,10 +3,12 @@ import {HeartStraight} from "@phosphor-icons/react";
 import {useContext} from "react";
 import {FaveContext} from "../../context/FaveContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 function FavoriteButton({pokemon}) {
     const {favorites, setFavorites} = useContext(FaveContext);
     const {isAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const addFavoritePokemon = () => {
         const checkDuplicates = favorites.includes(pokemon.id);
@@ -14,17 +16,15 @@ function FavoriteButton({pokemon}) {
         if (!checkDuplicates) {
             const newFavoriteList = [...favorites, pokemon.id];
             setFavorites(newFavoriteList);
-            console.log(newFavoriteList);
         } else {
             const newFavoriteList = favorites.filter(id => id !== pokemon.id);
             setFavorites(newFavoriteList);
-            console.log(newFavoriteList);
         }
-    }
+    };
 
     return (
         <>
-            {isAuth &&
+            {isAuth && pokemon ? (
                 <button type="button" className="favorite-button" onClick={addFavoritePokemon}>
                     <HeartStraight
                         size={24}
@@ -32,9 +32,15 @@ function FavoriteButton({pokemon}) {
                         weight={favorites.includes(pokemon.id) ? "fill" : "regular"}
                     />
                 </button>
-            }
+            ) : (
+                <button type="button" className="favorite-icon" onClick={() => navigate("/favorites")}>
+                    <HeartStraight
+                        color="white"
+                    />
+                </button>
+            )}
         </>
-    )
+    );
 }
 
 export default FavoriteButton;

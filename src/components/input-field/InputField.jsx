@@ -47,7 +47,6 @@ function InputField({type, id, name, title, register, errors, watch}) {
             />
             {errors[name] && <p>{errors[name]?.message}</p>}
         </label>
-
     );
 }
 
