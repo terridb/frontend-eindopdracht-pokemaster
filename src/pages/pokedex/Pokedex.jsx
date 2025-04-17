@@ -5,7 +5,6 @@ import Searchbar from "../../components/searchbar/Searchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 import {resetInput} from "../../helpers/resetInput.js";
 import PokemonGrid from "../../components/pokemon-grid/PokemonGrid.jsx";
@@ -124,14 +123,6 @@ function Pokedex() {
             />
             <main>
                 <section className="outer-container">
-                    {/*<div className="large-inner-container pokedex">*/}
-                        {/*<section className="filter-section">*/}
-                        {/*    <h2>Filters</h2>*/}
-                        {/*    <TypeFilters/>*/}
-                        {/*    <div className="filter-section-gen">*/}
-                        {/*        <h3>Generation</h3>*/}
-                        {/*    </div>*/}
-                        {/*</section>*/}
                         <section className="pokemon-search-section">
                             <section className="pokemon-search">
                                 <Searchbar
@@ -155,7 +146,6 @@ function Pokedex() {
                                 handleLoadMore={handleLoadMore}
                             />
                         </section>
-                    {/*</div>*/}
                 </section>
             </main>
             <Footer/>

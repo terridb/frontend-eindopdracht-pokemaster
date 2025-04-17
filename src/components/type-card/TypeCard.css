@@ -23,13 +23,7 @@
     color: var(--dark-text);
     border: 2px solid var(--dark-text);
     background-color: transparent;
-}
-
-.pokemon-label.gen.active {
-    background-color: var(--dark-text);
-    color: var(--light-text);
-    border-color: var(--dark-text);
-    outline: none;
+    cursor: pointer;
 }
 
 .pokemon-label.default {
@@ -38,34 +32,23 @@
     background-color: transparent;
 }
 
-button.pokemon-label {
-    cursor: pointer;
+.pokemon-label.active {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    border-color: var(--dark-text);
+    outline: none;
+}
+
+.pokemon-label:disabled {
+    cursor: auto;
+    color: var(--small-details);
+    border: 2px solid var(--small-details);
 }
 
 .pokemon-label.pokemon-type-color {
     color: var(--light-text);
     border: 2px solid var(--type-color);
     background-color: var(--type-color);
-}
-
-.pokemon-label.pokemon-type-color.default {
-    background-color: transparent;
-    color: var(--type-color);
-    border-color: var(--type-color);
-    outline: none;
-}
-
-.pokemon-label.pokemon-type-color.active {
-    background-color: var(--type-color);
-    color: var(--light-text);
-    border-color: var(--type-color);
-    outline: none;
-}
-
-.pokemon-label.gen:disabled {
-    cursor: auto;
-    color: var(--small-details);
-    border: 2px solid var(--small-details);
 }
 
 /* ------------------------------- 2. Media queries ---------------------------------------- */
