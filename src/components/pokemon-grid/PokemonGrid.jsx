@@ -7,32 +7,33 @@ function PokemonGrid({pokemon, loading, error, moreAvailable, handleLoadMore, fa
     return (
         <>
             <section className="pokemon-grid">
-                {!favorites ?
-                    <>
-                        {loading && <Loader/>}
-                        {error && <p>{error}</p>}
-
-                        {!loading && pokemon.length === 0 && (
-                            <p className="no-results">No matching Pokémon found, try something else</p>
-                        )}
-                        {pokemon.map((pokemon) => (
-                            <PokemonCard
-                                endpoint={pokemon.url}
-                                key={pokemon.url}
-                            />
-                        ))}
-                    </>
-                    :
-                    (favorites.map((pokemonId) => (
+                {favorites ? (
+                    favorites.map((pokemonId) => (
                         <PokemonCard
                             endpoint={`https://pokeapi.co/api/v2/pokemon/${pokemonId}`}
                             key={pokemonId}
                         />
-                    )))
-                }
+                    ))
+                ) : (
+                    <>
+                        {!loading && pokemon.length === 0 && (
+                            <p className="no-results">No matching Pokémon found, try something else</p>
+                        )}
+                        {pokemon && pokemon.length > 0 &&
+                            pokemon.map((pokemon) => (
+                                <PokemonCard
+                                    endpoint={pokemon.url}
+                                    key={pokemon.url}
+                                />
+                            ))
+                        }
+                    </>
+                )}
             </section>
             {!favorites &&
                 <section className="load-more-section">
+                    {loading && <Loader/>}
+                    {error && <p>{error}</p>}
                     {!loading && moreAvailable && (
                         <GeneralButton buttonText="Load more" onClick={handleLoadMore}/>
                     )}
