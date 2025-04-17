@@ -131,7 +131,6 @@ h5 {
     height: 100%;
     width: 100%;
     padding: 0 var(--general-side-margin);
-    overflow: hidden;
 }
 
 /* --------------- 3.2 Other --------------------------- */

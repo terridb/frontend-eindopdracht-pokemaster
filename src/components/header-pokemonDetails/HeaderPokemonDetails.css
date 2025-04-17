@@ -13,6 +13,7 @@
     background-color: var(--header-background);
     flex-shrink: 0;
     flex-grow: 0;
+    min-height: 100px;
 }
 
 .pokemon-details-section {

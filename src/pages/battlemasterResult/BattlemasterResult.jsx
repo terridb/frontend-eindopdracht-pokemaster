@@ -1,16 +1,18 @@
 import "./BattlemasterResult.css";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import HeaderPokemonDetails from "../../components/header-pokemonDetails/HeaderPokemonDetails.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {getIdFromUrl, makeWeaknessArray} from "../../helpers/getPokemonDetails.jsx";
+import {fetchPokemonData, getIdFromUrl, makeWeaknessArray} from "../../helpers/getPokemonDetails.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import PokemonGrid from "../../components/pokemon-grid/PokemonGrid.jsx";
 import MovesTable from "../../components/moves-table/MovesTable.jsx";
 import {capitalizeFirstLetter} from "../../helpers/changeText.js";
+import Loader from "../../components/loader/Loader.jsx";
 
 function BattlemasterResult() {
     const {pokemonId, generation} = useParams();
+    const navigate = useNavigate();
 
     const [pokemon, setPokemon] = useState({});
     const [pokemonSpecies, setPokemonSpecies] = useState({});
@@ -26,34 +28,33 @@ function BattlemasterResult() {
     const [suitableMoves, setSuitableMoves] = useState([]);
     const [visibleCountPokemon, setVisibleCountPokemon] = useState(3);
     const [visibleCountMoves, setVisibleCountMoves] = useState(5);
+    const [isPokemonLoaded, toggleIsPokemonLoaded] = useState(false);
+    const [isGenLoaded, toggleIsGenLoaded] = useState(false);
+
+    const isReady = isPokemonLoaded && isGenLoaded;
 
     useEffect(() => {
-        const fetchPokemon = async () => {
+        const fetchData = async () => {
+            toggleLoading(true);
             try {
-                toggleLoading(true);
-                const responsePokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-                setPokemon(responsePokemon.data);
-
-                const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
-                setPokemonSpecies(responseSpecies.data);
-
-                if (responsePokemon.data.types.length === 2) {
-                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
-                    setTypeOne(responseTypeOne.data);
-                    const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[1].type.name}`);
-                    setTypeTwo(responseTypeTwo.data);
-                } else {
-                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
-                    setTypeOne(responseTypeOne.data);
-                }
+                const data = await fetchPokemonData(pokemonId);
+                setPokemon(data.pokemon);
+                setPokemonSpecies(data.pokemonSpecies);
+                setTypeOne(data.typeOne);
+                setTypeTwo(data.typeTwo);
+                toggleIsPokemonLoaded(true);
             } catch (err) {
-                setError(err.message);
                 console.error(err);
+                if (err.response && err.response.status === 404) {
+                    return navigate("/not-found");
+                }
+                setError(err.message);
             } finally {
                 toggleLoading(false);
             }
-        }
-        fetchPokemon();
+        };
+
+        fetchData();
     }, [pokemonId]);
 
     useEffect(() => {
@@ -75,13 +76,17 @@ function BattlemasterResult() {
                     setPokemonListGen(pokemonList);
                     setMovesListGen(response.data.moves);
                 }
+                toggleIsGenLoaded(true);
             } catch (err) {
+                setError(err.message);
                 console.error(err);
-                setError(err);
+                if (err.response && err.response.status === 404) {
+                    navigate("/not-found");
+                }
             } finally {
                 toggleLoading(false);
             }
-        }
+        };
 
         getGenerationData();
     }, [generation]);
@@ -119,12 +124,13 @@ function BattlemasterResult() {
                 setPokemonListTypes(uniquePokemonList);
 
             } catch (err) {
+                setError(err.message);
                 console.error(err);
-                setError(err);
             } finally {
                 toggleLoading(false);
             }
-        }
+        };
+
         if (typeOne && Object.keys(typeOne).length > 0) {
             getWeaknessData();
         }
@@ -168,40 +174,52 @@ function BattlemasterResult() {
                 loading={loading}
                 error={error}
                 header="battlemaster"
+                isReady={isReady}
             />
             <main>
                 <section className="outer-container">
-                    <section className="result-section">
-                        <div className="pokemon-grid-title">
-                            <h2>Suitable pokémon options - </h2>
-                            <p className="selected-gen">{capitalizeFirstLetter(generation)}</p>
-                        </div>
-                        <PokemonGrid
-                            pokemon={suitablePokemon.slice(0, visibleCountPokemon)}
-                            loading={loading}
-                            error={error}
-                            moreAvailable={visibleCountPokemon < suitablePokemon.length}
-                            handleLoadMore={handleLoadMorePokemon}
-                        />
-                    </section>
-                    <section className="result-section">
-                        <div className="pokemon-grid-title">
-                            <h2>Strong moves -</h2>
-                            <p className="selected-gen">{capitalizeFirstLetter(generation)}</p>
-                        </div>
-                        <MovesTable
-                            loading={loading}
-                            handleLoadMore={handleLoadMoreMoves}
-                            movesList={suitableMoves}
-                            counter={visibleCountMoves}
-                            moreAvailable={visibleCountMoves < suitableMoves.length}
-                        />
-                    </section>
+                    {(loading || !isReady) &&
+                        <span className="loader-container">
+                        <Loader/>
+                        </span>
+                    }
+                    {error && <p className="error-message">{error}</p>}
+                    {!loading && isReady &&
+                        <>
+                            <section className="result-section">
+                                <div className="pokemon-grid-title">
+                                    <h2>Suitable pokémon options - </h2>
+                                    <p className="selected-gen">{capitalizeFirstLetter(generation)}</p>
+                                </div>
+                                <PokemonGrid
+                                    pokemon={suitablePokemon.slice(0, visibleCountPokemon)}
+                                    loading={loading}
+                                    error={error}
+                                    moreAvailable={visibleCountPokemon < suitablePokemon.length}
+                                    handleLoadMore={handleLoadMorePokemon}
+                                />
+                            </section>
+                            <section className="result-section">
+                                <div className="pokemon-grid-title">
+                                    <h2>Strong moves -</h2>
+                                    <p className="selected-gen">{capitalizeFirstLetter(generation)}</p>
+                                </div>
+                                <MovesTable
+                                    loading={loading}
+                                    handleLoadMore={handleLoadMoreMoves}
+                                    movesList={suitableMoves}
+                                    counter={visibleCountMoves}
+                                    moreAvailable={visibleCountMoves < suitableMoves.length}
+                                />
+                            </section>
+                        </>
+                    }
                 </section>
             </main>
             <Footer/>
         </>
-    );
+    )
+
 }
 
 export default BattlemasterResult;

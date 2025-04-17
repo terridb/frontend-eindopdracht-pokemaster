@@ -1,0 +1,19 @@
+/*////////////////////////
+    Table of Contents
+    1. NotFound Styles
+////////////////////////*/
+
+/* ------------------------------- 1. NotFound Styles -------------------------------- */
+.notfound-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.notfound-content a {
+    color: var(--main-color-homepage);
+    font-weight: 500;
+}

@@ -33,3 +33,7 @@ export function writeCleanText(text) {
         .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
         .join(". ");
 }
+
+export function decreaseUnit(value) {
+    return (value / 10).toFixed(1);
+}
