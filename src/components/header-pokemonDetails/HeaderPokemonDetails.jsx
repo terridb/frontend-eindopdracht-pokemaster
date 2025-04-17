@@ -5,6 +5,7 @@ import TypeCard from "../type-card/TypeCard.jsx";
 import {makeImmunitiesArray, makeResistancesArray, makeWeaknessArray} from "../../helpers/getPokemonDetails.jsx";
 import FavoriteButton from "../favorite-button/FavoriteButton.jsx";
 import Loader from "../loader/Loader.jsx";
+import {Link} from "react-router-dom";
 
 function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loading, error, header, isReady}) {
     return (
@@ -25,7 +26,9 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                         <p className="pokemon-card-number">
                                             {writePokedexNumber(pokemon.id)}
                                         </p>
-                                        <h3>{pokemon.name}</h3>
+                                        <Link to={`/pokedex/${pokemon.id}`}>
+                                            <h3>{pokemon.name}</h3>
+                                        </Link>
                                     </div>
                                 ) : (
                                     <div className="pokemon-details-name">

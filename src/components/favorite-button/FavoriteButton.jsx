@@ -32,7 +32,7 @@ function FavoriteButton({pokemon}) {
                         weight={favorites.includes(pokemon.id) ? "fill" : "regular"}
                     />
                 </button>
-            ) : (
+            ) : isAuth && !pokemon && (
                 <button type="button" className="favorite-icon" onClick={() => navigate("/favorites")}>
                     <HeartStraight
                         color="white"
