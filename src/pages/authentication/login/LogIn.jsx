@@ -24,7 +24,6 @@ function LogIn() {
             if (response.status === 200) {
                 login(response.data.accessToken);
             }
-            console.log(response)
         } catch (err) {
             console.error("Error at login:", err.response || err);
             if (err.response && err.response.status === 401) {

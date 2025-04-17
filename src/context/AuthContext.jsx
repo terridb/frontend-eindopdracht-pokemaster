@@ -19,7 +19,7 @@ function AuthContextProvider({children}) {
 
         if (storedToken && checkTokenValidity(storedToken)) {
             void login(storedToken).catch((err) => {
-                if (err.response && err.response.status === 401) {
+                if (err?.response?.status === 401) {
                     logout();
                 }
             });
@@ -27,6 +27,35 @@ function AuthContextProvider({children}) {
             void logout();
         }
     }, []);
+
+    const registerUser = async (username, email, password) => {
+        try {
+            const response = await axios.post(
+                `https://frontend-educational-backend.herokuapp.com/api/auth/signup`,
+                {
+                    username,
+                    email,
+                    password,
+                },
+            );
+
+            if (response.status === 200) {
+                const loginResponse = await axios.post(
+                    `https://frontend-educational-backend.herokuapp.com/api/auth/signin`,
+                    {
+                        username,
+                        password,
+                    }
+                );
+
+                const token = loginResponse.data.accessToken;
+                await login(token);
+            }
+        } catch (err) {
+            console.error("Registratie mislukt:", err);
+            throw err;
+        }
+    };
 
     const login = async (jwtToken) => {
         localStorage.setItem("token", jwtToken);
@@ -52,8 +81,14 @@ function AuthContextProvider({children}) {
             });
         } catch (err) {
             console.error(err);
-        } finally {
-            console.log("Logged in");
+
+            setAuth({
+                isAuth: false,
+                user: null,
+                status: "done",
+            });
+
+            throw err;
         }
     };
 
@@ -71,7 +106,6 @@ function AuthContextProvider({children}) {
             user: null,
             status: "done",
         });
-        console.log('Gebruiker is uitgelogd!');
     };
 
     const data = {
@@ -79,7 +113,8 @@ function AuthContextProvider({children}) {
         user: auth.user,
         token: localStorage.getItem("token"),
         login,
-        logout
+        logout,
+        registerUser,
     };
 
     return (
