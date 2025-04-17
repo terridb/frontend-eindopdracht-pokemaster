@@ -17,6 +17,10 @@ function InputField({type, id, name, title, register, errors, watch}) {
                             minLength: {
                                 value: 6,
                                 message: "Oops! Username needs to be at least 6 characters"
+                            },
+                            maxLength: {
+                                value: 12,
+                                message: "Oops! Username can't be longer than 12 characters"
                             }
                         } :
                         name === "email" ? {
