@@ -120,6 +120,7 @@ function Pokedex() {
                 text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
                 headerImage={mew}
                 pokemonName="mew"
+                page="pokedex"
             />
             <main>
                 <section className="outer-container">

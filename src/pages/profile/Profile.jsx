@@ -91,6 +91,7 @@ function Profile() {
                 buttonType="button"
                 buttonText="See favorites"
                 onClick={() => navigate("/favorites")}
+                page="profile"
             />
             <main>
                 <section className="outer-container">
@@ -127,7 +128,7 @@ function Profile() {
                                         buttonText="Continue"
                                         buttonType="submit"
                                         disabled={loading}
-                                        pokemonName="mimikyu"
+                                        page="profile"
                                     />
                                 </form>
                                 :

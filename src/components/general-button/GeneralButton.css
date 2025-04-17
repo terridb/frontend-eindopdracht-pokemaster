@@ -5,13 +5,12 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. GeneralButton Styles -------------------------------- */
-
 .general-button {
     width: fit-content;
     padding: 15px 35px;
     border: none;
     border-radius: 35px;
-    color: var(--light-text);
+    color: var(--white);
     background-color: var(--header-background);
     font-weight: 500;
     font-size: 1rem;
@@ -23,17 +22,16 @@
     opacity: 0.5;
 }
 
-.general-button.charizard {
-    background-color: var(--main-color-homepage);
+.general-button.primary {
+    background-color: var(--primary-color);
 }
 
-.general-button.lucario,
-.general-button.snorlax{
-    background-color: #057DA3;
+.general-button.home {
+    background-color: var(--primary-color-home);
 }
 
-.general-button.mimikyu {
-    background-color: var(--light-color-profile);
+.general-button.profile {
+    background-color: var(--secondary-color-profile);
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */

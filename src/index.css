@@ -4,11 +4,8 @@
     Table of Contents
     1. Global Styles
     2. Typography
-    3. Layout
-        3.1 Reusables
-        3.2 Other
-    4. Areas
-        4.1 Type colors
+    3. Reusables
+    4. Type colors
     5. Media Queries
 ////////////////////////*/
 
@@ -17,9 +14,23 @@
     --global-background: #EDEDED;
     --header-background: #3D3D3D;
     --dark-text: #5E5E5E;
-    --light-text: #ffffff;
+    --white: #ffffff;
     --small-details: #CCCCCC;
     --pokedex-number: #B0B0B0;
+    --primary-color: #057DA3;
+
+    --primary-color-home: #F45F0E;
+    --secondary-color-home: #FFAB4A;
+
+    --primary-color-pokedex: #4346CF;
+    --secondary-color-pokedex: #FFC3EB;
+
+    --primary-color-battlemaster: #3C3DAA;
+    --secondary-color-battlemaster: #01C1E5;
+
+    --primary-color-profile: #360f5b;
+    --secondary-color-profile: #954bc7;
+
     --normal: #C6C6C6;
     --fire: #FE4646;
     --fighting: #FE7D46;
@@ -38,6 +49,7 @@
     --dark: #464646;
     --steel: #6490AF;
     --fairy: #F897DF;
+
     --general-side-margin: 2.5rem;
 }
 
@@ -92,7 +104,7 @@ a {
     background-color: #dc2c2c;
     padding: 20px;
     border-radius: 10px;
-    color: var(--light-text);
+    color: var(--white);
     width: fit-content;
 }
 
@@ -121,9 +133,8 @@ h5 {
     font-size: 1.125rem;
 }
 
-/* ------------------------------- 3. Layout --------------------------------------- */
+/* ------------------------------- 3. Reusables --------------------------------------- */
 
-/* --------------- 3.1 Reusables ----------------------- */
 .outer-container {
     display: flex;
     flex-direction: column;
@@ -134,10 +145,8 @@ h5 {
     overflow: hidden;
 }
 
-/* --------------- 3.2 Other --------------------------- */
+/* ------------------------------- 4. Type  colors ---------------------------------------- */
 
-/* ------------------------------- 4. Areas ---------------------------------------- */
-/* --------------- 4.1 Type colors ----------------------- */
 .pokemon-type-color.normal {
     --type-color: var(--normal);
 }

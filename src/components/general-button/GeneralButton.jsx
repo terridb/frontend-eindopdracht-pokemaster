@@ -1,9 +1,9 @@
 import './GeneralButton.css';
 
-function GeneralButton({pokemonName, buttonText, buttonType, onClick, disabled}) {
+function GeneralButton({page, buttonText, buttonType, onClick, disabled}) {
     return (
         <>
-            <button className={`general-button ${pokemonName}`}
+            <button className={`general-button ${page}`}
                     type={buttonType}
                     onClick={onClick}
                     disabled={disabled}

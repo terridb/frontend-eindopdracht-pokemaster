@@ -63,7 +63,7 @@ function LogIn() {
                 errors={errors}
             />
             <GeneralButton
-                pokemonName="snorlax"
+                page="primary"
                 buttonType="submit"
                 buttonText="sign-in"
                 disabled={loading}

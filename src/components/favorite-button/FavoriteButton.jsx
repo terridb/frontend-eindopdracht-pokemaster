@@ -35,7 +35,7 @@ function FavoriteButton({pokemon}) {
             ) : isAuth && !pokemon && (
                 <button type="button" className="favorite-icon" onClick={() => navigate("/favorites")}>
                     <HeartStraight
-                        color="white"
+                        color="#FFF"
                     />
                 </button>
             )}

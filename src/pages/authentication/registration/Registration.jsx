@@ -71,7 +71,7 @@ function Registration() {
                 errors={errors}
             />
             <GeneralButton
-                pokemonName="snorlax"
+                page="primary"
                 buttonType="submit"
                 buttonText="continue"
                 disabled={loading}

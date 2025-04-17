@@ -16,6 +16,7 @@ function Favorites() {
             text={"Manage your favorites here!"}
             headerImage={mimikyu}
             pokemonName="mimikyu"
+            page="profile"
             />
             <main>
                 <section className="outer-container">

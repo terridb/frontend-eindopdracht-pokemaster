@@ -14,6 +14,6 @@
 }
 
 .notfound-content a {
-    color: var(--main-color-homepage);
+    color: var(--primary-color-home);
     font-weight: 500;
 }

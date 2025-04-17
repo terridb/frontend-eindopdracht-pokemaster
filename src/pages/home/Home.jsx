@@ -96,6 +96,7 @@ function Home() {
                 pokemonName="charizard"
                 buttonType="button"
                 onClick={() => navigate("/login")}
+                page="home"
             />
             <main>
                 <section className="outer-container">

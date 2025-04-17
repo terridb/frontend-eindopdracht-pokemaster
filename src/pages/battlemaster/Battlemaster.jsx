@@ -153,6 +153,7 @@ function Battlemaster() {
                 text="Enter your opponent Pokémon to discover the most effective Pokémon against your chosen opponent!"
                 headerImage={lucario}
                 pokemonName="lucario"
+                page="battlemaster"
             />
             <main>
                 <section className="outer-container">
@@ -190,7 +191,7 @@ function Battlemaster() {
                                             <GeneralButton
                                                 buttonType="button"
                                                 buttonText="Next"
-                                                pokemonName="lucario"
+                                                page="primary"
                                                 onClick={handleClick}
                                                 disabled={!selectedGen}
                                             />
@@ -231,6 +232,7 @@ function Battlemaster() {
                                                 pokemonName="lucario"
                                                 onClick={handleClick}
                                                 disabled={!query}
+                                                page="primary"
                                             />
                                         }
                                     </div>

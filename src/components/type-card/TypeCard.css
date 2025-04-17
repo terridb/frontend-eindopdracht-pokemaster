@@ -34,7 +34,7 @@
 
 .pokemon-label.active {
     background-color: var(--dark-text);
-    color: var(--light-text);
+    color: var(--white);
     border-color: var(--dark-text);
     outline: none;
 }
@@ -46,7 +46,7 @@
 }
 
 .pokemon-label.pokemon-type-color {
-    color: var(--light-text);
+    color: var(--white);
     border: 2px solid var(--type-color);
     background-color: var(--type-color);
 }
