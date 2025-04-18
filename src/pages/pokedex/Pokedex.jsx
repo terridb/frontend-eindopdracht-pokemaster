@@ -22,12 +22,16 @@ function Pokedex() {
     const [matchingPokemon, setMatchingPokemon] = useState([]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchData = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`, {
+                    signal: controller.signal,
+                });
                 const filteredPokemon = response.data.results.filter(pokemon =>
                     getIdFromUrl(pokemon.url) <= 10000
                 );
@@ -43,14 +47,22 @@ function Pokedex() {
         };
         fetchData();
 
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [offset]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchAllPokemon = async () => {
             toggleLoading(true);
             setError(null);
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`, {
+                    signal: controller.signal,
+                });
                 const filteredPokemon = response.data.results.filter(pokemon =>
                     getIdFromUrl(pokemon.url) <= 10000
                 );
@@ -124,29 +136,29 @@ function Pokedex() {
             />
             <main>
                 <section className="outer-container">
-                        <section className="pokemon-search-section">
-                            <section className="pokemon-search">
-                                <Searchbar
-                                    placeholder="Search"
-                                    size="large"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    handleSubmit={handleSearch}
-                                    handleReset={() => resetInput(setQuery)}
-                                />
-                                {searchResults && pokemon.length > 0 && (
-                                    <p className="search-results-text">{matchingPokemon.length} results for
-                                        "{searchResults}"</p>
-                                )}
-                            </section>
-                            <PokemonGrid
-                                pokemon={pokemon}
-                                loading={loading}
-                                error={error}
-                                moreAvailable={moreAvailable}
-                                handleLoadMore={handleLoadMore}
+                    <section className="pokemon-search-section">
+                        <section className="pokemon-search">
+                            <Searchbar
+                                placeholder="Search"
+                                size="large"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                handleSubmit={handleSearch}
+                                handleReset={() => resetInput(setQuery)}
                             />
+                            {searchResults && pokemon.length > 0 && (
+                                <p className="search-results-text">{matchingPokemon.length} results for
+                                    "{searchResults}"</p>
+                            )}
                         </section>
+                        <PokemonGrid
+                            pokemon={pokemon}
+                            loading={loading}
+                            error={error}
+                            moreAvailable={moreAvailable}
+                            handleLoadMore={handleLoadMore}
+                        />
+                    </section>
                 </section>
             </main>
             <Footer/>

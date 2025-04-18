@@ -1,26 +1,33 @@
 import GeneralButton from "../../../components/general-button/GeneralButton.jsx";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import InputField from "../../../components/input-field/InputField.jsx";
 import {useForm} from "react-hook-form"
 import AuthForm from "../../../components/auth-form/AuthForm.jsx";
+import axios from "axios";
 
 function Registration() {
     const {handleSubmit, formState: {errors}, register, watch} = useForm();
-
+    const source = axios.CancelToken.source();
     const {registerUser} = useContext(AuthContext);
 
     const [error, setError] = useState(null);
     const [loading, toggleLoading] = useState(false);
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     const handleRegister = async (data) => {
         toggleLoading(true);
         setError(null);
 
         try {
-            await registerUser(data.username, data.email, data.password);
+            await registerUser(data.username, data.email, data.password, source.token);
         } catch (err) {
-            console.error("Error at registration or login:", err.response || err);
+            console.error(err);
             setError(err.response.data.message || "Something went wrong");
         } finally {
             toggleLoading(false);

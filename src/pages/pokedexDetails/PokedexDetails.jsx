@@ -22,10 +22,12 @@ function PokedexDetails() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchData = async () => {
             toggleLoading(true);
             try {
-                const data = await fetchPokemonData(pokemonId);
+                const data = await fetchPokemonData(pokemonId, controller.signal);
                 setPokemon(data.pokemon);
                 setPokemonSpecies(data.pokemonSpecies);
                 setTypeOne(data.typeOne);
@@ -43,6 +45,11 @@ function PokedexDetails() {
         };
 
         fetchData();
+
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [pokemonId]);
 
     return (

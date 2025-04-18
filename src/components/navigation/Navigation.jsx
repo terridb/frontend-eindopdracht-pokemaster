@@ -1,7 +1,7 @@
 import "./Navigation.css";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import whiteLogo from "../../assets/logo/logo-white.png";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import ProfilePopup from "../profile-popup/ProfilePopup.jsx";
 import AlertBox from "../alert-box/AlertBox.jsx";
@@ -28,9 +28,18 @@ function Navigation() {
         logout();
         setLogOutMessage("Signed out successfully!");
         setShowPopup(false);
-
-        setTimeout(() => setLogOutMessage(""), 3000);
     };
+
+    useEffect(() => {
+        if (!logOutMessage) return;
+
+        const timeoutLogOut = setTimeout(() => setLogOutMessage(""), 3000);
+
+        return function cleanup() {
+            clearTimeout(timeoutLogOut);
+        }
+
+    }, [logOutMessage]);
 
     return (
         <>

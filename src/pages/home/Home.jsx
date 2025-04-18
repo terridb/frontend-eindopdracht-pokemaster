@@ -21,11 +21,15 @@ function Home() {
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
+        const controller = new AbortController();
+        
         const fetchPokemonList = async () => {
             toggleLoading(true);
 
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`, {
+                    signal: controller.signal,
+                });
 
                 const detailedPokemonList = response.data.results.map((pokemon) => {
                     const id = getIdFromUrl(pokemon.url);
@@ -46,27 +50,27 @@ function Home() {
             }
         };
         fetchPokemonList();
+        
+        return function cleanup() {
+            controller.abort();
+        }
+        
     }, []);
 
-    const handleSuggestions = () => {
-        const filteredSuggestions = pokemonList
-            .filter((pokemon) =>
-                pokemon.name.toLowerCase().includes(query.toLowerCase())
-                ||
+    useEffect(() => {
+        if (pokemonList.length > 0) {
+            const filteredSuggestions = pokemonList.filter(pokemon =>
+                pokemon.name.toLowerCase().includes(query.toLowerCase()) ||
                 pokemon.id.includes(query)
-            )
-            .slice(0, 3);
-        setSuggestions(filteredSuggestions);
-    };
+            ).slice(0, 3);
+            setSuggestions(filteredSuggestions);
+        }
+    }, [query, pokemonList]);
 
     const handleChange = (e) => {
         setError("");
         setQuery(e.target.value);
     };
-
-    useEffect(() => {
-        handleSuggestions();
-    }, [query]);
 
     const handleSearch = (e) => {
         e.preventDefault();

@@ -1,5 +1,5 @@
 import GeneralButton from "../../../components/general-button/GeneralButton.jsx";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import axios from "axios";
@@ -9,9 +9,16 @@ import AuthForm from "../../../components/auth-form/AuthForm.jsx";
 function LogIn() {
     const {login} = useContext(AuthContext);
     const {handleSubmit, formState: {errors}, register} = useForm();
+    const source = axios.CancelToken.source();
 
     const [error, setError] = useState(null);
     const [loading, toggleLoading] = useState(false);
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     const handleLogin = async (data) => {
         toggleLoading(true);
@@ -20,12 +27,14 @@ function LogIn() {
             const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
                 "username": data.username,
                 "password": data.password,
+            }, {
+                cancelToken: source.token,
             });
             if (response.status === 200) {
                 login(response.data.accessToken);
             }
         } catch (err) {
-            console.error("Error at login:", err.response || err);
+            console.error(err);
             if (err.response && err.response.status === 401) {
                 setError("Oops! It looks like your username or password is incorrect. Please check your details and try again");
             } else {

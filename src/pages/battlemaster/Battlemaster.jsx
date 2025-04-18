@@ -27,31 +27,44 @@ function Battlemaster() {
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchAllGen = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/generation/`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/generation/`, {
+                    signal: controller.signal,
+                });
                 setAllGen(generationArray(response.data.results));
             } catch (err) {
                 console.error(err)
-                setError(err);
+                setError(err.message);
             } finally {
                 toggleLoading(false);
             }
         }
         fetchAllGen();
+
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, []);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchPokemon = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
                 if (quizPage === 1) {
-                    const response = await axios.get(selectedGen.url);
+                    const response = await axios.get(selectedGen.url, {
+                        signal: controller.signal,
+                    });
 
                     if (selectedGen.name === "use-all") {
                         const pokemonList = response.data.results.map((pokemon) => {
@@ -79,13 +92,18 @@ function Battlemaster() {
                 }
             } catch
                 (err) {
-                setError(err);
+                setError(err.message);
                 console.error(err);
             } finally {
                 toggleLoading(false);
             }
         }
         fetchPokemon();
+
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [quizPage, selectedGen]);
 
     const generationArray = (gen) => {
@@ -113,20 +131,16 @@ function Battlemaster() {
         setQuery(e.target.value);
     };
 
-    const handleSuggestions = () => {
-        const filteredSuggestions = pokemonList.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(query.toLowerCase())
-            ||
-            pokemon.id.includes(query)
-        ).slice(0, 3);
-        setSuggestions(filteredSuggestions);
-    };
-
     useEffect(() => {
         if (pokemonList.length > 0) {
-            handleSuggestions();
+            const filteredSuggestions = pokemonList.filter(pokemon =>
+                pokemon.name.toLowerCase().includes(query.toLowerCase()) ||
+                pokemon.id.includes(query)
+            ).slice(0, 3);
+            setSuggestions(filteredSuggestions);
         }
     }, [query, pokemonList]);
+
 
     const handleClick = (e) => {
         e.preventDefault();

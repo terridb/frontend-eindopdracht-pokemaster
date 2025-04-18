@@ -13,12 +13,16 @@ function PokemonCard({endpoint}) {
     const [loadedImage, toggleLoadedImage] = useState(false);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchPokemon = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(endpoint);
+                const response = await axios.get(endpoint, {
+                    signal: controller.signal,
+                });
                 setPokemon(response.data);
 
                 if (response.data.sprites?.other?.[`official-artwork`]?.[`front_default`]) {
@@ -29,16 +33,18 @@ function PokemonCard({endpoint}) {
 
             } catch (err) {
                 console.error(err);
-                setError(err);
+                setError(err.message);
             } finally {
                 toggleLoading(false);
             }
         }
         fetchPokemon();
 
-    }, [endpoint]);
+        return function cleanup() {
+            controller.abort();
+        }
 
-    if (error) return <p>Error: {error}</p>
+    }, [endpoint]);
 
     if (pokemon && loadedImage) {
         return (
@@ -68,8 +74,9 @@ function PokemonCard({endpoint}) {
                     </div>
                 </Link>
                 {loading && <p>Loading...</p>}
+                {error && <p>Error: {error}</p>}
             </article>
-        )
+        );
     }
 }
 

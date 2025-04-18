@@ -85,10 +85,14 @@ export function getGenderIcons(genderValue) {
     }
 }
 
-export async function fetchPokemonData(pokemonId) {
+export async function fetchPokemonData(pokemonId, signal) {
     try {
-        const responsePokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
+        const responsePokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`, {
+            signal: signal,
+        });
+        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`, {
+            signal: signal,
+        });
 
         const pokemonData = responsePokemon.data;
         const speciesData = responseSpecies.data;
@@ -97,12 +101,18 @@ export async function fetchPokemonData(pokemonId) {
         let typeTwo;
 
         if (pokemonData.types.length === 2) {
-            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`);
-            const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[1].type.name}`);
+            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`, {
+                signal: signal,
+            });
+            const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[1].type.name}`, {
+                signal: signal,
+            });
             typeOne = responseTypeOne.data;
             typeTwo = responseTypeTwo.data;
         } else {
-            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`);
+            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`, {
+                signal: signal,
+            });
             typeOne = responseTypeOne.data;
         }
 

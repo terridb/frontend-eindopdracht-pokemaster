@@ -10,12 +10,16 @@ function MovesTableItem({endpoint}) {
     const [move, setMove] = useState({});
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchMoveData = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(endpoint);
+                const response = await axios.get(endpoint, {
+                    signal: controller.signal,
+                });
                 setMove(response.data);
             } catch (err) {
                 console.error(err);
@@ -25,6 +29,10 @@ function MovesTableItem({endpoint}) {
             }
         }
         fetchMoveData();
+
+        return function cleanup() {
+            controller.abort();
+        }
 
     }, [endpoint]);
 

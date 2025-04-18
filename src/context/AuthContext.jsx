@@ -28,7 +28,7 @@ function AuthContextProvider({children}) {
         }
     }, []);
 
-    const registerUser = async (username, email, password) => {
+    const registerUser = async (username, email, password, source) => {
         try {
             const response = await axios.post(
                 `https://frontend-educational-backend.herokuapp.com/api/auth/signup`,
@@ -36,7 +36,9 @@ function AuthContextProvider({children}) {
                     username,
                     email,
                     password,
-                },
+                }, {
+                    cancelToken: source,
+                }
             );
 
             if (response.status === 200) {

@@ -34,10 +34,12 @@ function BattlemasterResult() {
     const isReady = isPokemonLoaded && isGenLoaded;
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchData = async () => {
             toggleLoading(true);
             try {
-                const data = await fetchPokemonData(pokemonId);
+                const data = await fetchPokemonData(pokemonId, controller.signal);
                 setPokemon(data.pokemon);
                 setPokemonSpecies(data.pokemonSpecies);
                 setTypeOne(data.typeOne);
@@ -53,22 +55,34 @@ function BattlemasterResult() {
                 toggleLoading(false);
             }
         };
-
         fetchData();
+
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [pokemonId]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const getGenerationData = async () => {
             toggleLoading(true);
 
             try {
                 if (generation === "use-all") {
-                    const responsePokemon = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=10000");
+                    const responsePokemon = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=10000", {
+                        signal: controller.signal,
+                    });
                     setPokemonListGen(responsePokemon.data.results);
-                    const responseMoves = await axios.get("https://pokeapi.co/api/v2/move/?limit=10000");
+                    const responseMoves = await axios.get("https://pokeapi.co/api/v2/move/?limit=10000", {
+                        signal: controller.signal,
+                    });
                     setMovesListGen(responseMoves.data.results);
                 } else {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/generation/${generation}`);
+                    const response = await axios.get(`https://pokeapi.co/api/v2/generation/${generation}`, {
+                        signal: controller.signal,
+                    });
                     const pokemonList = response.data.pokemon_species.map(pokemonData => ({
                         name: pokemonData.name,
                         url: `https://pokeapi.co/api/v2/pokemon/${getIdFromUrl(pokemonData.url)}`
@@ -87,11 +101,17 @@ function BattlemasterResult() {
                 toggleLoading(false);
             }
         };
-
         getGenerationData();
+
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [generation]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const getWeaknessData = async () => {
             const pokemonWeakness = makeWeaknessArray(typeOne, typeTwo);
             toggleLoading(true);
@@ -99,7 +119,9 @@ function BattlemasterResult() {
             try {
                 const weaknessData = await Promise.all(
                     pokemonWeakness.map(async (type) => {
-                        const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
+                        const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`, {
+                            signal: controller.signal,
+                        });
                         return response.data;
                     })
                 );
@@ -134,7 +156,12 @@ function BattlemasterResult() {
         if (typeOne && Object.keys(typeOne).length > 0) {
             getWeaknessData();
         }
-    }, [typeOne, typeTwo])
+
+        return function cleanup() {
+            controller.abort();
+        }
+
+    }, [typeOne, typeTwo]);
 
     useEffect(() => {
         if (pokemonListTypes.length > 0 && pokemonListGen.length > 0) {
