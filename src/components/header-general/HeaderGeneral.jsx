@@ -19,9 +19,9 @@ function HeaderGeneral({title, text, buttonText, headerImage, pokemonName, butto
                                 onClick={onClick}
                             />}
                     </div>
-                    <figure className="general-header-image-container">
+                    <div className="general-header-image-container">
                         <img className="general-header-image" src={headerImage} alt={pokemonName}/>
-                    </figure>
+                    </div>
                 </div>
                 <div className={`general-header-color-block ${page}`}/>
             </section>

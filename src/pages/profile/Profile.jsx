@@ -115,7 +115,7 @@ function Profile() {
             />
             <main>
                 <section className="outer-container">
-                    <section className="profile-block-container">
+                    <div className="profile-block-container">
                         <section className="profile-block">
                             <h2>Your details</h2>
                             <ul className="profile-details-list">
@@ -201,7 +201,7 @@ function Profile() {
                                 />
                             }
                         </section>
-                    </section>
+                    </div>
                 </section>
             </main>
             <Footer/>

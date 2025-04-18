@@ -74,7 +74,7 @@ function PokedexDetails() {
                     {error && <p className="error-message">{error}</p>}
                     {!loading && isReady &&
                         <>
-                            <section className="pokemon-information-section">
+                            <div className="pokemon-information-section">
                                 <PokemonInformation
                                     pokemon={pokemon}
                                     pokemonSpecies={pokemonSpecies}
@@ -83,7 +83,7 @@ function PokedexDetails() {
                                     stats={pokemon?.stats || []}
                                     type={typeOne.name}
                                 />
-                            </section>
+                            </div>
                         </>
                     }
                 </section>

@@ -20,7 +20,7 @@ function Favorites() {
             />
             <main>
                 <section className="outer-container">
-                    <section className="favorites-section">
+                    <div className="favorites-section">
                         <h2>Favorites</h2>
                         {favorites.length !== 0 ?
                             <PokemonGrid
@@ -29,7 +29,7 @@ function Favorites() {
                             :
                             <p>You haven't added any favorites yet!</p>
                         }
-                    </section>
+                    </div>
                 </section>
             </main>
             <Footer/>

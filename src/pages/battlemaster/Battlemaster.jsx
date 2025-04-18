@@ -180,7 +180,7 @@ function Battlemaster() {
                             />
                             {quizPage === 0 ?
                                 <>
-                                    <section className="quiz-questions">
+                                    <div className="quiz-questions">
                                         <h2>Battlemaster</h2>
                                         <p className="quiz-question">Do you want to only use Pokémon from a specific
                                             generation?</p>
@@ -199,7 +199,7 @@ function Battlemaster() {
                                                 ))
                                             }
                                         </div>
-                                    </section>
+                                    </div>
                                     <div className="quiz-button-container">
                                         {!loading && !error &&
                                             <GeneralButton
@@ -214,7 +214,7 @@ function Battlemaster() {
                                 </>
                                 :
                                 <>
-                                    <section className="quiz-questions">
+                                    <div className="quiz-questions">
                                         <h2>Battlemaster</h2>
                                         <p className="quiz-question">Which Pokémon do you want to analyse?</p>
                                         {loading && <Loader/>}
@@ -237,7 +237,7 @@ function Battlemaster() {
                                                 {!loading && error && <p className="error-message">{error}</p>}
                                             </div>
                                         }
-                                    </section>
+                                    </div>
                                     <div className="quiz-button-container">
                                         {!loading &&
                                             <GeneralButton

@@ -18,8 +18,8 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                     <p className="error-message">{error}</p>
                 ) : (
                     <>
-                        <section className="pokemon-details-section">
-                            <section className="pokemon-details-container">
+                        <div className="pokemon-details-section">
+                            <div className="pokemon-details-container">
                                 {header === "battlemaster" ? (
                                     <div className="pokemon-details-name">
                                         <h2>Your opposing pokémon:</h2>
@@ -62,9 +62,9 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                         ))}
                                     </ul>
                                 </div>
-                            </section>
+                            </div>
 
-                            <figure className="pokemon-details-image-wrapper">
+                            <div className="pokemon-details-image-wrapper">
                                 <img
                                     className="pokemon-details-image"
                                     src={
@@ -74,14 +74,14 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                     alt={`Image of ${pokemon.name}`}
                                 />
                                 <FavoriteButton pokemon={pokemon}/>
-                            </figure>
+                            </div>
 
                             <div
                                 className={`pokedex-colorblock pokemon-type-color ${typeOne.name}`}
                             />
 
                             {header === "battlemaster" ? (
-                                <section className="pokemon-details-container mirrored">
+                                <div className="pokemon-details-container mirrored">
                                     <div className="pokemon-details-type mirrored">
                                         <h3>Immune to</h3>
                                         <ul className="pokemon-details-type-wrapper mirrored">
@@ -101,7 +101,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                             )}
                                         </ul>
                                     </div>
-                                </section>
+                                </div>
                             ) : (
                                 <p className="pokemon-details-description">
                                     {writeCleanText(
@@ -112,7 +112,7 @@ function HeaderPokemonDetails({pokemon, typeOne, typeTwo, pokemonSpecies, loadin
                                     )}
                                 </p>
                             )}
-                        </section>
+                        </div>
                     </>
                 )}
             </section>

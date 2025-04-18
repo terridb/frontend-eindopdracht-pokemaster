@@ -136,8 +136,8 @@ function Pokedex() {
             />
             <main>
                 <section className="outer-container">
-                    <section className="pokemon-search-section">
-                        <section className="pokemon-search">
+                    <div className="pokemon-search-section">
+                        <div className="pokemon-search">
                             <Searchbar
                                 placeholder="Search"
                                 size="large"
@@ -150,7 +150,7 @@ function Pokedex() {
                                 <p className="search-results-text">{matchingPokemon.length} results for
                                     "{searchResults}"</p>
                             )}
-                        </section>
+                        </div>
                         <PokemonGrid
                             pokemon={pokemon}
                             loading={loading}
@@ -158,7 +158,7 @@ function Pokedex() {
                             moreAvailable={moreAvailable}
                             handleLoadMore={handleLoadMore}
                         />
-                    </section>
+                    </div>
                 </section>
             </main>
             <Footer/>

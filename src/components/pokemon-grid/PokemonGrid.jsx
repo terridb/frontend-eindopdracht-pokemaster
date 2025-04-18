@@ -6,7 +6,7 @@ import GeneralButton from "../general-button/GeneralButton.jsx";
 function PokemonGrid({pokemon, loading, error, moreAvailable, handleLoadMore, favorites}) {
     return (
         <>
-            <section className="pokemon-grid">
+            <div className="pokemon-grid">
                 {favorites ? (
                     favorites.map((pokemonId) => (
                         <PokemonCard
@@ -29,15 +29,15 @@ function PokemonGrid({pokemon, loading, error, moreAvailable, handleLoadMore, fa
                         }
                     </>
                 )}
-            </section>
+            </div>
             {!favorites &&
-                <section className="load-more-section">
+                <div className="load-more-section">
                     {loading && <Loader/>}
                     {error && <p>{error}</p>}
                     {!loading && moreAvailable && (
                         <GeneralButton buttonText="Load more" onClick={handleLoadMore}/>
                     )}
-                </section>
+                </div>
             }
         </>
     )

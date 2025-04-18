@@ -106,11 +106,11 @@ function Home() {
                 <section className="outer-container">
                     <div className="home-content-container">
                         <h2>What do you want to do?</h2>
-                        <section className="home-buttons-container">
+                        <div className="home-buttons-container">
                             <IllustratedButton
                                 title="Pokédex"
                             />
-                            <section className="home-searchbar-container">
+                            <div className="home-searchbar-container">
                                 <IllustratedSearchbar
                                     image={pikachu}
                                     imageDescription="Detective Pikachu"
@@ -130,11 +130,11 @@ function Home() {
                                         visualType="layered"
                                     />
                                 )}
-                            </section>
+                            </div>
                             <IllustratedButton
                                 title="Battlemaster"
                             />
-                        </section>
+                        </div>
                     </div>
                 </section>
             </main>
