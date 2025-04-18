@@ -28,9 +28,9 @@ export function writeCleanText(text) {
         return "Failed to load description";
     }
     return text
-        .replaceAll("\f", "")
+        .replaceAll("\f", " ")
         .split(".")
-        .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
+        .map(sentence => sentence.trim().charAt(0).toUpperCase() + sentence.trim().slice(1).toLowerCase())
         .join(". ");
 }
 
