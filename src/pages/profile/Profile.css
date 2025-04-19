@@ -5,11 +5,6 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. Profile Styles -------------------------------- */
-:root {
-    --main-color-profile: #360f5b;
-    --light-color-profile: #954bc7;
-}
-
 .profile-block-container {
     display: flex;
     flex-direction: column;
@@ -21,7 +16,7 @@
 .profile-block {
     display: flex;
     flex-direction: column;
-    background-color: #FFF;
+    background-color: var(--white);
     padding: 40px;
     width: 100%;
     border-radius: 20px;

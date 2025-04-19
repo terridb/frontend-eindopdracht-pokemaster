@@ -5,11 +5,6 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. Home Styles -------------------------------- */
-:root {
-    --main-color-homepage: #F45F0E;
-    --light-color-homepage: #FFAB4A;
-}
-
 .home-content-container {
     margin: 100px 0 50px 0;
     max-width: 300px;

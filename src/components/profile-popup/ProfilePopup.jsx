@@ -6,7 +6,7 @@ function ProfilePopup({user, handleLogOut}) {
     const navigate = useNavigate();
 
     return (
-        <section className="profile-popup">
+        <div className="profile-popup">
             <div className="profile-popup-content">
                 <h5 className="profile-popup-username">{user.username}</h5>
                 <ul className="profile-popup-list">
@@ -20,7 +20,7 @@ function ProfilePopup({user, handleLogOut}) {
                     </li>
                 </ul>
             </div>
-        </section>
+        </div>
     );
 }
 

@@ -5,7 +5,6 @@ import Searchbar from "../../components/searchbar/Searchbar.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import TypeFilters from "../../components/type-filters/TypeFilters.jsx";
 import {getIdFromUrl} from "../../helpers/getPokemonDetails.jsx";
 import {resetInput} from "../../helpers/resetInput.js";
 import PokemonGrid from "../../components/pokemon-grid/PokemonGrid.jsx";
@@ -23,12 +22,16 @@ function Pokedex() {
     const [matchingPokemon, setMatchingPokemon] = useState([]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchData = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=12`, {
+                    signal: controller.signal,
+                });
                 const filteredPokemon = response.data.results.filter(pokemon =>
                     getIdFromUrl(pokemon.url) <= 10000
                 );
@@ -44,14 +47,22 @@ function Pokedex() {
         };
         fetchData();
 
+        return function cleanup() {
+            controller.abort();
+        }
+
     }, [offset]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchAllPokemon = async () => {
             toggleLoading(true);
             setError(null);
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10000`, {
+                    signal: controller.signal,
+                });
                 const filteredPokemon = response.data.results.filter(pokemon =>
                     getIdFromUrl(pokemon.url) <= 10000
                 );
@@ -95,17 +106,7 @@ function Pokedex() {
                     pokemonId.toString().includes(query)
                 );
             });
-
             setMatchingPokemon(filteredPokemon);
-
-            if (filteredPokemon.length > 0) {
-                setPokemon(filteredPokemon.slice(0, 12));
-                toggleMoreAvailable(filteredPokemon.length > 12);
-            } else {
-                setPokemon([]);
-                toggleMoreAvailable(false);
-            }
-
         } catch (err) {
             setError(err.message);
             console.error(err);
@@ -114,6 +115,16 @@ function Pokedex() {
         }
     };
 
+    useEffect(() => {
+        if (searchResults) {
+            setPokemon(matchingPokemon.slice(0, 12));
+            toggleMoreAvailable(matchingPokemon.length > 12);
+        } else {
+            setPokemon([]);
+            toggleMoreAvailable(false);
+        }
+    }, [matchingPokemon, searchResults]);
+
     return (
         <>
             <HeaderGeneral
@@ -121,41 +132,33 @@ function Pokedex() {
                 text="Welcome to the ultimate Pokédex! Explore detailed profiles, stats and moves for every Pokémon."
                 headerImage={mew}
                 pokemonName="mew"
+                page="pokedex"
             />
             <main>
                 <section className="outer-container">
-                    {/*<div className="large-inner-container pokedex">*/}
-                        {/*<section className="filter-section">*/}
-                        {/*    <h2>Filters</h2>*/}
-                        {/*    <TypeFilters/>*/}
-                        {/*    <div className="filter-section-gen">*/}
-                        {/*        <h3>Generation</h3>*/}
-                        {/*    </div>*/}
-                        {/*</section>*/}
-                        <section className="pokemon-search-section">
-                            <section className="pokemon-search">
-                                <Searchbar
-                                    placeholder="Search"
-                                    size="large"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    handleSubmit={handleSearch}
-                                    handleReset={() => resetInput(setQuery)}
-                                />
-                                {searchResults && pokemon.length > 0 && (
-                                    <p className="search-results-text">{matchingPokemon.length} results for
-                                        "{searchResults}"</p>
-                                )}
-                            </section>
-                            <PokemonGrid
-                                pokemon={pokemon}
-                                loading={loading}
-                                error={error}
-                                moreAvailable={moreAvailable}
-                                handleLoadMore={handleLoadMore}
+                    <div className="pokemon-search-section">
+                        <div className="pokemon-search">
+                            <Searchbar
+                                placeholder="Search"
+                                size="large"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                handleSubmit={handleSearch}
+                                handleReset={() => resetInput(setQuery)}
                             />
-                        </section>
-                    {/*</div>*/}
+                            {searchResults && pokemon.length > 0 && (
+                                <p className="search-results-text">{matchingPokemon.length} results for
+                                    "{searchResults}"</p>
+                            )}
+                        </div>
+                        <PokemonGrid
+                            pokemon={pokemon}
+                            loading={loading}
+                            error={error}
+                            moreAvailable={moreAvailable}
+                            handleLoadMore={handleLoadMore}
+                        />
+                    </div>
                 </section>
             </main>
             <Footer/>

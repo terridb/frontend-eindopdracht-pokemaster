@@ -1,12 +1,12 @@
 import "./PokedexDetails.css";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import HeaderPokemonDetails from "../../components/header-pokemonDetails/HeaderPokemonDetails.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import PokemonStats from "../../components/pokemon-stats/PokemonStats.jsx";
 import PokemonInformation from "../../components/pokemon-information/PokemonInformation.jsx";
 import Loader from "../../components/loader/Loader.jsx";
+import {fetchPokemonData} from "../../helpers/getPokemonDetails.jsx";
 
 function PokedexDetails() {
     const {pokemonId} = useParams();
@@ -16,36 +16,41 @@ function PokedexDetails() {
     const [loading, toggleLoading] = useState(false);
     const [typeOne, setTypeOne] = useState({});
     const [typeTwo, setTypeTwo] = useState({});
+    const [isPokemonLoaded, toggleIsPokemonLoaded] = useState(false);
+
+    const isReady = isPokemonLoaded;
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPokemon = async () => {
+        const controller = new AbortController();
+
+        const fetchData = async () => {
+            toggleLoading(true);
             try {
-                toggleLoading(true);
-                const responsePokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-                setPokemon(responsePokemon.data);
-
-                const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
-                setPokemonSpecies(responseSpecies.data);
-
-                if (responsePokemon.data.types.length === 2) {
-                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
-                    setTypeOne(responseTypeOne.data);
-                    const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[1].type.name}`);
-                    setTypeTwo(responseTypeTwo.data);
-                } else {
-                    const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${responsePokemon.data.types[0].type.name}`);
-                    setTypeOne(responseTypeOne.data);
-                }
-
+                const data = await fetchPokemonData(pokemonId, controller.signal);
+                setPokemon(data.pokemon);
+                setPokemonSpecies(data.pokemonSpecies);
+                setTypeOne(data.typeOne);
+                setTypeTwo(data.typeTwo);
+                toggleIsPokemonLoaded(true);
             } catch (err) {
                 setError(err.message);
                 console.error(err);
+                if (err.response && err.response.status === 404) {
+                    navigate("/not-found");
+                }
             } finally {
                 toggleLoading(false);
             }
+        };
+
+        fetchData();
+
+        return function cleanup() {
+            controller.abort();
         }
-        fetchPokemon();
-    }, []);
+
+    }, [pokemonId]);
 
     return (
         <>
@@ -57,14 +62,19 @@ function PokedexDetails() {
                 loading={loading}
                 error={error}
                 header="pokedex"
+                isReady={isReady}
             />
             <main>
                 <section className="outer-container">
-                    <div className="pokemon-information-section">
-                        {loading && <Loader/>}
-                        {error && <p className="error-message">{error}</p>}
-                        {!loading && !error &&
-                            <>
+                    {(loading || !isReady) &&
+                        <span className="loader-container">
+                        <Loader/>
+                        </span>
+                    }
+                    {error && <p className="error-message">{error}</p>}
+                    {!loading && isReady &&
+                        <>
+                            <div className="pokemon-information-section">
                                 <PokemonInformation
                                     pokemon={pokemon}
                                     pokemonSpecies={pokemonSpecies}
@@ -73,9 +83,9 @@ function PokedexDetails() {
                                     stats={pokemon?.stats || []}
                                     type={typeOne.name}
                                 />
-                            </>
-                        }
-                    </div>
+                            </div>
+                        </>
+                    }
                 </section>
             </main>
             <Footer/>

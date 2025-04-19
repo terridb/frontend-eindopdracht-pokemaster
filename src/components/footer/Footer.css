@@ -6,7 +6,7 @@
 /* ------------------------------- 1. Footer Styles -------------------------------- */
 footer {
     background-color: var(--header-background);
-    color: var(--light-text);
+    color: var(--white);
     height: 60px;
     display: flex;
     justify-content: space-between;

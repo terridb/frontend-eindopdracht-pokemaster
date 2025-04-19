@@ -16,7 +16,7 @@
 }
 
 .result-table tbody {
-    background-color: #FFF;
+    background-color: var(--white);
 }
 
 .moves-list {

@@ -18,10 +18,16 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all .15s ease-in-out ;
+    transition: all .15s ease-in-out;
     z-index: 2;
 }
 
 .favorite-button:hover {
     transform: scale(1.1);
+}
+
+.favorite-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

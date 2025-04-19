@@ -42,7 +42,7 @@
 }
 
 .auth-link {
-    color: #057DA3;
+    color: var(--primary-color);
     font-weight: 500;
 }
 

@@ -8,7 +8,7 @@ function AuthForm({onSubmit, children, error, loading, pageTitle, bottomTextOne,
     return (
         <main>
             <section className="outer-container">
-                <article className="auth-content">
+                <div className="auth-content">
                     <Link to="/">
                         <img
                             src={greyLogo}
@@ -20,22 +20,22 @@ function AuthForm({onSubmit, children, error, loading, pageTitle, bottomTextOne,
                     <form className="general-form" onSubmit={onSubmit}>
                         {children}
                     </form>
-                    <section className="auth-bottom-section">
+                    <div className="auth-bottom-section">
                         {error && <p className="error-message-form">{error}</p>}
                         {loading && <Loader/>}
                         <p>
                             {bottomTextOne}
                             <Link to={bottomLink} className="auth-link"> {bottomTextTwo}</Link>
                         </p>
-                    </section>
-                </article>
-                <figure className="auth-background-container">
+                    </div>
+                </div>
+                <div className="auth-background-container">
                     <img
                         className="auth-background"
                         src={snorlax}
                         alt="Snorlax"
                     />
-                </figure>
+                </div>
             </section>
         </main>
     );

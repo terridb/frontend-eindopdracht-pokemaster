@@ -1,6 +1,6 @@
 import "./PokemonInformation.css";
-import {decreaseUnit, getGenderIcons} from "../../helpers/getPokemonDetails.jsx";
-import {capitalizeFirstLetter} from "../../helpers/changeText.js";
+import {getGenderIcons} from "../../helpers/getPokemonDetails.jsx";
+import {capitalizeFirstLetter, decreaseUnit} from "../../helpers/changeText.js";
 
 function PokemonInformation({pokemon, pokemonSpecies}) {
     return (

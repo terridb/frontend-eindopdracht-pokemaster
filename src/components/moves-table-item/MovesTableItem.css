@@ -6,7 +6,7 @@
 
 /* ------------------------------- 1. MovesTableItem Styles -------------------------------- */
 .table-item {
-    background-color: #FFF;
+    background-color: var(--white);
     height: 75px;
 }
 

@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--light-text);
+    color: var(--white);
     background-color: var(--header-background);
     padding: 0 0 50px 0;
     position: relative;
@@ -67,20 +67,20 @@
 
 /* ------------------------------- 2. Color block -------------------------------- */
 
-.general-header-color-block.charizard {
-    background: linear-gradient(-45deg, var(--main-color-homepage) 0%, var(--light-color-homepage) 100%);
+.general-header-color-block.home {
+    background: linear-gradient(-45deg, var(--primary-color-home) 0%, var(--secondary-color-home) 100%);
 }
 
-.general-header-color-block.mew {
-    background: linear-gradient(-45deg, var(--main-color-pokedex) 0%, var(--light-color-pokedex) 100%);
+.general-header-color-block.pokedex {
+    background: linear-gradient(-45deg, var(--primary-color-pokedex) 0%, var(--secondary-color-pokedex) 100%);
 }
 
-.general-header-color-block.lucario {
-    background: linear-gradient(-45deg, var(--main-color-battlemaster) 0%, var(--light-color-battlemaster) 100%);
+.general-header-color-block.battlemaster {
+    background: linear-gradient(-45deg, var(--primary-color-battlemaster) 0%, var(--secondary-color-battlemaster) 100%);
 }
 
-.general-header-color-block.mimikyu {
-    background: linear-gradient(-45deg, var(--main-color-profile) 0%, var(--light-color-profile) 100%);
+.general-header-color-block.profile {
+    background: linear-gradient(-45deg, var(--primary-color-profile) 0%, var(--secondary-color-profile) 100%);
 }
 
 /* ------------------------------- 3. Media Queries -------------------------------- */

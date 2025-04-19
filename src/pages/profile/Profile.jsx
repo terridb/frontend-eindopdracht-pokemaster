@@ -1,5 +1,5 @@
 import "./Profile.css";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import HeaderGeneral from "../../components/header-general/HeaderGeneral.jsx";
 import mimikyu from "../../assets/images/mimikyu.png";
@@ -16,11 +16,18 @@ function Profile() {
     const {user, token} = useContext(AuthContext);
     const navigate = useNavigate();
     const {handleSubmit, formState: {errors}, register, watch} = useForm();
+    const source = axios.CancelToken.source();
 
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(null);
     const [changeTab, setChangeTab] = useState("email");
     const [alertMessage, setAlertMessage] = useState("");
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     const handleChangeEmail = async (data) => {
         toggleLoading(true);
@@ -34,15 +41,16 @@ function Profile() {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     }
+                }, {
+                    cancelToken: source.token,
                 }
             );
             if (response.status === 200) {
                 setAlertMessage("Your e-mailaddress has been changed successfully! A refresh might be necessary to be able to see the adjustment.");
-                setTimeout(() => setAlertMessage(""), 5000);
             }
         } catch (err) {
-            console.error("Error at changing the e-mailaddress", err);
-            setError(err?.response?.data?.message || "Something went wrong");
+            console.error(err);
+            setError(err.response.data.message || "Something went wrong");
         } finally {
             toggleLoading(false);
         }
@@ -63,19 +71,31 @@ function Profile() {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     }
+                }, {
+                    cancelToken: source.token,
                 }
             );
             if (response.status === 200) {
                 setAlertMessage("Your password has been changed successfully!");
-                setTimeout(() => setAlertMessage(""), 5000);
             }
         } catch (err) {
-            console.error("Error at changing the password", err);
-            setError(err?.response?.data?.message || "Something went wrong");
+            console.error(err);
+            setError(err.response.data.message || "Something went wrong");
         } finally {
             toggleLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (!alertMessage) return;
+
+        const handleTimeout = setTimeout(() => setAlertMessage(""), 5000);
+
+        return function cleanup() {
+            clearTimeout(handleTimeout);
+        }
+
+    }, [alertMessage]);
 
     const handleChangeTab = () => {
         changeTab === "email" ? setChangeTab("password") : setChangeTab("email");
@@ -91,10 +111,11 @@ function Profile() {
                 buttonType="button"
                 buttonText="See favorites"
                 onClick={() => navigate("/favorites")}
+                page="profile"
             />
             <main>
                 <section className="outer-container">
-                    <section className="profile-block-container">
+                    <div className="profile-block-container">
                         <section className="profile-block">
                             <h2>Your details</h2>
                             <ul className="profile-details-list">
@@ -127,7 +148,7 @@ function Profile() {
                                         buttonText="Continue"
                                         buttonType="submit"
                                         disabled={loading}
-                                        pokemonName="mimikyu"
+                                        page="profile"
                                     />
                                 </form>
                                 :
@@ -156,7 +177,7 @@ function Profile() {
                                         buttonText="Continue"
                                         buttonType="submit"
                                         disabled={loading}
-                                        pokemonName="mimikyu"
+                                        page="profile"
                                     />
                                 </form>
                             }
@@ -180,7 +201,7 @@ function Profile() {
                                 />
                             }
                         </section>
-                    </section>
+                    </div>
                 </section>
             </main>
             <Footer/>

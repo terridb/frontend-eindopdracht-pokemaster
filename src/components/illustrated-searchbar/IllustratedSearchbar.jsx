@@ -13,7 +13,7 @@ function IllustratedSearchBar({
                                   handleReset
                               }) {
     return (
-        <section className="illustrated-searchbar-container">
+        <div className="illustrated-searchbar-container">
             <img className="illustration-searchbar" src={image} alt={imageDescription}/>
             <div className="searchbar-outer-container">
                 <Searchbar
@@ -29,7 +29,7 @@ function IllustratedSearchBar({
                 <h3>{title}</h3>
                 <p>{subtitle}</p>
             </div>
-        </section>
+        </div>
     );
 }
 

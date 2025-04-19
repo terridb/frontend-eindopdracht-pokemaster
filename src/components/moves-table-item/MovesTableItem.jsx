@@ -10,21 +10,29 @@ function MovesTableItem({endpoint}) {
     const [move, setMove] = useState({});
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchMoveData = async () => {
             toggleLoading(true);
             setError(null);
 
             try {
-                const response = await axios.get(endpoint);
+                const response = await axios.get(endpoint, {
+                    signal: controller.signal,
+                });
                 setMove(response.data);
             } catch (err) {
                 console.error(err);
-                setError(err);
+                setError(err.message);
             } finally {
                 toggleLoading(false);
             }
         }
         fetchMoveData();
+
+        return function cleanup() {
+            controller.abort();
+        }
 
     }, [endpoint]);
 
@@ -37,7 +45,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats"></td>
                 <td className="result-table-stats"></td>
             </tr>
-        )
+        );
     }
 
     if (error) {
@@ -49,7 +57,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats"></td>
                 <td className="result-table-stats"></td>
             </tr>
-        )
+        );
     }
 
     if (move) {
@@ -65,7 +73,7 @@ function MovesTableItem({endpoint}) {
                 <td className="result-table-stats">{move?.accuracy}</td>
                 <td className="result-table-stats">{move?.pp}</td>
             </tr>
-        )
+        );
     }
 }
 

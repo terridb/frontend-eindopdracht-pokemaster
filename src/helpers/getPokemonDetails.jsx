@@ -1,4 +1,5 @@
 import {GenderFemale, GenderMale} from "@phosphor-icons/react";
+import axios from "axios";
 
 export function getIdFromUrl(url) {
     const sentences = url.split("/");
@@ -84,6 +85,45 @@ export function getGenderIcons(genderValue) {
     }
 }
 
-export function decreaseUnit(value) {
-    return (value / 10).toFixed(1);
+export async function fetchPokemonData(pokemonId, signal) {
+    try {
+        const responsePokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`, {
+            signal: signal,
+        });
+        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`, {
+            signal: signal,
+        });
+
+        const pokemonData = responsePokemon.data;
+        const speciesData = responseSpecies.data;
+
+        let typeOne;
+        let typeTwo;
+
+        if (pokemonData.types.length === 2) {
+            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`, {
+                signal: signal,
+            });
+            const responseTypeTwo = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[1].type.name}`, {
+                signal: signal,
+            });
+            typeOne = responseTypeOne.data;
+            typeTwo = responseTypeTwo.data;
+        } else {
+            const responseTypeOne = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonData.types[0].type.name}`, {
+                signal: signal,
+            });
+            typeOne = responseTypeOne.data;
+        }
+
+        return {
+            pokemon: pokemonData,
+            pokemonSpecies: speciesData,
+            typeOne: typeOne,
+            typeTwo: typeTwo,
+        };
+    } catch (err) {
+        console.error(err.message);
+        throw err;
+    }
 }
