@@ -177,7 +177,7 @@ function Profile() {
                                         buttonText="Continue"
                                         buttonType="submit"
                                         disabled={loading}
-                                        pokemonName="mimikyu"
+                                        page="profile"
                                     />
                                 </form>
                             }
