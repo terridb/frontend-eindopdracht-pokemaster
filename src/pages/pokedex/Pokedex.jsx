@@ -106,17 +106,7 @@ function Pokedex() {
                     pokemonId.toString().includes(query)
                 );
             });
-
             setMatchingPokemon(filteredPokemon);
-
-            if (filteredPokemon.length > 0) {
-                setPokemon(filteredPokemon.slice(0, 12));
-                toggleMoreAvailable(filteredPokemon.length > 12);
-            } else {
-                setPokemon([]);
-                toggleMoreAvailable(false);
-            }
-
         } catch (err) {
             setError(err.message);
             console.error(err);
@@ -124,6 +114,16 @@ function Pokedex() {
             toggleLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (searchResults) {
+            setPokemon(matchingPokemon.slice(0, 12));
+            toggleMoreAvailable(matchingPokemon.length > 12);
+        } else {
+            setPokemon([]);
+            toggleMoreAvailable(false);
+        }
+    }, [matchingPokemon, searchResults]);
 
     return (
         <>
