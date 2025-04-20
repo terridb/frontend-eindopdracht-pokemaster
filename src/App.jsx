@@ -10,6 +10,7 @@ import Profile from "./pages/profile/Profile.jsx";
 import BattlemasterResult from "./pages/battlemasterResult/BattlemasterResult.jsx";
 import {useContext} from "react";
 import {AuthContext} from "./context/AuthContext.jsx";
+import NotFound from "./pages/notfound/NotFound.jsx";
 
 function App() {
     const {isAuth} = useContext(AuthContext);
@@ -26,9 +27,10 @@ function App() {
                 <Route path="/battlemaster/:pokemonId/:generation" element={<BattlemasterResult/>}/>
                 <Route path="/favorites" element={isAuth ? <Favorites/> : <Navigate to="/login"/>}/>
                 <Route path="/profile" element={isAuth ? <Profile/> : <Navigate to="/login"/>}/>
+                <Route path="*" element={<NotFound/>}/>
             </Routes>
         </>
-    )
+    );
 }
 
 export default App

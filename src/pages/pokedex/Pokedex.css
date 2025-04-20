@@ -4,11 +4,6 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. Pokedex Styles -------------------------------- */
-:root {
-    --main-color-pokedex: #4346CF;
-    --light-color-pokedex: #FFC3EB;
-}
-
 .pokemon-search-section {
     display: flex;
     flex-direction: column;
@@ -20,15 +15,6 @@
     flex-shrink: 1;
     margin: 55px 0;
 }
-
-/*.filter-section {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 40px;*/
-/*    width: 24%;*/
-/*    margin: 165px 0 0 0;*/
-/*    border: 2px dashed deeppink;*/
-/*}*/
 
 .pokemon-search {
     display: flex;

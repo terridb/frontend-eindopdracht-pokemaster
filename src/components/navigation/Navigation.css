@@ -37,14 +37,14 @@ nav {
 }
 
 .active-menu-link {
-    color: var(--light-text);
+    color: var(--white);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 10px;
 }
 
 .default-menu-link {
-    color: var(--light-text);
+    color: var(--white);
     text-decoration: none;
 }
 

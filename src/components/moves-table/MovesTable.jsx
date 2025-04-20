@@ -24,11 +24,11 @@ function MovesTable({handleLoadMore, movesList, counter, loading, moreAvailable}
                 ))}
                 </tbody>
             </table>
-            <section className="load-more-section">
+            <div className="load-more-section">
                 {!loading && moreAvailable && (
                     <GeneralButton buttonText="Load more" onClick={handleLoadMore}/>
                 )}
-            </section>
+            </div>
         </div>
     );
 }

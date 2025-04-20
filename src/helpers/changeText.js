@@ -1,12 +1,12 @@
-import removeAccents from "remove-accents"
+import removeAccents from "remove-accents";
 
 export function changeTextToSimple(text) {
-    return removeAccents(text).toLowerCase()
+    return removeAccents(text).toLowerCase();
 }
 
 export function capitalizeFirstLetter(text) {
     if (text === undefined) {
-        return "Error"
+        return "Error";
     }
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -25,11 +25,15 @@ export function writePokedexNumber(number) {
 
 export function writeCleanText(text) {
     if (text === undefined) {
-        return "Failed to load description"
+        return "Failed to load description";
     }
     return text
-        .replaceAll("\f", "")
+        .replaceAll("\f", " ")
         .split(".")
-        .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
+        .map(sentence => sentence.trim().charAt(0).toUpperCase() + sentence.trim().slice(1).toLowerCase())
         .join(". ");
+}
+
+export function decreaseUnit(value) {
+    return (value / 10).toFixed(1);
 }

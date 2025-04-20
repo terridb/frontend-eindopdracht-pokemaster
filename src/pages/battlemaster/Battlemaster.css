@@ -5,11 +5,6 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. Battlemaster Styles -------------------------------- */
-:root {
-    --main-color-battlemaster: #3C3DAA;
-    --light-color-battlemaster: #01C1E5;
-}
-
 .quiz-question {
     font-weight: 700;
     font-size: 1.25rem;
@@ -32,7 +27,7 @@
     flex-direction: column;
     height: auto;
     width: 100%;
-    background-color: #FFF;
+    background-color: var(--white);
     border-radius: 50px;
     justify-content: space-evenly;
 }

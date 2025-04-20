@@ -9,7 +9,7 @@
 .suggestions-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--light-text);
+    background-color: var(--white);
     width: 100%;
     border-radius: 16px;
     gap: 0;
@@ -22,7 +22,7 @@
 
 .suggestions-container.standalone {
     background-color: var(--dark-text);
-    color: var(--light-text);
+    color: var(--white);
 }
 
 .suggestion-item {

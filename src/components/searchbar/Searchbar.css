@@ -16,7 +16,7 @@
     border: solid var(--small-details);
     border-width: 2px 0 2px 2px;
     border-radius: 50px 0 0 50px;
-    background-color: var(--light-text);
+    background-color: var(--white);
     font-size: 1rem;
     color: var(--dark-text);
     outline: none;
@@ -27,13 +27,13 @@
     border-width: 2px 2px 2px 0;
     border-radius: 0 50px 50px 0;
     height: 50px;
-    background-color: var(--light-text);
+    background-color: var(--white);
     width: 50px;
     padding: 0 20px 0 5px;
 }
 
 .searchbar-reset-button {
-    background-color: var(--light-text);
+    background-color: var(--white);
     border: var(--small-details) solid;
     border-width: 2px 0;
 }

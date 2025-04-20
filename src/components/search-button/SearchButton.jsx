@@ -1,5 +1,5 @@
 import {MagnifyingGlass} from "@phosphor-icons/react";
-import "./SearchButton.css"
+import "./SearchButton.css";
 
 function SearchButton() {
     return (

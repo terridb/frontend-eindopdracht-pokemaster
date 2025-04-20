@@ -24,7 +24,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #FFF;
+    background-color: var(--white);
     border-radius: 50px;
     width: 100%;
     padding: 35px;
